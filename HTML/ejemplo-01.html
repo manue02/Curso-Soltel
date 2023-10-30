@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Titulo pagina</title>
+	</head>
+	<body>
+		<script>
+			function ValorRango() {
+				var x = document.getElementById("demo").value;
+				document.getElementById("valorRango").innerHTML = x;
+			}
+		</script>
+
+		<input type="range" id="demo" value="5" min="0" max="10" oninput="ValorRango();" />
+		<p>Value: <span id="valorRango"></span></p>
+	</body>
+</html>

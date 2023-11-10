@@ -1,0 +1,78 @@
+/* Propiedades de texto */
+main article span {
+	color: rgb(0%, 0%, 100%);
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: x-large;
+	font-weight: bold;
+	font-style: italic;
+	font-variant: small-caps;
+}
+
+main article h2 + span {
+	text-decoration: underline;
+	white-space: pre;
+	word-spacing: 15px;
+}
+
+main article h2 + span + p {
+	text-align: justify;
+	line-height: 1.5em;
+	text-indent: 30px;
+}
+
+main article h2 + span + p span {
+	text-decoration: overline;
+	text-transform: uppercase;
+	vertical-align: super;
+}
+
+main article > h2 {
+	letter-spacing: 3px;
+}
+
+main > p::first-line {
+	color: blue;
+}
+
+main > p ::first-letter {
+	color: red;
+	font-size: 4em;
+}
+
+main header nav ul + ul a {
+	text-decoration: none;
+}
+
+main header nav ul + ul a:link {
+	color: gold;
+}
+
+main header nav ul + ul a:hover {
+	color: red;
+}
+
+main header nav ul + ul a:active {
+	color: green;
+}
+
+body > header img {
+	width: 100px;
+}
+
+aside > ul > li {
+	list-style-type: none;
+}
+
+aside ul ul li {
+	list-style-type: georgian;
+	list-style-position: inside;
+}
+
+table,
+td {
+	border: 2px solid black;
+	border-collapse: separate;
+	border-spacing: 4px;
+	empty-cells: hide;
+	caption-side: bottom;
+}

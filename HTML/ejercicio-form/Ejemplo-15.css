@@ -1,0 +1,30 @@
+section > h3,
+article > h3 {
+	display: none;
+}
+
+form fieldset h2 {
+	color: blue;
+	font-size: 25px;
+	border-left: rgb(204, 204, 23) 5px solid;
+	padding-left: 14px;
+	margin-left: 18px;
+	margin-top: 15px;
+}
+
+form fieldset {
+	border: rgb(221, 213, 213) 2px solid;
+	margin-left: 10%;
+	margin-top: 2%;
+	margin-right: -23%;
+}
+
+form fieldset > article {
+	padding: 15px;
+	margin: 10px;
+}
+
+form > fieldset:nth-child(1) > article > article:nth-child(1) > section > div > button {
+	height: 10px;
+	width: 119px;
+}

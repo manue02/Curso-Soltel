@@ -76,3 +76,7 @@ td {
 	empty-cells: hide;
 	caption-side: bottom;
 }
+
+header > form input[type="submit"] {
+	background-color: rgb(94, 94, 110);
+}

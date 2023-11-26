@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Formulario con HTML5, CSS3 y Bootstrap5</title>
+		<link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
+		<link rel="stylesheet" href="Ejemplo-15.css" />
+		<link rel="stylesheet" href="bootstrap/docs.css" />
+		<script src="bootstrap/bootstrap.bundle.min.js"></script>
+
+		<!-- Atencionn!!! Falta la carpeta bootstrap en el directorio raiz del proyecto para que funcione el formulario -->
+	</head>
+	<body>
+		<form action="#" method="post" class="w-75">
+			<fieldset>
+				<h2>DATOS PARTICIPANTE</h2>
+
+				<article>
+					<article class="row mb-3">
+						<h3>Fila Datos personales</h3>
+						<section class="col-4">
+							<h3>NIF</h3>
+							<div class="row">
+								<label for="NIF" class="form-label">NIF</label>
+								<input type="text" name="NIF" id="NIF" class="form-control form-control-sm w-75 h-25" />
+								<button class="btn btn-primary form-control form-control-sm btn" type="button" id="button-addon2">Buscar</button>
+							</div>
+						</section>
+						<section class="col-2">
+							<h3>NTIS</h3>
+							<label for="NTIS" class="form-label">NTIS</label>
+							<input type="text" name="NTIS" id="NTIS" class="form-control form-control-sm" />
+						</section>
+					</article>
+
+					<article class="row mb-3">
+						<section class="col">
+							<h3>Nombre</h3>
+							<label for="nombre" class="form-label">Nombre</label>
+							<input type="text" name="nombre" id="nombre" class="form-control form-control-sm" />
+						</section>
+						<section class="col">
+							<h3>Apellido1</h3>
+							<label for="apellido1" class="form-label">Primer apelllido</label>
+							<input type="text" name="apellido1" id="apellido1" class="form-control form-control-sm" />
+						</section>
+						<section class="col">
+							<h3>Apellido2</h3>
+							<label for="apellido2" class="form-label">Segundo apellido</label>
+							<input type="text" name="apellido2" id="apellido2" class="form-control form-control-sm" />
+						</section>
+					</article>
+
+					<article class="row mb-3">
+						<section class="col-9">
+							<h3>Situacion Laboral</h3>
+							<label for="situacionLaboral" class="form-label">Situacion Laboral</label>
+
+							<select disabled class="form-select" id="situacionLaboral">
+								<option selected>Desempleado</option>
+								<option value="1">One</option>
+								<option value="2">Two</option>
+								<option value="3">Three</option>
+							</select>
+						</section>
+					</article>
+
+					<article class="row mb-3">
+						<section class="col-9">
+							<h3>Situacion Laboral anteriormente</h3>
+							<label for="situacionLaboralAnterior" class="form-label">Situacion Laboral anteriormente</label>
+
+							<select class="form-select" id="situacionLaboralAnterior">
+								<option selected>Elija Opcion</option>
+								<option value="1">One</option>
+								<option value="2">Two</option>
+								<option value="3">Three</option>
+							</select>
+						</section>
+					</article>
+
+					<article class="row">
+						<section class="col">
+							<h3>Reserva</h3>
+							<label class="form-label">Reserva</label>
+
+							<input class="form-check-input ms-4" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Si" />
+							<label class="form-check-label" for="inlineRadio1">Si</label>
+
+							<input class="form-check-input ms-4" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No" />
+							<label class="form-check-label" for="inlineRadio2">No</label>
+						</section>
+					</article>
+				</article>
+			</fieldset>
+
+			<fieldset>
+				<h2>Caracteristicas</h2>
+
+				<article>
+					<article class="row mb-3">
+						<section class="col">
+							<h3>Desempleado del SEPE</h3>
+							<label class="form-label">Desempleado del SEPE</label>
+
+							<input class="form-check-input ms-4" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Si" />
+							<label class="form-check-label" for="inlineRadio1">Si</label>
+
+							<input class="form-check-input ms-4" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="No" />
+							<label class="form-check-label" for="inlineRadio2">No</label>
+						</section>
+					</article>
+
+					<article class="row mb-3">
+						<section class="col">
+							<h3>Genero</h3>
+							<label class="form-label">Genero</label>
+
+							<input class="form-check-input ms-4" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="Masculino" />
+							<label class="form-check-label" for="inlineRadio1">Masculino</label>
+
+							<input class="form-check-input ms-4" type="radio" name="inlineRadioOptions" id="inlineRadio6" value="Femenino" />
+							<label class="form-check-label" for="inlineRadio2">Femenino</label>
+						</section>
+					</article>
+					<article class="row mb-3">
+						<section class="col-2">
+							<h3>Fecha de Nacimiento</h3>
+							<label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+							<input type="date" name="fechaNacimiento" id="fechaNacimiento" class="form-control form-control-sm" />
+						</section>
+					</article>
+					<article class="row mb-3">
+						<section class="col-2">
+							<h3>Telefono</h3>
+							<label for="telefono" class="form-label">Telefono</label>
+							<input type="tel" name="telefono" id="telefono" class="form-control form-control-sm" />
+						</section>
+						<section class="col-6">
+							<h3>Email</h3>
+							<label for="email" class="form-label">Email</label>
+							<input type="email" name="email" id="email" class="form-control form-control-sm" />
+						</section>
+					</article>
+					<article class="row mb-3">
+						<section class="col">
+							<h3>Discapacidad</h3>
+							<label class="form-label">Discapacidad</label>
+
+							<input class="form-check-input ms-4" type="radio" name="inlineRadioOptions" id="inlineRadio7" value="Si" />
+							<label class="form-check-label" for="inlineRadio1">Si</label>
+
+							<input class="form-check-input ms-4" type="radio" name="inlineRadioOptions" id="inlineRadio8" value="No" />
+							<label class="form-check-label" for="inlineRadio2">No</label>
+						</section>
+					</article>
+					<article class="row mb-3">
+						<section class="col-9">
+							<h3>Categoria Profesional</h3>
+							<label for="categoriaProfesional" class="form-label">Categoria Profesional</label>
+
+							<select class="form-select" id="categoriaProfesional">
+								<option selected>Elija Opcion</option>
+								<option value="1">One</option>
+								<option value="2">Two</option>
+								<option value="3">Three</option>
+							</select>
+						</section>
+					</article>
+
+					<article class="row mb-3">
+						<section class="col">
+							<h3>El sitio del participante</h3>
+							<label for="sitioParticipante" class="form-label">El sitio del participante</label>
+							<input type="text" name="sitioParticipante" id="sitioParticipante" class="form-control form-control-sm" />
+						</section>
+						<section class="col">
+							<h3>CP Participante</h3>
+							<label for="cpParticipante" class="form-label">CP Participante</label>
+							<input type="text" name="cpParticipante" id="cpParticipante" class="form-control form-control-sm" />
+						</section>
+						<section class="col">
+							<label for="button-addon3" class="form-label"></label>
+							<button class="btn btn-primary form-control form-control-sm btn" name="button-addon3" type="button" id="button-addon3">Buscar</button>
+						</section>
+						<section class="col">
+							<h3>Localidad del participante</h3>
+							<label for="localidadParticipante" class="form-label">Localidad del participante</label>
+							<select disabled class="form-select" name="LocalidadParticipante" id="localidadParticipante">
+								<option selected>⠀</option>
+								<option value="1">One</option>
+								<option value="2">Two</option>
+								<option value="3">Three</option>
+							</select>
+						</section>
+						<section class="col">
+							<h3>Provincia del participante</h3>
+							<label for="provinciaParticipante" class="form-label">Provincia del participante</label>
+							<input disabled type="text" name="provinciaParticipante" id="provinciaParticipante" class="form-control form-control-sm" />
+						</section>
+					</article>
+					<article class="row mb-3">
+						<section class="col-9">
+							<h3>Nivel de estudios</h3>
+							<label for="nivelEstudios" class="form-label">Nivel de estudios</label>
+
+							<select class="form-select" id="nivelEstudios">
+								<option selected>Elija Opcion</option>
+								<option value="1">One</option>
+								<option value="2">Two</option>
+								<option value="3">Three</option>
+							</select>
+						</section>
+					</article>
+					<article class="row mb-3">
+						<section class="col-9">
+							<h3>Otra situacion</h3>
+							<label for="otraSituacion" class="form-label">Otra situacion</label>
+
+							<select disabled class="form-select" id="otraSituacion">
+								<option selected>⠀</option>
+								<option value="1">One</option>
+								<option value="2">Two</option>
+								<option value="3">Three</option>
+							</select>
+						</section>
+					</article>
+					<article class="row mb-3">
+						<section class="col">
+							<h3>Finalizado o abandono</h3>
+							<label for="finalizadoAbandono" class="form-label">Finalizado o abandono</label>
+							<select class="form-select" id="finalizadoAbandono">
+								<option selected>Elija Opcion</option>
+								<option value="1">One</option>
+								<option value="2">Two</option>
+								<option value="3">Three</option>
+							</select>
+						</section>
+
+						<section class="col">
+							<h3>Casos de abandono</h3>
+							<label for="casosAbandono" class="form-label">Casos de abandono</label>
+							<select disabled class="form-select" id="casosAbandono">
+								<option selected>Elija Opcion</option>
+								<option value="1">One</option>
+								<option value="2">Two</option>
+								<option value="3">Three</option>
+							</select>
+						</section>
+
+						<section class="col">
+							<h3>Fecha de abandono</h3>
+							<label for="fechaAbandono" class="form-label">Fecha de abandono</label>
+							<input disabled type="date" name="fechaAbandono" id="fechaAbandono" class="form-control form-control-sm" />
+						</section>
+
+						<section class="col">
+							<h3>Evaluacion aprendizaje</h3>
+							<label for="evaluacion" class="form-label">Evaluacion aprendizaje</label>
+							<select disabled class="form-select" id="evaluacion">
+								<option selected>Elija Opcion</option>
+								<option value="1">One</option>
+								<option value="2">Two</option>
+								<option value="3">Three</option>
+							</select>
+						</section>
+					</article>
+				</article>
+			</fieldset>
+
+			<fieldset class="mb-4">
+				<h2>Colectivos</h2>
+				<article>
+					<article class="row mb-3">
+						<section class="col">
+							<h3>¿Es desempleado de larga duracion?</h3>
+							<label class="form-label">¿Es desempleado de larga duracion?</label>
+
+							<input class="form-check-input ms-4" type="radio" name="inlineRadioOptions" id="inlineRadio9" value="Si" />
+							<label class="form-check-label" for="inlineRadio1">Si</label>
+
+							<input class="form-check-input ms-4" type="radio" name="inlineRadioOptions" id="inlineRadio10" value="No" />
+							<label class="form-check-label" for="inlineRadio2">No</label>
+						</section>
+					</article>
+					<article class="row mb-3">
+						<section class="col">
+							<h3>¿Estas en la garantia Juvenil?</h3>
+							<label class="form-label">¿Estas en la garantia Juvenil?</label>
+
+							<input class="form-check-input ms-4" type="radio" name="inlineRadioOptions" id="inlineRadio11" value="Si" />
+							<label class="form-check-label" for="inlineRadio1">Si</label>
+
+							<input class="form-check-input ms-4" type="radio" name="inlineRadioOptions" id="inlineRadio12" value="No" />
+							<label class="form-check-label" for="inlineRadio2">No</label>
+						</section>
+					</article>
+					<article class="row">
+						<section class="col">
+							<h3>¿otros?</h3>
+							<label class="form-label">¿otros?</label>
+
+							<input class="form-check-input ms-4" type="radio" name="inlineRadioOptions" id="inlineRadio13" value="Si" />
+							<label class="form-check-label" for="inlineRadio1">Si</label>
+
+							<input class="form-check-input ms-4" type="radio" name="inlineRadioOptions" id="inlineRadio14" value="No" />
+							<label class="form-check-label" for="inlineRadio2">No</label>
+						</section>
+					</article>
+				</article>
+			</fieldset>
+		</form>
+	</body>
+</html>

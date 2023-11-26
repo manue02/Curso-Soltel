@@ -14,13 +14,16 @@ modified: "2023-11-21T13:20:29.033Z"
 
 - [Documentación Django (Phyton)](#documentación-django-phyton)
 - [Tabla de contenidos](#tabla-de-contenidos)
-  - [Introducción](#introducción)
+- [Introducción](#introducción)
   - [Instalación en Linux](#instalación-en-linux)
     - [Explicación de los comandos](#explicación-de-los-comandos)
+  - [Creación de un proyecto](#creación-de-un-proyecto)
+    - [Explicación de los ficheros al crear un proyecto Django](#explicación-de-los-ficheros-al-crear-un-proyecto-django)
+  - [Ejecución del servidor de desarrollo](#ejecución-del-servidor-de-desarrollo)
 
 <div style="page-break-after: always;"></div>
 
-## Introducción
+# Introducción
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
@@ -80,3 +83,63 @@ Una vez instalado, creamos un entorno virtual llamado django y lo activamos:
 - **python -m django --version**: Comprobamos la versión de Django instalada.
 
 Si en la terminal nos aparece (django) delante del nombre de nuestro usuario, significa que el entorno virtual está activado. En caso contrario, debemos activarlo con el comando source django/bin/activate. Para desactivar el entorno virtual, escribimos deactivate.
+
+<div style="page-break-after: always;"></div>
+
+## Creación de un proyecto
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+En primer lugar vamos a ver como crear un proyecto Django. Para ello, nos situamos en el directorio donde queremos crear el proyecto y escribimos:
+
+```console
+
+ (django)$ django-admin startproject mysite
+
+```
+
+Esto creará un directorio llamado mysite con la siguiente estructura:
+
+```console
+
+ mysite/
+     manage.py
+     mysite/
+         __init__.py
+         settings.py
+         urls.py
+         asgi.py
+         wsgi.py
+
+```
+
+### Explicación de los ficheros al crear un proyecto Django
+
+- **manage.py**: Es un script que ayuda con la gestión del sitio. Con él podemos arrancar un servidor de desarrollo, crear aplicaciones, crear migraciones de la base de datos, etc.
+- El directorio **mysite/** es un paquete de Python para nuestro proyecto.
+- **settings.py**: Contiene la configuración del proyecto.
+- **urls.py**: Contiene las definiciones de las URLs del proyecto.
+- **wsgi.py**: Es un punto de entrada para los servidores web compatibles con WSGI para servir el proyecto.
+- **asgi.py**: Es un punto de entrada para los servidores web compatibles con ASGI para servir el proyecto.
+
+<div style="page-break-after: always;"></div>
+
+## Ejecución del servidor de desarrollo
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Para arrancar el servidor de desarrollo, nos situamos en el directorio donde se encuentra el fichero manage.py y escribimos:
+
+```console
+
+ (django)$ python manage.py runserver
+
+```
+
+Ahora bien si queremos que el servidor de desarrollo sea accesible desde cualquier dirección IP y ademas en un puerto determinado, escribimos:
+
+```console
+
+ (django)$ python manage.py runserver 0.0.0.0:8000
+
+```

@@ -20,6 +20,7 @@ modified: "2023-11-21T13:20:29.033Z"
   - [Creación de un proyecto](#creación-de-un-proyecto)
     - [Explicación de los ficheros al crear un proyecto Django](#explicación-de-los-ficheros-al-crear-un-proyecto-django)
   - [Ejecución del servidor de desarrollo](#ejecución-del-servidor-de-desarrollo)
+  - [Instalación del IDE PyCharm](#instalación-del-ide-pycharm)
 
 <div style="page-break-after: always;"></div>
 
@@ -136,6 +137,8 @@ Para arrancar el servidor de desarrollo, nos situamos en el directorio donde se 
 
 ```
 
+Ahora si todo a ido bien, podemos acceder a nuestro servidor de desarrollo desde un navegador web en la dirección http://127.0.0.1:8000/ en mi caso esa es la dirección, pero puede variar en función de la configuración de nuestro equipo. Si todo ha ido bien, veremos una página de bienvenida de Django.
+
 Ahora bien si queremos que el servidor de desarrollo sea accesible desde cualquier dirección IP y ademas en un puerto determinado, escribimos:
 
 ```console
@@ -143,3 +146,66 @@ Ahora bien si queremos que el servidor de desarrollo sea accesible desde cualqui
  (django)$ python manage.py runserver 0.0.0.0:8000
 
 ```
+
+## Instalación del IDE PyCharm
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Ahora que tenemos todo lo necesario para desarrollar nuestra aplicacion web con Django vamos a instalar PyCharm que es un IDE multiplataforma creado por JetBrains. Es uno de los mejores IDEs para proyectos que utilizan el lenguaje de programación Python, primero debemos descargarlo desde la página oficial de [JetBrains](https://www.jetbrains.com/es-es/pycharm/download/#section=linux). Una vez descargado, nos situamos en el directorio donde se encuentra el fichero descargado y escribimos:
+
+```console
+
+ $ tar -xzf pycharm-2023.2.5.tar.gz
+
+```
+
+Esto creará un directorio llamado pycharm-2023.2.5 con la siguiente estructura:
+
+```console
+
+ pycharm-2023.2.5/
+     bin/
+     lib/
+     jbr/
+     license/
+     plugins/
+     help/
+     debug-eggs/
+
+```
+
+Ahora para ejecutar PyCharm, nos situamos en el directorio pycharm-2023.2.5/bin y escribimos:
+
+```console
+
+ $ ./pycharm.sh
+
+```
+
+Esto nos abrirá una ventana de bienvenida de PyCharm, donde podemos crear un proyecto nuevo o abrir uno existente.
+
+Es recomendable crear un alias para ejecutar PyCharm desde cualquier directorio. Para ello, abrimos una terminal y escribimos:
+
+```console
+
+ $ sudo nano ~/.bashrc
+
+```
+
+Esto nos abrirá el fichero .bashrc en el editor de texto nano. Ahora debemos añadir la siguiente línea al final del fichero:
+
+```console
+
+ alias pycharm="{tu sitio de instalacion}/pycharm-2023.2.5/bin/pycharm.sh"
+
+```
+
+Ahora guardamos los cambios y cerramos el editor de texto. Para que los cambios surtan efecto, escribimos:
+
+```console
+
+ $ source ~/.bashrc
+
+```
+
+Ahora podemos ejecutar PyCharm desde cualquier directorio escribiendo pycharm en la terminal.

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 
 <head>
@@ -14,6 +15,15 @@
 
 <body>
     <?php
+
+    require '../vendor/autoload.php'; // Asegúrate de que esta línea está antes de usar las clases de Whoops
+    
+    $whoops = new Whoops\Run();
+    $whoops->pushHandler(new Whoops\Handler\PrettyPageHandler());
+    // Set Whoops as the default error and exception handler used by PHP: 
+    $whoops->register();
+
+
     $numPrimero = "1";  // String
     $numSegundo = 1;    // int
     
@@ -61,6 +71,33 @@
         echo "El menor es: $num2  <br>";
     }
 
+    $arrayAsociativo = array(
+        "nombre" => "Jose",
+        "edad" => "14",
+        "genero" => true,
+
+    );
+
+    echo "---------------------------------------------------------------------------------- <br>";
+
+    foreach ($arrayAsociativo as $clave => $valor) {
+        if ($clave == "genero" && $valor) {
+
+            echo "La clave es: $clave y el valor es: true <br>";
+            echo "El genero es: Masculino <br>";
+
+        } elseif ($clave == "genero" && !$valor) {
+
+            echo "La clave es: $clave y el valor es: false <br>";
+            echo "El genero es: Femenino <br>";
+        } else {
+            echo "La clave es: $clave y el valor es: $valor <br>";
+        }
+
+
+    }
+
+    include("asdadada.php");
 
     ?>
 </body>

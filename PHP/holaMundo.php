@@ -16,11 +16,10 @@
 <body>
     <?php
 
-    require '../vendor/autoload.php'; // Asegúrate de que esta línea está antes de usar las clases de Whoops
-    
+    require '../vendor/autoload.php';
+
     $whoops = new Whoops\Run();
     $whoops->pushHandler(new Whoops\Handler\PrettyPageHandler());
-    // Set Whoops as the default error and exception handler used by PHP: 
     $whoops->register();
 
 
@@ -97,7 +96,7 @@
 
     }
 
-    include("asdadada.php");
+
 
     ?>
 </body>

@@ -113,6 +113,43 @@ body > main > section > article > iframe {
 	margin: auto;
 }
 
+body > main > footer {
+	margin: 3em;
+}
+
+body > main > footer > section h3 {
+	font-size: 20px;
+	text-align: center;
+	color: #666666;
+	padding-bottom: 10px;
+	box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+body > main > footer > section aside ul li a {
+	text-decoration: none;
+	color: #666666;
+}
+body > main > footer > section aside ul {
+	list-style: none;
+	margin-top: 7%;
+	margin-bottom: 15%;
+	font-size: 15px;
+}
+
+body > main > footer > section aside p {
+	color: #666666;
+	font-size: 15px;
+}
+
+body > main > footer > section:nth-of-type(2) > aside:nth-of-type(1) img {
+	width: 30%;
+	height: auto;
+}
+
+body > main > footer > section aside p > a {
+	text-decoration: none;
+}
+
 /********************************************************************************************
 								Estilos ej01-portada-Manuel-Ibáñez.html
 ********************************************************************************************/

@@ -2,6 +2,11 @@
 								Estilos Generales
 ********************************************************************************************/
 
+h4,
+h5 {
+	display: none;
+}
+
 body {
 	position: relative;
 	min-height: 100%;
@@ -9,21 +14,16 @@ body {
 	font-family: "Arimo", sans-serif;
 }
 
-h4,
-h5 {
-	display: none;
-}
-
-/********************************************************************************************
-								Estilos ej01-quienes-Manuel-Ibáñez.html
-********************************************************************************************/
-
 body > main {
 	background: #fff;
 	margin: 20px;
 	max-width: 1300px;
 	padding-top: 20px;
 	box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 18px;
+}
+
+body > main > section {
+	margin: 3em;
 }
 
 body > main > header > section > figure img {
@@ -40,20 +40,6 @@ body > main > header > section > nav {
 	box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.2);
 }
 
-body > main > header > section > nav > figure > a > img {
-	width: 100%; /* Ajusta este valor según tus necesidades */
-	height: auto; /* Esto mantiene la proporción de la imagen */
-}
-
-body > main > header > section > nav > figure:nth-of-type(2) > a > img {
-	width: 100%;
-	height: auto;
-}
-
-body > main > section {
-	margin: 3em;
-}
-
 body > main > section > section > nav {
 	padding-top: 24px;
 	background: #f2f2f2;
@@ -62,6 +48,16 @@ body > main > section > section > nav {
 	padding-bottom: 8px;
 	display: flex;
 	align-items: center;
+}
+
+body > main > header > section > nav > figure > a > img {
+	width: 100%; /* Ajusta este valor según tus necesidades */
+	height: auto; /* Esto mantiene la proporción de la imagen */
+}
+
+body > main > header > section > nav > figure:nth-of-type(2) > a > img {
+	width: 100%;
+	height: auto;
 }
 
 body > main > section > section > nav > img {
@@ -83,38 +79,18 @@ body > main > section > section > nav ol li:not(:last-child)::after {
 	content: " / ";
 }
 
-body > main > section > article > h2 {
-	font-size: 20px;
-	color: #a88f8f;
-	box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-}
-
-body > main > section > article > h2::after {
-	content: "";
-	display: block;
-	border-bottom: 1px solid #000000;
-	width: 4%;
-	margin-top: 20px;
-	margin-bottom: 4%;
-}
-
-body > main > section > article > p {
-	color: #333;
-	line-height: 1.6;
-	font-size: 15px;
-	margin: 0 0 10px;
-	margin-bottom: 22px;
-	justify-content: center;
-	text-align: justify;
-}
-
-body > main > section > article > iframe {
-	display: block;
-	margin: auto;
-}
-
-body > main > footer {
+body > main > footer:nth-of-type(1) {
 	margin: 3em;
+}
+
+body > main > footer:nth-of-type(2) {
+	box-shadow: -5px -3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+body > main > footer:nth-of-type(2) > article > section {
+	font-size: 15px;
+	margin-top: 20px;
+	margin-bottom: 30px;
 }
 
 body > main > footer > section h3 {
@@ -148,13 +124,4 @@ body > main > footer > section:nth-of-type(2) > aside:nth-of-type(1) img {
 
 body > main > footer > section aside p > a {
 	text-decoration: none;
-}
-
-/********************************************************************************************
-								Estilos ej01-portada-Manuel-Ibáñez.html
-********************************************************************************************/
-
-body > main > article > section > p img {
-	width: 100%; /* Ajusta este valor según tus necesidades */
-	height: auto; /* Esto mantiene la proporción de la imagen */
 }

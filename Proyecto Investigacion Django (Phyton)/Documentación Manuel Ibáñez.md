@@ -66,6 +66,9 @@ Una vez verificado que tenemos instalado Python podemos empezar a instalar Djang
 
 Una vez instalado, creamos un entorno virtual llamado django y lo activamos:
 
+> [!NOTE]
+> El entorno virtual se puede llamar como queramos, pero es recomendable llamarlo como el proyecto que vamos a crear. Y un entorno virtual es un entorno aislado donde podemos instalar paquetes de Python sin afectar al sistema operativo.
+
 ```console
 
  $ python3 -m venv django

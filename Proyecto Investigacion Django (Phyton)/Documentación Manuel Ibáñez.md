@@ -59,6 +59,8 @@ En el caso de que no lo tengamos instalado, podemos instalarlo desde los reposit
 
 ```
 
+<div style="page-break-after: always;"></div>
+
 Una vez verificado que tenemos instalado Python podemos empezar a instalar Django primero debemos instalar python3.10-venv para poder crear entornos virtuales. Para ello, escribimos:
 
 ```console
@@ -132,6 +134,8 @@ Esto creará un directorio llamado mysite con la siguiente estructura:
 - **urls.py**: Contiene las definiciones de las URLs del proyecto.
 - **wsgi.py**: Es un punto de entrada para los servidores web compatibles con WSGI para servir el proyecto.
 - **asgi.py**: Es un punto de entrada para los servidores web compatibles con ASGI para servir el proyecto.
+
+<div style="page-break-after: always;"></div>
 
 #### Configuración del fichero settings.py
 

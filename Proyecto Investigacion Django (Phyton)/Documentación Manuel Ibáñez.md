@@ -19,8 +19,9 @@ modified: "2023-11-21T13:20:29.033Z"
     - [Explicación de los comandos](#explicación-de-los-comandos)
   - [Creación de un proyecto](#creación-de-un-proyecto)
     - [Explicación de los ficheros al crear un proyecto Django](#explicación-de-los-ficheros-al-crear-un-proyecto-django)
-  - [Ejecución del servidor de desarrollo](#ejecución-del-servidor-de-desarrollo)
+    - [Ejecución del servidor de desarrollo](#ejecución-del-servidor-de-desarrollo)
   - [Instalación del IDE PyCharm](#instalación-del-ide-pycharm)
+    - [Configuración de PyCharm](#configuración-de-pycharm)
 
 <div style="page-break-after: always;"></div>
 
@@ -68,6 +69,8 @@ Una vez instalado, creamos un entorno virtual llamado django y lo activamos:
 
 > [!NOTE]
 > El entorno virtual se puede llamar como queramos, pero es recomendable llamarlo como el proyecto que vamos a crear. Y un entorno virtual es un entorno aislado donde podemos instalar paquetes de Python sin afectar al sistema operativo.
+>
+> Ademas es recomendable crear un entorno virtual para cada proyecto que vayamos a crear.
 
 ```console
 
@@ -128,7 +131,7 @@ Esto creará un directorio llamado mysite con la siguiente estructura:
 
 <div style="page-break-after: always;"></div>
 
-## Ejecución del servidor de desarrollo
+### Ejecución del servidor de desarrollo
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
@@ -139,6 +142,27 @@ Para arrancar el servidor de desarrollo, nos situamos en el directorio donde se 
  (django)$ python manage.py runserver
 
 ```
+
+> [!WARNING]
+> Si al ejecutar el comando de **python manage.py runserver** nos aparece en la consola un mensaje de error como este:
+>
+> You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+> Run 'python manage.py migrate' to apply them.
+>
+> Esto significa que tenemos que aplicar las migraciones de la base de datos. Para ello, escribimos:
+>
+> ```console
+>
+> (django)$ python manage.py migrate
+>
+>
+> ```
+>
+> Las migraciones son como una versión controlada de tu base de datos, y Django las usa para crear, modificar y eliminar tablas y sus campos.
+>
+> Cuando creas modelos o cambias tus modelos existentes, Django genera estas migraciones. Sin embargo, estos cambios no se reflejan en tu base de datos hasta que apliques las migraciones.
+>
+> El mensaje te está indicando que debes aplicar estas migraciones para que tu proyecto funcione correctamente.
 
 Ahora si todo a ido bien, podemos acceder a nuestro servidor de desarrollo desde un navegador web en la dirección http://127.0.0.1:8000/ en mi caso esa es la dirección, pero puede variar en función de la configuración de nuestro equipo. Si todo ha ido bien, veremos una página de bienvenida de Django.
 
@@ -212,3 +236,9 @@ Ahora guardamos los cambios y cerramos el editor de texto. Para que los cambios 
 ```
 
 Ahora podemos ejecutar PyCharm desde cualquier directorio escribiendo pycharm en la terminal.
+
+### Configuración de PyCharm
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Una vez abierto PyCharm, nos aparecerá una ventana de bienvenida. En ella, podemos crear un proyecto nuevo o abrir uno existente. En nuestro caso, vamos a abrir el proyecto anteriormente creado **mysyte**. Para ello, abrimos la carpeta contenedora del proyecto.

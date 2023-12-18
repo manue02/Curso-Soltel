@@ -19,6 +19,8 @@ modified: "2023-11-21T13:20:29.033Z"
     - [Explicación de los comandos](#explicación-de-los-comandos)
   - [Creación de un proyecto](#creación-de-un-proyecto)
     - [Explicación de los ficheros al crear un proyecto Django](#explicación-de-los-ficheros-al-crear-un-proyecto-django)
+      - [Configuración del fichero settings.py](#configuración-del-fichero-settingspy)
+      - [Configuración del fichero urls.py](#configuración-del-fichero-urlspy)
     - [Ejecución del servidor de desarrollo](#ejecución-del-servidor-de-desarrollo)
   - [Instalación del IDE PyCharm](#instalación-del-ide-pycharm)
     - [Configuración de PyCharm](#configuración-de-pycharm)
@@ -122,6 +124,8 @@ Esto creará un directorio llamado mysite con la siguiente estructura:
 
 ### Explicación de los ficheros al crear un proyecto Django
 
+[Tabla de contenidos](#tabla-de-contenidos)
+
 - **manage.py**: Es un script que ayuda con la gestión del sitio. Con él podemos arrancar un servidor de desarrollo, crear aplicaciones, crear migraciones de la base de datos, etc.
 - El directorio **mysite/** es un paquete de Python para nuestro proyecto.
 - **settings.py**: Contiene la configuración del proyecto.
@@ -129,7 +133,20 @@ Esto creará un directorio llamado mysite con la siguiente estructura:
 - **wsgi.py**: Es un punto de entrada para los servidores web compatibles con WSGI para servir el proyecto.
 - **asgi.py**: Es un punto de entrada para los servidores web compatibles con ASGI para servir el proyecto.
 
-<div style="page-break-after: always;"></div>
+#### Configuración del fichero settings.py
+
+En el fichero settings.py podemos configurar nuestro proyecto. En este fichero podemos configurar la base de datos, el idioma, la zona horaria, etc.
+
+Por defecto el fichero settings.py viene configurado de la siguiente manera:
+
+- **DATABASES**: Configuración de la base de datos que se va a utilizar en el proyecto. Por defecto se utiliza una base de datos sqlite llamada db.sqlite3.
+- **INSTALLED_APPS**: La lista de las aplicaciones que tiene instalada el proyecto, por ejemplo vemos que se ha incluido la aplicación polls (polls.apps.PollsConfig). También tenemos una aplicación que nos permite tener un panel de control de la aplicación (django.contrib.admin). Y otras cuantas aplicaciones…
+- **DEBUG**: True: Si está activo los errores que se produzcan en la aplicación se verán con todo lujo de detalles en el navegador. Si tenemos la aplicación en producción debería ser False.
+- **ALLOWED_HOSTS**: Es una lista de cadenas que especifica los nombres de host válidos para el sitio.
+
+#### Configuración del fichero urls.py
+
+En el fichero urls.py podemos configurar las URLs de nuestro proyecto. En este fichero podemos añadir las URLs de las aplicaciones que vayamos creando.
 
 ### Ejecución del servidor de desarrollo
 

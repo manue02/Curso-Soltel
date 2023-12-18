@@ -65,7 +65,7 @@ Una vez verificado que tenemos instalado Python podemos empezar a instalar Djang
 
 ```
 
-Una vez instalado, creamos un entorno virtual llamado django y lo activamos:
+Una vez instalado, creamos un entorno virtual llamado mysite y lo activamos:
 
 > [!NOTE]
 > El entorno virtual se puede llamar como queramos, pero es recomendable llamarlo como el proyecto que vamos a crear. Y un entorno virtual es un entorno aislado donde podemos instalar paquetes de Python sin afectar al sistema operativo.
@@ -74,17 +74,17 @@ Una vez instalado, creamos un entorno virtual llamado django y lo activamos:
 
 ```console
 
- $ python3 -m venv django
- $ source django/bin/activate
- (django)$ pip install django
- (django)$ python -m django --version
+ $ python3 -m venv mysite
+ $ source mysite/bin/activate
+ (mysite)$ pip install django
+ (mysite)$ python -m django --version
  4.2.7
 
 ```
 
 ### Explicación de los comandos
 
-- **python3 -m venv django**: Creamos un entorno virtual llamado django.
+- **python3 -m venv django**: Creamos un entorno virtual llamado mysite.
 - **source django/bin/activate**: Activamos el entorno virtual esto hay que hacerlo cada vez que queramos trabajar con Django.
 - **pip install django**: Instalamos Django.
 - **python -m django --version**: Comprobamos la versión de Django instalada.
@@ -101,7 +101,7 @@ En primer lugar vamos a ver como crear un proyecto Django. Para ello, nos situam
 
 ```console
 
- (django)$ django-admin startproject mysite
+ (mysite)$ django-admin startproject mysite
 
 ```
 
@@ -139,11 +139,11 @@ Para arrancar el servidor de desarrollo, nos situamos en el directorio donde se 
 
 ```console
 
- (django)$ python manage.py runserver
+ (mysite)$ python manage.py runserver
 
 ```
 
-> [!WARNING]
+> [!CAUTION]
 > Si al ejecutar el comando de **python manage.py runserver** nos aparece en la consola un mensaje de error como este:
 >
 > You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
@@ -153,7 +153,7 @@ Para arrancar el servidor de desarrollo, nos situamos en el directorio donde se 
 >
 > ```console
 >
-> (django)$ python manage.py migrate
+> (mysite)$ python manage.py migrate
 >
 >
 > ```
@@ -170,7 +170,7 @@ Ahora bien si queremos que el servidor de desarrollo sea accesible desde cualqui
 
 ```console
 
- (django)$ python manage.py runserver 0.0.0.0:8000
+ (mysite)$ python manage.py runserver 0.0.0.0:8000
 
 ```
 
@@ -242,3 +242,11 @@ Ahora podemos ejecutar PyCharm desde cualquier directorio escribiendo pycharm en
 [Tabla de contenidos](#tabla-de-contenidos)
 
 Una vez abierto PyCharm, nos aparecerá una ventana de bienvenida. En ella, podemos crear un proyecto nuevo o abrir uno existente. En nuestro caso, vamos a abrir el proyecto anteriormente creado **mysyte**. Para ello, abrimos la carpeta contenedora del proyecto.
+
+Una vez abierto el proyecto, vamos a configurar el intérprete de Python. Para ello, nos situamos en **File > Settings > Project: mysite > Python Interpreter**. En el desplegable, seleccionamos el intérprete de Python que hemos instalado anteriormente.
+
+Si no aparece en el desplegable que en mi caso me aparece así por que mi entorno virtual lo e llamado mysite donde hemos instalado Django **Python 3.10 (mysite)**, debemos añadirlo. Para ello, sin movernos de la ventana Python Interpreter le damos a **Add Interpreter** que debe aparecer al lado. En la ventana que se nos abre, seleccionamos **Add Local Interpreter** y pulsamos en **Existing**. En la siguiente ventana, seleccionamos el intérprete de Python que ya existe y tenemos instalado de antes.
+
+Ahora vamos a crear un perfil para ello con que ejecutemos el programa nos saldra una ventana para añadir un perfil en el que tendremos que poner el host y el puerto en el que queremos que se ejecute el servidor de desarrollo de Django.
+
+Lo guardamos y ya podemos ejecutar el servidor de desarrollo de Django desde PyCharm.

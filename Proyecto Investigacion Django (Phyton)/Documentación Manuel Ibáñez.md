@@ -22,6 +22,7 @@ modified: "2023-11-21T13:20:29.033Z"
       - [Configuración del fichero settings.py](#configuración-del-fichero-settingspy)
       - [Configuración del fichero urls.py](#configuración-del-fichero-urlspy)
     - [Ejecución del servidor de desarrollo](#ejecución-del-servidor-de-desarrollo)
+      - [Primeros pasos con Django (Entrar con el usuario admin)](#primeros-pasos-con-django-entrar-con-el-usuario-admin)
   - [Instalación del IDE PyCharm](#instalación-del-ide-pycharm)
     - [Configuración de PyCharm](#configuración-de-pycharm)
 - [Sintaxis basica de Python](#sintaxis-basica-de-python)
@@ -199,6 +200,21 @@ Ahora bien si queremos que el servidor de desarrollo sea accesible desde cualqui
 
 ```
 
+#### Primeros pasos con Django (Entrar con el usuario admin)
+
+Para entrar en el panel de administración de Django, debemos crear un superusuario. Para ello, escribimos:
+
+```console
+
+ (mysite)$ python manage.py createsuperuser
+
+```
+
+> [!NOTE]
+> Tienes que estar situado en la carpeta donde se encuentra el fichero manage.py para poder ejecutar el comando.
+
+Esto nos pedirá un nombre de usuario, una dirección de correo electrónico y una contraseña. Una vez creado el superusuario, podemos acceder al panel de administración de Django en la dirección http://127.0.0.1:8000/admin/ en mi caso esa es la dirección, pero puede variar en función de la configuración de nuestro equipo. Si todo ha ido bien, veremos una página de login de Django.
+
 ## Instalación del IDE PyCharm
 
 [Tabla de contenidos](#tabla-de-contenidos)
@@ -281,3 +297,23 @@ Ahora vamos a crear un perfil para ello con que ejecutemos el programa nos saldr
 Lo guardamos y ya podemos ejecutar el servidor de desarrollo de Django desde PyCharm.
 
 # Sintaxis basica de Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+En este apartado vamos a ver la sintaxis básica de Python. Para ello, vamos a crear un fichero llamado **hola.py** con el siguiente contenido:
+
+```python
+
+ print("Hola Mundo")
+
+```
+
+Para ejecutar el fichero, escribimos:
+
+```console
+
+ $ python hola.py
+
+```
+
+Esto mostrará por pantalla el mensaje Hola Mundo.

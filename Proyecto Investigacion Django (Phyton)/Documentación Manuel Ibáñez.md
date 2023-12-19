@@ -24,6 +24,7 @@ modified: "2023-11-21T13:20:29.033Z"
     - [Ejecución del servidor de desarrollo](#ejecución-del-servidor-de-desarrollo)
   - [Instalación del IDE PyCharm](#instalación-del-ide-pycharm)
     - [Configuración de PyCharm](#configuración-de-pycharm)
+- [Sintaxis basica de Python](#sintaxis-basica-de-python)
 
 <div style="page-break-after: always;"></div>
 
@@ -75,6 +76,9 @@ Una vez instalado, creamos un entorno virtual llamado mysite y lo activamos:
 > El entorno virtual se puede llamar como queramos, pero es recomendable llamarlo como el proyecto que vamos a crear. Y un entorno virtual es un entorno aislado donde podemos instalar paquetes de Python sin afectar al sistema operativo.
 >
 > Ademas es recomendable crear un entorno virtual para cada proyecto que vayamos a crear.
+>
+> Al crear un entorno virtual, se crea un directorio con el nombre del entorno virtual. En nuestro caso, se creará un directorio llamado mysite.
+> Hay que tener en cuenta que el entorno virtual se crea en el directorio donde nos encontremos en la terminal y es donde se instalaran las bibliotecas de Django.
 
 ```console
 
@@ -266,8 +270,14 @@ Una vez abierto PyCharm, nos aparecerá una ventana de bienvenida. En ella, pode
 
 Una vez abierto el proyecto, vamos a configurar el intérprete de Python. Para ello, nos situamos en **File > Settings > Project: mysite > Python Interpreter**. En el desplegable, seleccionamos el intérprete de Python que hemos instalado anteriormente.
 
-Si no aparece en el desplegable que en mi caso me aparece así por que mi entorno virtual lo e llamado mysite donde hemos instalado Django **Python 3.10 (mysite)**, debemos añadirlo. Para ello, sin movernos de la ventana Python Interpreter le damos a **Add Interpreter** que debe aparecer al lado. En la ventana que se nos abre, seleccionamos **Add Local Interpreter** y pulsamos en **Existing**. En la siguiente ventana, seleccionamos el intérprete de Python que ya existe y tenemos instalado de antes.
+> [!IMPORTANT]
+> Es importante que el intérprete de Python que seleccionemos sea el que hemos instalado en el entorno virtual.
+> De lo contrario, no nos reconocerá las bibliotecas de Django y asegurarse de encontrar el ejecutable python que hay dentro de la carpeta bin dentro de la carpeta creada al crear el entorno virtual.
+
+Si no aparece en el desplegable activamos el entorno virtual anteriormente creado y nos vamos a la carpeta mysite donde lo hayas creado y hay es donde aparece instalado Django **dentro de la carpeta bin**, debemos añadirlo. Para ello, sin movernos de la ventana Python Interpreter le damos a **Add Interpreter** que debe aparecer al lado. En la ventana que se nos abre, seleccionamos **Add Local Interpreter** y pulsamos en **Existing**. En la siguiente ventana, seleccionamos el intérprete de Python que ya existe y tenemos instalado de antes. En mi caso la ruta en donde se me a instalado es en **../Documentos/Pycharm/mysite/bin/python** que es lo que necesitamos para configurar el intérprete y que nos reconozca las bibliotecas de Django.
 
 Ahora vamos a crear un perfil para ello con que ejecutemos el programa nos saldra una ventana para añadir un perfil en el que tendremos que poner el host y el puerto en el que queremos que se ejecute el servidor de desarrollo de Django.
 
 Lo guardamos y ya podemos ejecutar el servidor de desarrollo de Django desde PyCharm.
+
+# Sintaxis basica de Python

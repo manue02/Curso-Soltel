@@ -21,11 +21,12 @@ modified: "2023-11-21T13:20:29.033Z"
     - [Explicación de los ficheros al crear un proyecto Django](#explicación-de-los-ficheros-al-crear-un-proyecto-django)
       - [Configuración del fichero settings.py](#configuración-del-fichero-settingspy)
       - [Configuración del fichero urls.py](#configuración-del-fichero-urlspy)
-    - [Ejecución del servidor de desarrollo](#ejecución-del-servidor-de-desarrollo)
-      - [Primeros pasos con Django (Entrar con el usuario admin)](#primeros-pasos-con-django-entrar-con-el-usuario-admin)
+  - [Ejecución del servidor de desarrollo](#ejecución-del-servidor-de-desarrollo)
+    - [Primeros pasos con Django (Entrar con el usuario admin)](#primeros-pasos-con-django-entrar-con-el-usuario-admin)
   - [Instalación del IDE PyCharm](#instalación-del-ide-pycharm)
     - [Configuración de PyCharm](#configuración-de-pycharm)
-- [Sintaxis basica de Python](#sintaxis-basica-de-python)
+- [Primeros pasos con Python (Hola Mundo)](#primeros-pasos-con-python-hola-mundo)
+  - [Sintaxis basica de Python](#sintaxis-basica-de-python)
 
 <div style="page-break-after: always;"></div>
 
@@ -157,7 +158,7 @@ Por defecto el fichero settings.py viene configurado de la siguiente manera:
 
 En el fichero urls.py podemos configurar las URLs de nuestro proyecto. En este fichero podemos añadir las URLs de las aplicaciones que vayamos creando.
 
-### Ejecución del servidor de desarrollo
+## Ejecución del servidor de desarrollo
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
@@ -296,7 +297,76 @@ Ahora vamos a crear un perfil para ello con que ejecutemos el programa nos saldr
 
 Lo guardamos y ya podemos ejecutar el servidor de desarrollo de Django desde PyCharm.
 
-# Sintaxis basica de Python
+# Primeros pasos con Python (Hola Mundo)
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Llegados a este punto, tenemos todo lo necesario para empezar a desarrollar nuestra aplicación web con Django. Pero antes de empezar, vamos a ver algunos conceptos básicos de Python.
+
+En primer lugar vamos a crear una aplicación Django. Para ello, nos situamos en el directorio donde se encuentra el fichero manage.py y escribimos:
+
+```console
+
+$ python manage.py startapp prueba
+
+```
+
+Esto creará un directorio llamado prueba con la siguiente estructura:
+
+```console
+
+ prueba/
+     __init__.py
+     admin.py
+     apps.py
+     migrations/
+         __init__.py
+     models.py
+     tests.py
+     views.py
+
+```
+
+Ahora vamos a crear una vista. Para ello, abrimos el fichero views.py y escribimos:
+
+```python
+
+ from django.http import HttpResponse
+
+ def index(request):
+     return HttpResponse("Hola Mundo")
+
+```
+
+Ahora vamos a crear un archivo llamado urls.py en la carpeta prueba y luego abrimos el fichero urls.py y escribimos:
+
+```python
+
+ from django.urls import path
+
+ from . import views
+
+ urlpatterns = [
+     path('', views.index, name='index'),
+ ]
+
+```
+
+Ahora vamos abrir en la carpeta mysite el fichero urls.py y escribimos:
+
+```python
+
+ from django.contrib import admin
+ from django.urls import include, path
+
+ urlpatterns = [
+     path('prueba/', include('prueba.urls')),
+     path('admin/', admin.site.urls),
+ ]
+
+```
+
+## Sintaxis basica de Python
 
 [Tabla de contenidos](#tabla-de-contenidos)
 

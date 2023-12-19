@@ -366,6 +366,8 @@ Ahora vamos abrir en la carpeta mysite el fichero urls.py y escribimos:
 
 ```
 
+Ahora vamos a ejecutar el servidor de desarrollo de Django. Y si todo ha ido bien, podemos acceder a nuestro servidor de desarrollo desde un navegador web en la dirección http://127.0.0.1:8000/prueba/ en mi caso esa es la dirección, pero puede variar en función de la configuración de nuestro equipo. Si todo ha ido bien, veremos el mensaje Hola Mundo.
+
 ## Sintaxis basica de Python
 
 [Tabla de contenidos](#tabla-de-contenidos)

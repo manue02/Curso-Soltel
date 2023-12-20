@@ -32,6 +32,27 @@ modified: "2023-11-21T13:20:29.033Z"
     - [Operadores en Python](#operadores-en-python)
       - [Operadores aritméticos en Python](#operadores-aritméticos-en-python)
       - [Operadores de asignación en Python](#operadores-de-asignación-en-python)
+      - [Operadores de comparación en Python](#operadores-de-comparación-en-python)
+      - [Operadores lógicos en Python](#operadores-lógicos-en-python)
+      - [Operadores de identidad en Python](#operadores-de-identidad-en-python)
+      - [Operadores de pertenencia en Python](#operadores-de-pertenencia-en-python)
+      - [Operadores de bits en Python](#operadores-de-bits-en-python)
+  - [Phyton Casting](#phyton-casting)
+  - [Estructuras de control en Python](#estructuras-de-control-en-python)
+  - [Bucles en Python](#bucles-en-python)
+  - [Exceptions en Python](#exceptions-en-python)
+  - [Arrays en Python](#arrays-en-python)
+- [POO en Python (Programación Orientada a Objetos)](#poo-en-python-programación-orientada-a-objetos)
+  - [Clases y objetos en Python](#clases-y-objetos-en-python)
+  - [Atributos en Python](#atributos-en-python)
+  - [Métodos en Python](#métodos-en-python)
+  - [Constructores en Python](#constructores-en-python)
+  - [Herencia en Python](#herencia-en-python)
+  - [Encapsulación en Python](#encapsulación-en-python)
+  - [Polimorfismo en Python](#polimorfismo-en-python)
+  - [Métodos especiales en Python](#métodos-especiales-en-python)
+  - [Métodos estáticos en Python](#métodos-estáticos-en-python)
+  - [Métodos de clase en Python](#métodos-de-clase-en-python)
 
 <div style="page-break-after: always;"></div>
 
@@ -552,22 +573,22 @@ A continuación, vamos a ver algunos ejemplos de operadores aritméticos en Pyth
 
 #### Operadores de asignación en Python
 
-| Operador | Nombre | Ejemplo   | Explicacion                                                                    |
-| -------- | ------ | --------- | ------------------------------------------------------------------------------ |
-| =        | Igual  | x = 5     | Asigna el valor 5 a la variable x                                              |
-| +=       | Igual  | x += 5    | Suma 5 a la variable x y asigna el resultado a la variable x                   |
-| -=       | Igual  | x -= 5    | Resta 5 a la variable x y asigna el resultado a la variable x                  |
-| \*=      | Igual  | x \*= 5   | Multiplica la variable x por 5 y asigna el resultado a la variable x           |
-| /=       | Igual  | x /= 5    | Divide la variable x entre 5 y asigna el resultado a la variable x             |
-| %=       | Igual  | x %= 5    | Divide la variable x entre 5 y asigna el resto a la variable x                 |
-| \*\*=    | Igual  | x \*\*= 5 | Eleva la variable x a la potencia 5 y asigna el resultado a la variable x      |
-| //=      | Igual  | x //= 5   | Divide la variable x entre 5 y asigna el resultado sin decimales a la x        |
-| :=       | Igual  | x := 5    | Asigna el valor 5 a la variable x (Python 3.8+)                                |
-| &=       | Igual  | x &= 5    | Realiza una operación AND entre la variable x y 5 y asigna el resultado a x    |
-| \|=      | Igual  | x \|= 5   | Realiza una operación OR entre la variable x y 5 y asigna el resultado a x     |
-| ^=       | Igual  | x ^= 5    | Realiza una operación XOR entre la variable x y 5 y asigna el resultado a x    |
-| >>=      | Igual  | x >>= 5   | Realiza una operación de desplazamiento a la derecha y asigna el resultado x   |
-| <<=      | Igual  | x <<= 5   | Realiza una operación de desplazamiento a la izquierda y asigna el resultado x |
+| Operador | Ejemplo   | Explicacion                                                                    |
+| -------- | --------- | ------------------------------------------------------------------------------ |
+| =        | x = 5     | Asigna el valor 5 a la variable x                                              |
+| +=       | x += 5    | Suma 5 a la variable x y asigna el resultado a la variable x                   |
+| -=       | x -= 5    | Resta 5 a la variable x y asigna el resultado a la variable x                  |
+| \*=      | x \*= 5   | Multiplica la variable x por 5 y asigna el resultado a la variable x           |
+| /=       | x /= 5    | Divide la variable x entre 5 y asigna el resultado a la variable x             |
+| %=       | x %= 5    | Divide la variable x entre 5 y asigna el resto a la variable x                 |
+| \*\*=    | x \*\*= 5 | Eleva la variable x a la potencia 5 y asigna el resultado a la variable x      |
+| //=      | x //= 5   | Divide la variable x entre 5 y asigna el resultado sin decimales a la x        |
+| :=       | x := 5    | Asigna el valor 5 a la variable x (Python 3.8+)                                |
+| &=       | x &= 5    | Realiza una operación AND entre la variable x y 5 y asigna el resultado a x    |
+| \|=      | x \|= 5   | Realiza una operación OR entre la variable x y 5 y asigna el resultado a x     |
+| ^=       | x ^= 5    | Realiza una operación XOR entre la variable x y 5 y asigna el resultado a x    |
+| >>=      | x >>= 5   | Realiza una operación de desplazamiento a la derecha y asigna el resultado x   |
+| <<=      | x <<= 5   | Realiza una operación de desplazamiento a la izquierda y asigna el resultado x |
 
 A continuación, vamos a ver algunos ejemplos de operadores de asignación en Python.
 
@@ -582,5 +603,669 @@ A continuación, vamos a ver algunos ejemplos de operadores de asignación en Py
  x %= 5 # 0.0
  x **= 5 # 3125.0
  x //= 5 # 0.0
+
+```
+
+#### Operadores de comparación en Python
+
+| Operador | Nombre            | Ejemplo | Explicacion                               |
+| -------- | ----------------- | ------- | ----------------------------------------- |
+| ==       | Igual             | x == y  | Devuelve True si x es igual a y           |
+| !=       | No igual          | x != y  | Devuelve True si x no es igual a y        |
+| >        | Mayor que         | x > y   | Devuelve True si x es mayor que y         |
+| <        | Menor que         | x < y   | Devuelve True si x es menor que y         |
+| >=       | Mayor o igual que | x >= y  | Devuelve True si x es mayor o igual que y |
+| <=       | Menor o igual que | x <= y  | Devuelve True si x es menor o igual que y |
+
+A continuación, vamos a ver algunos ejemplos de operadores de comparación en Python.
+
+```python
+
+ x = 5
+ y = 3
+
+ print(x == y) # False
+ print(x != y) # True
+ print(x > y) # True
+ print(x < y) # False
+ print(x >= y) # True
+ print(x <= y) # False
+
+```
+
+#### Operadores lógicos en Python
+
+| Operador | Nombre | Ejemplo | Explicacion                     |
+| -------- | ------ | ------- | ------------------------------- |
+| and      | Y      | x and y | Devuelve True si x y y son True |
+| or       | O      | x or y  | Devuelve True si x o y son True |
+| not      | No     | not x   | Devuelve True si x no es True   |
+
+A continuación, vamos a ver algunos ejemplos de operadores lógicos en Python.
+
+```python
+
+ x = 5
+
+ print(x > 3 and x < 10) # True
+ print(x > 3 or x < 4) # True
+ print(not(x > 3 and x < 10)) # False
+
+```
+
+#### Operadores de identidad en Python
+
+| Operador | Nombre | Ejemplo | Explicacion                                   |
+| -------- | ------ | ------- | --------------------------------------------- |
+| is       | Es     | x is y  | Devuelve True si x e y son el mismo objeto    |
+| is not   | No es  | x is y  | Devuelve True si x e y no son el mismo objeto |
+
+A continuación, vamos a ver algunos ejemplos de operadores de identidad en Python.
+
+```python
+
+ x = ["manzana", "platano"]
+ y = ["manzana", "platano"]
+ z = x
+
+ print(x is z) # True
+ print(x is y) # False
+ print(x == y) # True
+
+```
+
+#### Operadores de pertenencia en Python
+
+| Operador | Nombre | Ejemplo | Explicacion                     |
+| -------- | ------ | ------- | ------------------------------- |
+| in       | En     | x in y  | Devuelve True si x esta en y    |
+| not in   | No en  | x in y  | Devuelve True si x no esta en y |
+
+A continuación, vamos a ver algunos ejemplos de operadores de pertenencia en Python.
+
+```python
+
+ x = ["manzana", "platano"]
+
+ print("manzana" in x) # True
+ print("cereza" not in x) # True
+
+```
+
+#### Operadores de bits en Python
+
+| Operador | Nombre           | Ejemplo | Explicacion                                                                          |
+| -------- | ---------------- | ------- | ------------------------------------------------------------------------------------ |
+| &        | AND              | x & y   | Devuelve 1 si ambos bits son 1                                                       |
+| \|       | OR               | x \| y  | Devuelve 1 si uno de los bits es 1                                                   |
+| ^        | XOR              | x ^ y   | Devuelve 1 si uno de los bits es 1 pero no ambos                                     |
+| ~        | NOT              | ~x      | Invierte todos los bits                                                              |
+| <<       | Desplazamiento a | x << y  | Desplaza los bits de x, y posiciones a la izquierda, los bits vacios se llenan con 0 |
+| >>       | Desplazamiento a | x >> y  | Desplaza los bits de x, y posiciones a la derecha, los bits vacios se llenan con 0   |
+
+A continuación, vamos a ver algunos ejemplos de operadores de bits en Python.
+
+```python
+
+ x = 0b1100
+ y = 0b1010
+
+ print(bin(x & y)) # 0b1000
+ print(bin(x | y)) # 0b1110
+ print(bin(x ^ y)) # 0b0110
+ print(bin(~x)) # -0b1101
+ print(bin(x << 2)) # 0b110000
+ print(bin(x >> 2)) # 0b11
+
+```
+
+## Phyton Casting
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+En Python, el tipo de datos de una variable se puede cambiar a otro tipo de datos. Esto se llama conversión de tipos de datos y se hace con funciones de conversión de tipos de datos incorporadas.
+
+Las funciones de conversión de tipos de datos comunes son:
+
+- **int()**: Convierte un objeto a un entero.
+- **float()**: Convierte un objeto a un número decimal.
+- **str()**: Convierte un objeto a una cadena.
+
+Y asi con todos los demas tipos de datos, y ahora vamos a ver algunos ejemplos de casting en Python
+
+```python
+
+ x = int(1) # x sera 1
+ y = int(2.8) # y sera 2
+ z = int("3") # z sera 3
+
+ x = float(1) # x sera 1.0
+ y = float(2.8) # y sera 2.8
+ z = float("3") # z sera 3.0
+ w = float("4.2") # w sera 4.2
+
+ x = str("s1") # x sera 's1'
+ y = str(2) # y sera '2'
+ z = str(3.0) # z sera '3.0'
+
+```
+
+## Estructuras de control en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+En Python, las estructuras de control se utilizan para tomar decisiones y ejecutar acciones en función de esas decisiones. Las estructuras de control más comunes son:
+
+Ahora vamos a ver algunos ejemplos de estructuras de control en Python.
+
+```python
+
+# if -> Se utiliza para ejecutar un bloque de código si se cumple una condición.
+
+ x = 5
+ y = 3
+
+ if x > y:
+     print("x es mayor que y")
+
+# if...else -> Se utiliza para ejecutar un bloque de código si se cumple una condición y otro bloque de código si no se cumple la condición.
+
+ x = 5
+ y = 3
+
+ if x > y:
+     print("x es mayor que y")
+ else:
+     print("x no es mayor que y")
+
+# if...elif...else -> Se utiliza para ejecutar un bloque de código si se cumple una condición, otro bloque de código si se cumple otra condición y otro bloque de código si no se cumple ninguna de las condiciones.
+
+  x = 5
+  y = 3
+
+  if x > y:
+      print("x es mayor que y")
+  elif x == y:
+      print("x es igual a y")
+  else:
+      print("x es menor que y")
+
+```
+
+## Bucles en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Luego tenemos los bucles que son estructuras de control que se utilizan para repetir una acción varias veces. Los bucles más comunes son:
+
+```python
+
+# while -> Se utiliza para ejecutar un bloque de código mientras se cumple una condición.
+
+  i = 1
+
+  while i < 6:
+      print(i)
+      i += 1
+
+# for -> Se utiliza para ejecutar un bloque de código un número determinado de veces.
+
+  frutas = ["manzana", "platano", "cereza"]
+
+  for x in frutas:
+      print(x)
+
+```
+
+Ahora dentro de los bucles tenemos las sentencias break y continue que se utilizan para cambiar el comportamiento de los bucles.
+
+```python
+
+# break -> Se utiliza para terminar el bucle antes de que se cumpla la condición.
+
+  i = 1
+
+  while i < 6:
+      print(i)
+      if i == 3:
+          break
+      i += 1
+
+# continue -> Se utiliza para saltar una iteración del bucle.
+
+  i = 0
+
+  while i < 6:
+      i += 1
+      if i == 3:
+          continue
+      print(i)
+
+```
+
+## Exceptions en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Las excepciones se utilizan para manejar errores que pueden ocurrir durante la ejecución de un programa. Las excepciones más comunes son:
+
+```python
+
+# try...except -> Se utiliza para manejar excepciones.
+
+  try:
+      print(x)
+  except:
+      print("Ha ocurrido un error")
+
+# try...except...else -> Se utiliza para manejar excepciones y ejecutar un bloque de código si no se produce ninguna excepción.
+
+  try:
+      print("Hola")
+  except:
+      print("Ha ocurrido un error")
+  else:
+      print("Ningun error ha ocurrido")
+
+# try...except...finally -> Se utiliza para manejar excepciones y ejecutar un bloque de código, independientemente de si se produce una excepción o no.
+
+  try:
+      print(x)
+  except:
+      print("Ha ocurrido un error")
+  finally:
+      print("El bloque try...except ha terminado")
+
+# raise -> Se utiliza para generar una excepción.
+
+  x = -1
+
+  if x < 0:
+      raise Exception("El numero no puede ser negativo")
+
+# pass -> Se utiliza cuando no se necesita código.
+
+  try:
+      print(x)
+  except:
+      pass
+
+# assert -> Se utiliza para comprobar si una condición es verdadera.
+
+  x = 1
+
+  assert x > 0, "El numero debe ser positivo"
+
+```
+
+## Arrays en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Los arrays se utilizan para almacenar varios valores en una sola variable. Los arrays más comunes son:
+
+# POO en Python (Programación Orientada a Objetos)
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+La programación orientada a objetos (POO) es un paradigma de programación que utiliza objetos y sus interacciones para diseñar aplicaciones y programas informáticos. Está basado en varias técnicas, incluyendo herencia, modularidad, polimorfismo y encapsulamiento. Su uso se popularizó a principios de la década de 1990. Actualmente es la forma más popular de programar.
+
+## Clases y objetos en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+En Python, una clase es una plantilla para crear objetos. Para crear una clase, utilizamos la palabra clave class seguida del nombre de la clase y dos puntos. A continuación, vamos a ver un ejemplo de clase en Python.
+
+```python
+
+ class Coche:
+     pass
+
+```
+
+Ahora vamos a crear un objeto de la clase Coche. Para ello, escribimos:
+
+```python
+
+ coche = Coche()
+
+```
+
+## Atributos en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Los atributos son variables que pertenecen a una clase y se utilizan para almacenar datos sobre el objeto. Los atributos más comunes son:
+
+```python
+
+ class Coche:
+     marca = "Ford"
+     modelo = "Mustang"
+     color = "Rojo"
+
+```
+
+Para acceder a los atributos de un objeto primero creamos un objeto de la clase coche como hemos echo anteriormente y utilizamos la sintaxis objeto.atributo. A continuación, vamos a ver algunos ejemplos de atributos en Python.
+
+```python
+
+ coche = Coche()
+
+ print(coche.marca) # Ford
+ print(coche.modelo) # Mustang
+ print(coche.color) # Rojo
+
+```
+
+## Métodos en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Los métodos son funciones que pertenecen a una clase y se utilizan para realizar operaciones con los atributos de la clase. Para crear un método, utilizamos la palabra clave def seguida del nombre del método y dos puntos. A continuación, vamos a ver un ejemplo de método en Python.
+
+```python
+
+ class Coche:
+     marca = "Ford"
+     modelo = "Mustang"
+     color = "Rojo"
+
+     def acelerar(self):
+         print("El coche está acelerando")
+
+```
+
+Para llamar a un método de un objeto primero creamos un objeto de la clase coche como hemos echo anteriormente y utilizamos la sintaxis objeto.metodo(). A continuación, vamos a ver algunos ejemplos de métodos en Python.
+
+```python
+
+ coche = Coche()
+
+ coche.acelerar() # El coche está acelerando
+
+```
+
+## Constructores en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Los constructores se utilizan para inicializar los atributos de un objeto. Para crear un constructor, utilizamos el método **init**(). A continuación, vamos a ver un ejemplo de constructor en Python.
+
+```python
+
+ class Coche:
+     def __init__(self, marca, modelo, color):
+         self.marca = marca
+         self.modelo = modelo
+         self.color = color
+
+     def acelerar(self):
+         print("El coche está acelerando")
+
+```
+
+Ahora vamos a crear un objeto de la clase Coche. Para ello, escribimos:
+
+```python
+
+ coche = Coche("Ford", "Mustang", "Rojo")
+
+```
+
+Para llamar a un atributo de un objeto, utilizamos la sintaxis objeto.atributo. A continuación, vamos a ver algunos ejemplos de constructores en Python.
+
+```python
+
+coche = Coche("Ford", "Mustang", "Rojo")
+
+ print(coche.marca) # Ford
+ print(coche.modelo) # Mustang
+ print(coche.color) # Rojo
+
+```
+
+## Herencia en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+La herencia es una forma de crear una clase a partir de otra clase. La clase que hereda se llama clase hija y la clase de la que hereda se llama clase padre. Para crear una clase hija, pasamos la clase padre como parámetro en la definición de la clase hija. A continuación, vamos a ver un ejemplo de herencia en Python.
+
+```python
+
+ class Coche:
+     def __init__(self, marca, modelo, color):
+         self.marca = marca
+         self.modelo = modelo
+         self.color = color
+
+     def acelerar(self):
+         print("El coche está acelerando")
+
+ class CocheDeportivo(Coche):
+     pass
+
+```
+
+Ahora vamos a crear un objeto de la clase CocheDeportivo. Para ello, escribimos:
+
+```python
+
+ coche = CocheDeportivo("Ford", "Mustang", "Rojo")
+
+```
+
+Para llamar a un atributo de un objeto, utilizamos la sintaxis objeto.atributo. A continuación, vamos a ver algunos ejemplos de herencia en Python.
+
+```python
+
+ print(coche.marca) # Ford
+ print(coche.modelo) # Mustang
+ print(coche.color) # Rojo
+
+```
+
+## Encapsulación en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+La encapsulación es una forma de restringir el acceso a los atributos y métodos de una clase. En Python, podemos restringir el acceso a los atributos y métodos de una clase utilizando el guión bajo como prefijo. A continuación, vamos a ver un ejemplo de encapsulación en Python.
+
+```python
+
+ class Coche:
+     def __init__(self, marca, modelo, color):
+         self._marca = marca
+         self._modelo = modelo
+         self._color = color
+
+     def acelerar(self):
+         print("El coche está acelerando")
+
+```
+
+Ahora vamos a crear un objeto de la clase Coche. Para ello, escribimos:
+
+```python
+
+ coche = Coche("Ford", "Mustang", "Rojo")
+
+```
+
+Para llamar a un atributo de un objeto, utilizamos la sintaxis objeto.atributo. A continuación, vamos a ver algunos ejemplos de encapsulación en Python.
+
+```python
+
+ print(coche._marca) # Ford
+ print(coche._modelo) # Mustang
+ print(coche._color) # Rojo
+
+```
+
+## Polimorfismo en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+El polimorfismo es una forma de utilizar una clase de manera diferente. En Python, podemos utilizar una clase de manera diferente utilizando el método especial **str**(). A continuación, vamos a ver un ejemplo de polimorfismo en Python.
+
+```python
+
+ class Coche:
+     def __init__(self, marca, modelo, color):
+         self.marca = marca
+         self.modelo = modelo
+         self.color = color
+
+     def acelerar(self):
+         print("El coche está acelerando")
+
+     def __str__(self):
+         return f"Marca: {self.marca}, Modelo: {self.modelo}, Color: {self.color}"
+
+```
+
+Ahora vamos a crear un objeto de la clase Coche. Para ello, escribimos:
+
+```python
+
+ coche = Coche("Ford", "Mustang", "Rojo")
+
+```
+
+Para llamar a un atributo de un objeto, utilizamos la sintaxis objeto.atributo. A continuación, vamos a ver algunos ejemplos de polimorfismo en Python.
+
+```python
+
+ print(coche) # Marca: Ford, Modelo: Mustang, Color: Rojo
+
+```
+
+## Métodos especiales en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Los métodos especiales son métodos que se utilizan para realizar operaciones especiales. Los métodos especiales más comunes son:
+
+```python
+
+# __init__() -> Se utiliza para inicializar los atributos de un objeto.
+
+  class Coche:
+      def __init__(self, marca, modelo, color):
+          self.marca = marca
+          self.modelo = modelo
+          self.color = color
+
+      def acelerar(self):
+          print("El coche está acelerando")
+
+# __str__() -> Se utiliza para representar un objeto como una cadena.
+
+  class Coche:
+      def __init__(self, marca, modelo, color):
+          self.marca = marca
+          self.modelo = modelo
+          self.color = color
+
+      def acelerar(self):
+          print("El coche está acelerando")
+
+      def __str__(self):
+          return f"Marca: {self.marca}, Modelo: {self.modelo}, Color: {self.color}"
+
+# __len__() -> Se utiliza para obtener la longitud de un objeto.
+
+  class Coche:
+      def __init__(self, marca, modelo, color):
+          self.marca = marca
+          self.modelo = modelo
+          self.color = color
+
+      def acelerar(self):
+          print("El coche está acelerando")
+
+      def __str__(self):
+          return f"Marca: {self.marca}, Modelo: {self.modelo}, Color: {self.color}"
+
+      def __len__(self):
+          return 3
+
+```
+
+Ahora vamos a crear un objeto de la clase Coche. Para ello, escribimos:
+
+```python
+
+ coche = Coche("Ford", "Mustang", "Rojo")
+
+```
+
+Para llamar a un atributo de un objeto, utilizamos la sintaxis objeto.atributo. A continuación, vamos a ver algunos ejemplos de métodos especiales en Python.
+
+```python
+
+ print(len(coche)) # 3
+
+```
+
+## Métodos estáticos en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Los métodos estáticos son métodos que se utilizan sin crear un objeto. Para crear un método estático, utilizamos el decorador @staticmethod. A continuación, vamos a ver un ejemplo de método estático en Python.
+
+```python
+
+ class Coche:
+     def __init__(self, marca, modelo, color):
+         self.marca = marca
+         self.modelo = modelo
+         self.color = color
+
+     def acelerar(self):
+         print("El coche está acelerando")
+
+     @staticmethod
+     def frenar():
+         print("El coche está frenando")
+
+```
+
+## Métodos de clase en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Los métodos de clase son métodos que se utilizan sin crear un objeto. Para crear un método de clase, utilizamos el decorador @classmethod. A continuación, vamos a ver un ejemplo de método de clase en Python.
+
+```python
+
+ class Coche:
+     def __init__(self, marca, modelo, color):
+         self.marca = marca
+         self.modelo = modelo
+         self.color = color
+
+     def acelerar(self):
+         print("El coche está acelerando")
+
+     @classmethod
+     def frenar(cls):
+         print("El coche está frenando")
+
+```
+
+Ahora vamos a crear un objeto de la clase Coche. Para ello, escribimos:
+
+```python
+
+ coche = Coche("Ford", "Mustang", "Rojo")
+
+```
+
+Para llamar a un método de clase de una clase, utilizamos la sintaxis clase.metodo(). A continuación, vamos a ver algunos ejemplos de métodos de clase en Python.
+
+```python
+
+ Coche.frenar() # El coche está frenando
 
 ```

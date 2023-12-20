@@ -44,7 +44,7 @@ modified: "2023-11-21T13:20:29.033Z"
   - [Arrays en Python](#arrays-en-python)
 - [POO en Python (Programación Orientada a Objetos)](#poo-en-python-programación-orientada-a-objetos)
   - [Clases y objetos en Python](#clases-y-objetos-en-python)
-  - [Atributos en Python](#atributos-en-python)
+    - [Atributos en Python](#atributos-en-python)
   - [Métodos en Python](#métodos-en-python)
   - [Constructores en Python](#constructores-en-python)
   - [Herencia en Python](#herencia-en-python)
@@ -931,11 +931,11 @@ Ahora vamos a crear un objeto de la clase Coche. Para ello, escribimos:
 
 ```
 
-## Atributos en Python
+### Atributos en Python
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
-Los atributos son variables que pertenecen a una clase y se utilizan para almacenar datos sobre el objeto. Los atributos más comunes son:
+Los atributos son variables que pertenecen a una clase y se utilizan para almacenar datos sobre el objeto. Como ejemplo puede ser:
 
 ```python
 
@@ -1002,26 +1002,6 @@ Los constructores se utilizan para inicializar los atributos de un objeto. Para 
 
      def acelerar(self):
          print("El coche está acelerando")
-
-```
-
-Ahora vamos a crear un objeto de la clase Coche. Para ello, escribimos:
-
-```python
-
- coche = Coche("Ford", "Mustang", "Rojo")
-
-```
-
-Para llamar a un atributo de un objeto, utilizamos la sintaxis objeto.atributo. A continuación, vamos a ver algunos ejemplos de constructores en Python.
-
-```python
-
-coche = Coche("Ford", "Mustang", "Rojo")
-
- print(coche.marca) # Ford
- print(coche.modelo) # Mustang
- print(coche.color) # Rojo
 
 ```
 

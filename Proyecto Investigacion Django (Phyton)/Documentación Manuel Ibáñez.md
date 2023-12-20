@@ -27,6 +27,11 @@ modified: "2023-11-21T13:20:29.033Z"
     - [Configuración de PyCharm](#configuración-de-pycharm)
 - [Primeros pasos con Python (Hola Mundo)](#primeros-pasos-con-python-hola-mundo)
   - [Sintaxis basica de Python](#sintaxis-basica-de-python)
+    - [Variables en Python](#variables-en-python)
+    - [Tipos de datos en Python](#tipos-de-datos-en-python)
+    - [Operadores en Python](#operadores-en-python)
+      - [Operadores aritméticos en Python](#operadores-aritméticos-en-python)
+      - [Operadores de asignación en Python](#operadores-de-asignación-en-python)
 
 <div style="page-break-after: always;"></div>
 
@@ -94,12 +99,12 @@ Una vez instalado, creamos un entorno virtual llamado mysite y lo activamos:
 
 ### Explicación de los comandos
 
-- **python3 -m venv django**: Creamos un entorno virtual llamado mysite.
-- **source django/bin/activate**: Activamos el entorno virtual esto hay que hacerlo cada vez que queramos trabajar con Django.
+- **python3 -m venv mysite**: Creamos un entorno virtual llamado mysite.
+- **source mysite/bin/activate**: Activamos el entorno virtual esto hay que hacerlo cada vez que queramos trabajar con Django, hay que tener en cuenta que la ruta varia dependiendo de como llames a tu entorno virtual en mi caso lo e llamado mysite pues es mysite/bin/activate si fuera por ejemplo otroNombre seria otroNombre/bin/activate.
 - **pip install django**: Instalamos Django.
 - **python -m django --version**: Comprobamos la versión de Django instalada.
 
-Si en la terminal nos aparece (django) delante del nombre de nuestro usuario, significa que el entorno virtual está activado. En caso contrario, debemos activarlo con el comando source django/bin/activate. Para desactivar el entorno virtual, escribimos deactivate.
+Si en la terminal nos aparece (mysite) delante del nombre de nuestro usuario, significa que el entorno virtual está activado. En caso contrario, debemos activarlo con el comando source mysite/bin/activate. Para desactivar el entorno virtual, escribimos deactivate.
 
 <div style="page-break-after: always;"></div>
 
@@ -111,17 +116,17 @@ En primer lugar vamos a ver como crear un proyecto Django. Para ello, nos situam
 
 ```console
 
- (mysite)$ django-admin startproject mysite
+ (mysite)$ django-admin startproject HelloWorld
 
 ```
 
-Esto creará un directorio llamado mysite con la siguiente estructura:
+Esto creará un directorio llamado HelloWorld con la siguiente estructura:
 
 ```console
 
- mysite/
+ HelloWorld/
      manage.py
-     mysite/
+     HelloWorld/
          __init__.py
          settings.py
          urls.py
@@ -135,7 +140,7 @@ Esto creará un directorio llamado mysite con la siguiente estructura:
 [Tabla de contenidos](#tabla-de-contenidos)
 
 - **manage.py**: Es un script que ayuda con la gestión del sitio. Con él podemos arrancar un servidor de desarrollo, crear aplicaciones, crear migraciones de la base de datos, etc.
-- El directorio **mysite/** es un paquete de Python para nuestro proyecto.
+- El directorio **HelloWorld/** es un paquete de Python para nuestro proyecto.
 - **settings.py**: Contiene la configuración del proyecto.
 - **urls.py**: Contiene las definiciones de las URLs del proyecto.
 - **wsgi.py**: Es un punto de entrada para los servidores web compatibles con WSGI para servir el proyecto.
@@ -291,7 +296,7 @@ Una vez abierto el proyecto, vamos a configurar el intérprete de Python. Para e
 > Es importante que el intérprete de Python que seleccionemos sea el que hemos instalado en el entorno virtual.
 > De lo contrario, no nos reconocerá las bibliotecas de Django y asegurarse de encontrar el ejecutable python que hay dentro de la carpeta bin dentro de la carpeta creada al crear el entorno virtual.
 
-Si no aparece en el desplegable activamos el entorno virtual anteriormente creado y nos vamos a la carpeta mysite donde lo hayas creado y hay es donde aparece instalado Django **dentro de la carpeta bin**, debemos añadirlo. Para ello, sin movernos de la ventana Python Interpreter le damos a **Add Interpreter** que debe aparecer al lado. En la ventana que se nos abre, seleccionamos **Add Local Interpreter** y pulsamos en **Existing**. En la siguiente ventana, seleccionamos el intérprete de Python que ya existe y tenemos instalado de antes. En mi caso la ruta en donde se me a instalado es en **../Documentos/Pycharm/mysite/bin/python** que es lo que necesitamos para configurar el intérprete y que nos reconozca las bibliotecas de Django.
+Si no aparece en el desplegable activamos el entorno virtual anteriormente creado y nos vamos a la carpeta mysite donde lo hayas creado y hay es donde aparece instalado Django **dentro de la carpeta bin**, debemos añadirlo. Para ello, sin movernos de la ventana Python Interpreter le damos a **Add Interpreter** que debe aparecer al lado. En la ventana que se nos abre, seleccionamos **Add Local Interpreter** y pulsamos en **Existing**. En la siguiente ventana, seleccionamos el intérprete de Python que ya existe y tenemos instalado de antes. En mi caso la ruta en donde e creado mi entorno virtual y instalado Django es en **../Documentos/Pycharm/mysite/bin/python** que es lo que necesitamos para configurar el intérprete y que nos reconozca las bibliotecas de Django.
 
 Ahora vamos a crear un perfil para ello con que ejecutemos el programa nos saldra una ventana para añadir un perfil en el que tendremos que poner el host y el puerto en el que queremos que se ejecute el servidor de desarrollo de Django.
 
@@ -352,7 +357,7 @@ Ahora vamos a crear un archivo llamado urls.py en la carpeta prueba y luego abri
 
 ```
 
-Ahora vamos abrir en la carpeta mysite el fichero urls.py y escribimos:
+Ahora vamos abrir en la carpeta HelloWorld el fichero urls.py y escribimos:
 
 ```python
 
@@ -366,26 +371,216 @@ Ahora vamos abrir en la carpeta mysite el fichero urls.py y escribimos:
 
 ```
 
+Si todo va bien y hemos seguido los pasos hasta ahora la estructura de nuestro proyecto debería ser la siguiente:
+
+```console
+
+ HelloWorld/
+     manage.py
+     HelloWorld/
+         __init__.py
+         settings.py
+         urls.py
+         asgi.py
+         wsgi.py
+     prueba/
+         __init__.py
+         admin.py
+         apps.py
+         migrations/
+             __init__.py
+         models.py
+         tests.py
+         views.py
+
+```
+
 Ahora vamos a ejecutar el servidor de desarrollo de Django. Y si todo ha ido bien, podemos acceder a nuestro servidor de desarrollo desde un navegador web en la dirección http://127.0.0.1:8000/prueba/ en mi caso esa es la dirección, pero puede variar en función de la configuración de nuestro equipo. Si todo ha ido bien, veremos el mensaje Hola Mundo.
 
 ## Sintaxis basica de Python
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
-En este apartado vamos a ver la sintaxis básica de Python. Para ello, vamos a crear un fichero llamado **hola.py** con el siguiente contenido:
+La sintaxis de Python es muy sencilla y fácil de aprender. En Python, el código se agrupa en bloques indentados, no se utilizan llaves para delimitar los bloques de código. Los comentarios comienzan con el carácter # y se extienden hasta el final de la línea.
 
 ```python
 
- print("Hola Mundo")
+ # Esto es un comentario
 
 ```
 
-Para ejecutar el fichero, escribimos:
+A continuación, vamos a ver algunos conceptos básicos de Python.
 
-```console
+### Variables en Python
 
- $ python hola.py
+En Python, las variables se crean cuando se les asigna un valor. No es necesario declararlas antes de usarlas o declarar su tipo. El tipo de la variable se determina cuando se le asigna un valor.
+
+```python
+
+ x = 5
+ y = "Hola Mundo"
 
 ```
 
-Esto mostrará por pantalla el mensaje Hola Mundo.
+Hay nombre de variables que son "Ilegales" en Python, como por ejemplo:
+
+```python
+
+ 2myvar = "Hola Mundo" # No puede empezar por un número
+ my-var = "Hola Mundo" # No puede contener guiones
+ my var = "Hola Mundo" # No puede contener espacios en blanco
+ myvar = "Hola Mundo" # Esta es la forma correcta de declarar una variable
+
+```
+
+> [!NOTE]
+> Las variables son sensibles a mayúsculas y minúsculas, por lo que las variables **myvar** y **myVar** son diferentes.
+> Además, las variables se pueden declarar globalmente y localmente. Para declarar una variable global dentro de una función, se utiliza la palabra clave global.
+
+```python
+
+ def myfunc():
+     global x
+     x = "fantastico"
+
+ myfunc()
+
+ print("Python es " + x)
+
+```
+
+> También podemos declarar una variable fuera de una función y eso se puede utilizar en cualquier lugar del código seria un ejemplo de variable global como la anterior.
+
+```python
+
+ x = "fantastico"
+
+ def myfunc():
+     print("Python es " + x)
+
+ myfunc()
+
+```
+
+### Tipos de datos en Python
+
+En Python, los datos se pueden almacenar en diferentes tipos de variables. Los tipos de datos más comunes son:
+
+Ahora vamos a ver algunos ejemplos de tipos de datos en Python.
+
+```python
+
+# Texto (str) -> Se utiliza para representar texto.
+texto = "Hola, mundo!"
+
+# Entero (int) -> Se utiliza para representar números enteros.
+entero = 10
+
+# Decimal (float) -> Se utiliza para representar números reales.
+decimal = 3.14
+
+# Complejo (complex) -> Se utiliza para representar números complejos (números con una parte real e imaginaria).
+complejo = 1+2j
+
+# Booleano (bool) -> Se utiliza para representar valores booleanos (True o False).
+booleano = True
+
+# Lista (list) -> Se utiliza para almacenar varios elementos en una sola variable.
+lista = [1, 2, 3, 4, 5]
+
+# Ninguno (NoneType) -> Se utiliza para representar un valor nulo o que no existe.
+ninguno = None
+
+# Tupla (tuple) -> Es similar a una lista pero no se puede modificar
+tupla = (1, 2, 3)
+
+# Rango (range) -> Se utiliza para generar una secuencia de números que no se puede modificar.
+rango = range(10)
+
+# Diccionario (dict) -> Se utiliza para almacenar pares clave: valor.
+diccionario = {"nombre": "Juan", "edad": 30}
+
+# Conjunto (set) -> Se utiliza para representar una colección no ordenada de elementos unicos.
+conjunto = {1, 2, 3, 4, 5}
+
+# Frozenset (frozenset) -> Es similar a un conjunto pero no se puede modificar.
+frozenset_ = frozenset([1, 2, 3, 4, 5])
+
+# Bytes (bytes) -> Se utiliza para almacenar una secuencia inmutable de números en el rango 0 <= x < 256.
+bytes_ = b"Hola mundo"
+
+# Bytearray (bytearray) -> Es similar a bytes pero se puede modificar.
+bytearray_ = bytearray([119, 51, 114, 100])
+
+# Memoria de vista (memoryview) -> Se utiliza para acceder al subconjunto de los datos de un objeto mutable.
+memoria_de_vista = memoryview(bytes(5))
+
+```
+
+### Operadores en Python
+
+Los operadores se utilizan para realizar operaciones en variables y valores y se clasifican en:
+
+#### Operadores aritméticos en Python
+
+| Operador | Nombre          | Ejemplo  | Explicacion                                            |
+| -------- | --------------- | -------- | ------------------------------------------------------ |
+| +        | Suma            | x + y    | Suma x e y                                             |
+| -        | Resta           | x - y    | Resta x e y                                            |
+| \*       | Multiplicacion  | x \* y   | Multiplica x por y                                     |
+| /        | Division        | x / y    | Divide x entre y                                       |
+| %        | Modulo          | x % y    | Devuelve el resto de dividir x entre y                 |
+| \*\*     | Potecia         | x \*\* y | Eleva x a la potencia y                                |
+| //       | Division entera | x // y   | Divide x entre y y devuelve el resultado sin decimales |
+
+A continuación, vamos a ver algunos ejemplos de operadores aritméticos en Python.
+
+```python
+
+ x = 5
+ y = 3
+
+ print(x + y) # 8
+ print(x - y) # 2
+ print(x * y) # 15
+ print(x / y) # 1.6666666666666667
+ print(x % y) # 2
+ print(x ** y) # 125
+ print(x // y) # 1
+
+```
+
+#### Operadores de asignación en Python
+
+| Operador | Nombre | Ejemplo   | Explicacion                                                                    |
+| -------- | ------ | --------- | ------------------------------------------------------------------------------ |
+| =        | Igual  | x = 5     | Asigna el valor 5 a la variable x                                              |
+| +=       | Igual  | x += 5    | Suma 5 a la variable x y asigna el resultado a la variable x                   |
+| -=       | Igual  | x -= 5    | Resta 5 a la variable x y asigna el resultado a la variable x                  |
+| \*=      | Igual  | x \*= 5   | Multiplica la variable x por 5 y asigna el resultado a la variable x           |
+| /=       | Igual  | x /= 5    | Divide la variable x entre 5 y asigna el resultado a la variable x             |
+| %=       | Igual  | x %= 5    | Divide la variable x entre 5 y asigna el resto a la variable x                 |
+| \*\*=    | Igual  | x \*\*= 5 | Eleva la variable x a la potencia 5 y asigna el resultado a la variable x      |
+| //=      | Igual  | x //= 5   | Divide la variable x entre 5 y asigna el resultado sin decimales a la x        |
+| :=       | Igual  | x := 5    | Asigna el valor 5 a la variable x (Python 3.8+)                                |
+| &=       | Igual  | x &= 5    | Realiza una operación AND entre la variable x y 5 y asigna el resultado a x    |
+| \|=      | Igual  | x \|= 5   | Realiza una operación OR entre la variable x y 5 y asigna el resultado a x     |
+| ^=       | Igual  | x ^= 5    | Realiza una operación XOR entre la variable x y 5 y asigna el resultado a x    |
+| >>=      | Igual  | x >>= 5   | Realiza una operación de desplazamiento a la derecha y asigna el resultado x   |
+| <<=      | Igual  | x <<= 5   | Realiza una operación de desplazamiento a la izquierda y asigna el resultado x |
+
+A continuación, vamos a ver algunos ejemplos de operadores de asignación en Python.
+
+```python
+
+ x = 5
+
+ x += 5 # 10
+ x -= 5 # 0
+ x *= 5 # 25
+ x /= 5 # 1.0
+ x %= 5 # 0.0
+ x **= 5 # 3125.0
+ x //= 5 # 0.0
+
+```

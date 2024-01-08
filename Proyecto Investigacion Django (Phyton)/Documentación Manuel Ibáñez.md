@@ -22,13 +22,13 @@ modified: "2023-11-21T13:20:29.033Z"
       - [Configuración del fichero settings.py](#configuración-del-fichero-settingspy)
       - [Configuración del fichero urls.py](#configuración-del-fichero-urlspy)
   - [Ejecución del servidor de desarrollo](#ejecución-del-servidor-de-desarrollo)
-    - [Primeros pasos con Django (Entrar con el usuario admin)](#primeros-pasos-con-django-entrar-con-el-usuario-admin)
+      - [Primeros pasos con Django (Entrar con el usuario admin)](#primeros-pasos-con-django-entrar-con-el-usuario-admin)
   - [Instalación del IDE PyCharm](#instalación-del-ide-pycharm)
     - [Configuración de PyCharm](#configuración-de-pycharm)
-- [Primeros pasos con Python (Hola Mundo)](#primeros-pasos-con-python-hola-mundo)
-  - [Sintaxis basica de Python](#sintaxis-basica-de-python)
-    - [Variables en Python](#variables-en-python)
-    - [Tipos de datos en Python](#tipos-de-datos-en-python)
+  - [Primeros pasos con Python (Hola Mundo)](#primeros-pasos-con-python-hola-mundo)
+    - [Sintaxis basica de Python](#sintaxis-basica-de-python)
+      - [Variables en Python](#variables-en-python)
+      - [Tipos de datos en Python](#tipos-de-datos-en-python)
     - [Operadores en Python](#operadores-en-python)
       - [Operadores aritméticos en Python](#operadores-aritméticos-en-python)
       - [Operadores de asignación en Python](#operadores-de-asignación-en-python)
@@ -42,13 +42,17 @@ modified: "2023-11-21T13:20:29.033Z"
   - [Bucles en Python](#bucles-en-python)
   - [Exceptions en Python](#exceptions-en-python)
   - [Arrays en Python](#arrays-en-python)
+    - [Métodos de arrays en Python](#métodos-de-arrays-en-python)
 - [POO en Python (Programación Orientada a Objetos)](#poo-en-python-programación-orientada-a-objetos)
   - [Clases y objetos en Python](#clases-y-objetos-en-python)
     - [Atributos en Python](#atributos-en-python)
-  - [Métodos en Python](#métodos-en-python)
+  - [Métodos en Python (Modularidad)](#métodos-en-python-modularidad)
   - [Constructores en Python](#constructores-en-python)
+  - [Getters y setters en Python](#getters-y-setters-en-python)
   - [Herencia en Python](#herencia-en-python)
+    - [Herencia múltiple en Python](#herencia-múltiple-en-python)
   - [Encapsulación en Python](#encapsulación-en-python)
+  - [Abstracción en Python](#abstracción-en-python)
   - [Polimorfismo en Python](#polimorfismo-en-python)
   - [Métodos especiales en Python](#métodos-especiales-en-python)
   - [Métodos estáticos en Python](#métodos-estáticos-en-python)
@@ -323,7 +327,7 @@ Ahora vamos a crear un perfil para ello con que ejecutemos el programa nos saldr
 
 Lo guardamos y ya podemos ejecutar el servidor de desarrollo de Django desde PyCharm.
 
-# Primeros pasos con Python (Hola Mundo)
+## Primeros pasos con Python (Hola Mundo)
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
@@ -418,7 +422,7 @@ Si todo va bien y hemos seguido los pasos hasta ahora la estructura de nuestro p
 
 Ahora vamos a ejecutar el servidor de desarrollo de Django. Y si todo ha ido bien, podemos acceder a nuestro servidor de desarrollo desde un navegador web en la dirección http://127.0.0.1:8000/prueba/ en mi caso esa es la dirección, pero puede variar en función de la configuración de nuestro equipo. Si todo ha ido bien, veremos el mensaje Hola Mundo.
 
-## Sintaxis basica de Python
+### Sintaxis basica de Python
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
@@ -432,7 +436,7 @@ La sintaxis de Python es muy sencilla y fácil de aprender. En Python, el códig
 
 A continuación, vamos a ver algunos conceptos básicos de Python.
 
-### Variables en Python
+#### Variables en Python
 
 En Python, las variables se crean cuando se les asigna un valor. No es necesario declararlas antes de usarlas o declarar su tipo. El tipo de la variable se determina cuando se le asigna un valor.
 
@@ -483,7 +487,7 @@ Hay nombre de variables que son "Ilegales" en Python, como por ejemplo:
 
 ```
 
-### Tipos de datos en Python
+#### Tipos de datos en Python
 
 En Python, los datos se pueden almacenar en diferentes tipos de variables. Los tipos de datos más comunes son:
 
@@ -902,13 +906,205 @@ Las excepciones se utilizan para manejar errores que pueden ocurrir durante la e
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
-Los arrays se utilizan para almacenar varios valores en una sola variable. Los arrays más comunes son:
+Los arrays se utilizan para almacenar varios valores en una sola variable.
+
+Las arrays o listas en Python se pueden crear de varias formas:
+
+```python
+
+  lista = ["manzana", "platano", "cereza"]
+
+  tupla = ("manzana", "platano", "cereza")
+
+  rango = range(6)
+
+```
+
+Estas son todas las formas de declarar una array o lista en Python y para acceder a los elementos de un array, se utiliza el número de índice. El primer elemento tiene el índice 0.
+
+```python
+           # 0         1         2
+  lista = ["manzana", "platano", "cereza"]
+
+  print(lista[1]) # platano
+
+```
+
+También podemos modificar el valor de un elemento de un array utilizando el número de índice.
+
+```python
+
+  lista = ["manzana", "platano", "cereza"]
+
+  lista[1] = "naranja"
+
+  print(lista) # ['manzana', 'naranja', 'cereza']
+
+```
+
+Para recorrer los elementos de un array, se puede utilizar el bucle for.
+
+```python
+
+  lista = ["manzana", "platano", "cereza"]
+
+  for x in lista:
+      print(x) # manzana platano cereza -> Imprime cada elemento de la lista
+
+```
+
+### Métodos de arrays en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Para devolver la longitud de un array, se utiliza la función len().
+
+```python
+
+  lista = ["manzana", "platano", "cereza"]
+
+  print(len(lista)) # 3
+
+```
+
+Si quieres añadir un elemento al final de un array, se utiliza el método append().
+
+```python
+
+  lista = ["manzana", "platano", "cereza"]
+
+  lista.append("naranja")
+
+  print(lista) # ['manzana', 'platano', 'cereza', 'naranja']
+
+```
+
+Si quieres añadir un elemento en una posición específica de un array, se utiliza el método insert().
+
+```python
+
+  lista = ["manzana", "platano", "cereza"]
+
+  lista.insert(1, "naranja")
+
+  print(lista) # ['manzana', 'naranja', 'platano', 'cereza']
+
+```
+
+Si quieres eliminar un elemento de un array, se utiliza el método remove().
+
+```python
+
+  lista = ["manzana", "platano", "cereza"]
+
+  lista.remove("platano")
+
+  print(lista) # ['manzana', 'cereza']
+
+```
+
+Si quieres eliminar el último elemento de un array, se utiliza el método pop().
+
+```python
+
+  lista = ["manzana", "platano", "cereza"]
+
+  lista.pop()
+
+  print(lista) # ['manzana', 'platano']
+
+```
+
+Si quieres eliminar un elemento de un array en una posición específica, tambien se puede utilizar con el método pop().
+
+```python
+
+  lista = ["manzana", "platano", "cereza"]
+
+  lista.pop(1)
+
+  print(lista) # ['manzana', 'cereza']
+
+```
+
+Si quieres vaciar un array, se utiliza el método clear().
+
+```python
+
+  lista = ["manzana", "platano", "cereza"]
+
+  lista.clear()
+
+  print(lista) # []
+
+```
+
+Si quieres copiar un array, se utiliza el método copy().
+
+```python
+
+  lista = ["manzana", "platano", "cereza"]
+
+  lista2 = lista.copy()
+
+  print(lista2) # ['manzana', 'platano', 'cereza']
+
+```
+
+Si quieres unir dos arrays, se utiliza el método extend().
+
+```python
+
+  lista = ["manzana", "platano", "cereza"]
+  lista2 = ["naranja", "limon", "sandia"]
+
+  lista.extend(lista2)
+
+  print(lista) # ['manzana', 'platano', 'cereza', 'naranja', 'limon', 'sandia']
+
+```
+
+Si queremos ordenar los elementos de un array, se utiliza el método sort().
+
+```python
+
+  lista = ["manzana", "platano", "cereza"]
+
+  lista.sort()
+
+  print(lista) # ['cereza', 'manzana', 'platano']
+
+```
+
+El metodo count() devuelve el número de elementos con el valor especificado.
+
+```python
+
+  points = [1, 4, 2, 9, 7, 8, 9, 3, 1]
+
+x = points.count(9)
+
+print(x) # 2 por que hay dos 9
+
+```
+
+El metodo index() devuelve el índice del primer elemento con el valor especificado.
+
+```python
+
+  points = [1, 4, 2, 9, 7, 8, 9, 3, 1]
+
+x = points.index(8)
+
+print(x) # 5 por que el 8 esta en la posicion 5
+
+```
 
 # POO en Python (Programación Orientada a Objetos)
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
-La programación orientada a objetos (POO) es un paradigma de programación que utiliza objetos y sus interacciones para diseñar aplicaciones y programas informáticos. Está basado en varias técnicas, incluyendo herencia, modularidad, polimorfismo y encapsulamiento. Su uso se popularizó a principios de la década de 1990. Actualmente es la forma más popular de programar.
+La programación orientada a objetos (POO) es un paradigma de programación que utiliza objetos y sus interacciones para diseñar aplicaciones y programas informáticos. Está basado en varias técnicas, incluyendo herencia, modularidad, polimorfismo , encapsulamiento y abstracción. Su uso se popularizó a principios de la década de 1990. Actualmente es la forma más popular de programar.
 
 ## Clases y objetos en Python
 
@@ -958,11 +1154,19 @@ Para acceder a los atributos de un objeto primero creamos un objeto de la clase 
 
 ```
 
-## Métodos en Python
+## Métodos en Python (Modularidad)
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
 Los métodos son funciones que pertenecen a una clase y se utilizan para realizar operaciones con los atributos de la clase. Para crear un método, utilizamos la palabra clave def seguida del nombre del método y dos puntos. A continuación, vamos a ver un ejemplo de método en Python.
+
+> [!WARNING]
+>
+> En Python, los métodos de instancia de una clase necesitan tener al menos un argumento, que es una referencia a la instancia de la clase que está llamando al método. Por >convención, este argumento se llama self.
+>
+> Si defines el método acelerar() sin el argumento self, Python lo tratará como un método estático. Los métodos estáticos no tienen acceso a las instancias de la clase, por lo que no pueden modificar ni acceder a los atributos de instancia.
+>
+> Para entender mejor esto podemos compararlo con el this de Java o el this de JavaScript que en este caso seria el self de Python.
 
 ```python
 
@@ -1000,8 +1204,133 @@ Los constructores se utilizan para inicializar los atributos de un objeto. Para 
          self.modelo = modelo
          self.color = color
 
+
+```
+
+Ahora vamos a crear un objeto de la clase Coche. Para ello, escribimos:
+
+```python
+
+ coche = Coche("Ford", "Mustang", "Rojo")
+
+```
+
+Para llamar a un atributo de un objeto, utilizamos la sintaxis objeto.atributo. A continuación, vamos a ver algunos ejemplos de constructores en Python.
+
+```python
+
+ print(coche.marca) # Ford
+ print(coche.modelo) # Mustang
+ print(coche.color) # Rojo
+
+```
+
+## Getters y setters en Python
+
+Y ahora vamos a ver los getters y setters que son métodos que se utilizan para obtener y establecer los valores de los atributos de un objeto. Para crear un getter, utilizamos el método **get**() y para crear un setter, utilizamos el método **set**(). A continuación, vamos a ver un ejemplo de getters y setters en Python.
+
+```python
+
+ class Coche:
+     def __init__(self, marca, modelo, color):
+         self.marca = marca
+         self.modelo = modelo
+         self.color = color
+
+     def getMarca(self):
+         return self.marca
+
+     def setMarca(self, marca):
+         self.marca = marca
+
+     def getModelo(self):
+         return self.modelo
+
+     def setModelo(self, modelo):
+         self.modelo = modelo
+
+     def getColor(self):
+         return self.color
+
+     def setColor(self, color):
+         self.color = color
+
+```
+
+Ahora voy a poner un ejemplo de como utilizar los getters y setters en Python.
+
+```python
+
+ coche = Coche("Ford", "Mustang", "Rojo")
+
+ print(coche.getMarca()) # Ford
+ print(coche.getModelo()) # Mustang
+ print(coche.getColor()) # Rojo
+
+ coche.setMarca("Ferrari")
+ coche.setModelo("F40")
+ coche.setColor("Amarillo")
+
+ print(coche.getMarca()) # Ferrari
+ print(coche.getModelo()) # F40
+ print(coche.getColor()) # Amarillo
+
+```
+
+Vamos a crear un ejemplo con todo lo visto para que todo este mas claro.
+
+```python
+
+ class Coche:
+     def __init__(self, marca, modelo, color):
+         self.marca = marca
+         self.modelo = modelo
+         self.color = color
+
+     def getMarca(self):
+         return self.marca
+
+     def setMarca(self, marca):
+         self.marca = marca
+
+     def getModelo(self):
+         return self.modelo
+
+     def setModelo(self, modelo):
+         self.modelo = modelo
+
+     def getColor(self):
+         return self.color
+
+     def setColor(self, color):
+         self.color = color
+
      def acelerar(self):
          print("El coche está acelerando")
+
+     def __str__(self): # Este metodo se utiliza para representar un objeto como una cadena de texto se puede comparar con el toString() de Java por ejemplo.
+         return f"Marca: {self.marca}, Modelo: {self.modelo}, Color: {self.color}"
+
+     def __len__(self): # Este metodo se utiliza para devolver la longitud de un objeto se puede comparar con el length() de Java por ejemplo.
+         return 3
+
+ coche = Coche("Ford", "Mustang", "Rojo")
+
+ print(coche.getMarca()) # Ford
+ print(coche.getModelo()) # Mustang
+ print(coche.getColor()) # Rojo
+
+ coche.setMarca("Ferrari")
+ coche.setModelo("F40")
+ coche.setColor("Amarillo")
+
+ print(coche.getMarca()) # Ferrari
+ print(coche.getModelo()) # F40
+ print(coche.getColor()) # Amarillo
+
+ print(coche) # Marca: Ferrari, Modelo: F40, Color: Amarillo
+
+ print(len(coche)) # 3
 
 ```
 
@@ -1022,71 +1351,12 @@ La herencia es una forma de crear una clase a partir de otra clase. La clase que
      def acelerar(self):
          print("El coche está acelerando")
 
- class CocheDeportivo(Coche):
+ class CocheDeportivo(Coche): # CocheDeportivo hereda de Coche
      pass
 
 ```
 
-Ahora vamos a crear un objeto de la clase CocheDeportivo. Para ello, escribimos:
-
-```python
-
- coche = CocheDeportivo("Ford", "Mustang", "Rojo")
-
-```
-
-Para llamar a un atributo de un objeto, utilizamos la sintaxis objeto.atributo. A continuación, vamos a ver algunos ejemplos de herencia en Python.
-
-```python
-
- print(coche.marca) # Ford
- print(coche.modelo) # Mustang
- print(coche.color) # Rojo
-
-```
-
-## Encapsulación en Python
-
-[Tabla de contenidos](#tabla-de-contenidos)
-
-La encapsulación es una forma de restringir el acceso a los atributos y métodos de una clase. En Python, podemos restringir el acceso a los atributos y métodos de una clase utilizando el guión bajo como prefijo. A continuación, vamos a ver un ejemplo de encapsulación en Python.
-
-```python
-
- class Coche:
-     def __init__(self, marca, modelo, color):
-         self._marca = marca
-         self._modelo = modelo
-         self._color = color
-
-     def acelerar(self):
-         print("El coche está acelerando")
-
-```
-
-Ahora vamos a crear un objeto de la clase Coche. Para ello, escribimos:
-
-```python
-
- coche = Coche("Ford", "Mustang", "Rojo")
-
-```
-
-Para llamar a un atributo de un objeto, utilizamos la sintaxis objeto.atributo. A continuación, vamos a ver algunos ejemplos de encapsulación en Python.
-
-```python
-
- print(coche._marca) # Ford
- print(coche._modelo) # Mustang
- print(coche._color) # Rojo
-
-```
-
-## Polimorfismo en Python
-
-[Tabla de contenidos](#tabla-de-contenidos)
-
-El polimorfismo es una forma de utilizar una clase de manera diferente. En Python, podemos utilizar una clase de manera diferente utilizando el método especial **str**(). A continuación, vamos a ver un ejemplo de polimorfismo en Python.
+Si queremos añadir atributos adicionales a la clase hija al heredar de la clase padre, podemos añadirlos en el método **init**() de la clase hija. A continuación, vamos a ver un ejemplo de herencia en Python.
 
 ```python
 
@@ -1099,24 +1369,173 @@ El polimorfismo es una forma de utilizar una clase de manera diferente. En Pytho
      def acelerar(self):
          print("El coche está acelerando")
 
-     def __str__(self):
-         return f"Marca: {self.marca}, Modelo: {self.modelo}, Color: {self.color}"
+ class CocheDeportivo(Coche): # CocheDeportivo hereda de Coche
+     def __init__(self, marca, modelo, color, velocidadMaxima):
+         self.marca = marca
+         self.modelo = modelo
+         self.color = color
+         self.velocidadMaxima = velocidadMaxima
 
 ```
 
-Ahora vamos a crear un objeto de la clase Coche. Para ello, escribimos:
+Ahora vamos a crear un objeto de la clase CocheDeportivo. Para ello, escribimos:
 
 ```python
+
+ coche = CocheDeportivo("Ford", "Mustang", "Rojo" , 300)
+
+```
+
+Para llamar a un atributo de un objeto, utilizamos la sintaxis objeto.atributo. A continuación, vamos a ver algunos ejemplos de herencia en Python.
+
+```python
+
+ print(coche.marca) # Ford
+ print(coche.modelo) # Mustang
+ print(coche.color) # Rojo
+ print(coche.velocidadMaxima) # 300
+
+```
+
+### Herencia múltiple en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Python sí permite la herencia múltiple, que es una característica que permite a una clase heredar comportamientos y características de más de una clase base.
+
+```python
+
+class Clase1:
+    pass
+
+class Clase2:
+    pass
+
+class MultipleHerencia(Base1, Base2):
+    pass
+
+```
+
+Sin embargo, aunque la herencia múltiple puede ser útil en algunos casos, también puede llevar a una serie de complicaciones, como el problema del diamante (cuando una clase hereda de dos clases que tienen una clase base común) y la complejidad adicional en la estructura de la clase.
+
+Por lo tanto, la herencia múltiple debe usarse con cuidado. Esto es opinión personal, pero creo que la herencia múltiple no es una buena práctica de programación y que debería evitarse siempre que sea posible.
+
+## Encapsulación en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+La encapsulación es una forma de restringir el acceso a los atributos y métodos de una clase. En Python, podemos restringir el acceso a los atributos y métodos de una clase utilizando el guión bajo como prefijo. A continuación, vamos a ver un ejemplo de encapsulación en Python.
+
+> [!NOTE]
+> Para poder acceder a los atributos y métodos de una clase encapsulada, tendriamos que crear getter y setters para cada atributo como lo e explicado antes para asi poder >acceder a los atributos y métodos de una clase encapsulada.
+
+```python
+
+ class Coche:
+     def __init__(self, marca, modelo, color):
+         self._marca = marca # soy un atributo que solo se puede acceder desde la clase Coche
+         self._modelo = modelo
+         self._color = color
+
+     def getMarca(self):
+         return self._marca
+
+     def setMarca(self, marca):
+         self._marca = marca
 
  coche = Coche("Ford", "Mustang", "Rojo")
 
+ print(coche.getMarca()) # Ford
+
+ coche.setMarca("Ferrari")
+
+ print(coche.getMarca()) # Ferrari
+
 ```
 
-Para llamar a un atributo de un objeto, utilizamos la sintaxis objeto.atributo. A continuación, vamos a ver algunos ejemplos de polimorfismo en Python.
+## Abstracción en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+La abstracción es una forma de ocultar los detalles de implementación y mostrar solo la funcionalidad al usuario. En Python, podemos utilizar la clase abstractmethod del módulo abc para crear una clase abstracta. A continuación, vamos a ver un ejemplo de abstracción en Python.
 
 ```python
 
- print(coche) # Marca: Ford, Modelo: Mustang, Color: Rojo
+ from abc import ABC, abstractmethod
+
+ class Coche(ABC): # Coche es una clase abstracta porque hereda de ABC
+     def __init__(self, marca, modelo, color):
+         self.marca = marca
+         self.modelo = modelo
+         self.color = color
+
+     def acelerar(self):
+         print("El coche está acelerando")
+
+     @abstractmethod
+     def frenar(self):
+         pass
+
+ class CocheDeportivo(Coche):
+     def __init__(self, marca, modelo, color, velocidadMaxima):
+         self.marca = marca
+         self.modelo = modelo
+         self.color = color
+         self.velocidadMaxima = velocidadMaxima
+
+     def frenar(self):
+         print("El coche está frenando")
+
+```
+
+Las clases abstractas suelen ser clases que no se pueden instanciar y que se utilizan como clases padre. Si intentamos instanciar una clase abstracta, se producirá un error. A continuación, vamos a ver un ejemplo de abstracción en Python.
+
+```python
+
+ coche = Coche("Ford", "Mustang", "Rojo" , 300) # TypeError: Can't instantiate abstract class Coche with abstract methods frenar
+
+```
+
+## Polimorfismo en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+El polimorfismo es una forma de utilizar una clase de manera diferente. Para entender esto facilmente podriamos usar la funcion len(). La función len() se puede utilizar con muchos tipos de datos diferentes, como cadenas, listas, tuplas, etc. Pero se interpreta de manera diferente por ejemplo para una lista, devolverá el total de elementos presentes y para una cadena, y el total de caracteres presentes.
+
+```python
+
+ print(len("Hola")) # 4
+ print(len(["manzana", "platano", "cereza"])) # 3
+
+```
+
+Otro ejemplo seria el operador +. El operador + se puede utilizar para sumar dos números o para concatenar dos cadenas.
+
+```python
+
+ print(1 + 2) # 3
+ print("Hola" + "Mundo") # HolaMundo
+
+```
+
+Incluso podemos crear nuestra clase y lograr esto. Dos clases pueden tener funciones con el mismo nombre pero con diferentes propósitos y diferentes definiciones.
+
+```python
+
+class A:
+    def fun(self):
+        print("Class A")
+
+
+class B:
+    def fun(self):
+        print("Class B")
+
+
+ob1 = A()
+ob2 = B()
+for i in (ob1, ob2):
+    i.fun() # Imprime el resultado de la funcion fun() de cada clase -> Class A Class B
 
 ```
 
@@ -1211,6 +1630,14 @@ Los métodos estáticos son métodos que se utilizan sin crear un objeto. Para c
 
 ```
 
+Por ejemplo el metodo frenar() como es un metodo estatico siempre va a devolver el mismo resultado por lo que no es necesario crear un objeto para llamar a este metodo.
+
+```python
+
+ Coche.frenar() # El coche está frenando
+
+```
+
 ## Métodos de clase en Python
 
 [Tabla de contenidos](#tabla-de-contenidos)
@@ -1234,18 +1661,4 @@ Los métodos de clase son métodos que se utilizan sin crear un objeto. Para cre
 
 ```
 
-Ahora vamos a crear un objeto de la clase Coche. Para ello, escribimos:
-
-```python
-
- coche = Coche("Ford", "Mustang", "Rojo")
-
-```
-
-Para llamar a un método de clase de una clase, utilizamos la sintaxis clase.metodo(). A continuación, vamos a ver algunos ejemplos de métodos de clase en Python.
-
-```python
-
- Coche.frenar() # El coche está frenando
-
-```
+Un metodo de clase pueden ser llamados tanto en la clase como en las instancias de la clase. A diferencia de los métodos de instancia, que tienen acceso a la instancia específica y a sus atributos, los métodos de clase tienen acceso a la clase y a sus atributos. No pueden modificar el estado de una instancia específica de la clase, pero pueden modificar el estado de la clase.

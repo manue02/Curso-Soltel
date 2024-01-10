@@ -22,7 +22,7 @@ modified: "2023-11-21T13:20:29.033Z"
       - [Configuración del fichero settings.py](#configuración-del-fichero-settingspy)
       - [Configuración del fichero urls.py](#configuración-del-fichero-urlspy)
   - [Ejecución del servidor de desarrollo](#ejecución-del-servidor-de-desarrollo)
-      - [Primeros pasos con Django (Entrar con el usuario admin)](#primeros-pasos-con-django-entrar-con-el-usuario-admin)
+    - [Primeros pasos con Django (Entrar con el usuario admin)](#primeros-pasos-con-django-entrar-con-el-usuario-admin)
   - [Instalación del IDE PyCharm](#instalación-del-ide-pycharm)
     - [Configuración de PyCharm](#configuración-de-pycharm)
   - [Primeros pasos con Python (Hola Mundo)](#primeros-pasos-con-python-hola-mundo)
@@ -252,6 +252,8 @@ Esto nos pedirá un nombre de usuario, una dirección de correo electrónico y u
 
 Ahora que tenemos todo lo necesario para desarrollar nuestra aplicacion web con Django vamos a instalar PyCharm que es un IDE multiplataforma creado por JetBrains. Es uno de los mejores IDEs para proyectos que utilizan el lenguaje de programación Python, primero debemos descargarlo desde la página oficial de [JetBrains](https://www.jetbrains.com/es-es/pycharm/download/#section=linux). Una vez descargado, nos situamos en el directorio donde se encuentra el fichero descargado y escribimos:
 
+<div style="page-break-after: always;"></div>
+
 ```console
 
  $ tar -xzf pycharm-2023.2.5.tar.gz
@@ -382,6 +384,8 @@ Ahora vamos a crear un archivo llamado urls.py en la carpeta prueba y luego abri
 
 ```
 
+<div style="page-break-after: always;"></div>
+
 Ahora vamos abrir en la carpeta HelloWorld el fichero urls.py y escribimos:
 
 ```python
@@ -395,6 +399,10 @@ Ahora vamos abrir en la carpeta HelloWorld el fichero urls.py y escribimos:
  ]
 
 ```
+
+> [!NOTE]
+> Si no sabes de donde a salido la carpeta HelloWorld es la carpeta que se crea al crear el proyecto Django.
+> Os dejo un enlace a donde explique la estructura de los ficheros al crear un proyecto Django [Creación de un proyecto](#creación-de-un-proyecto).
 
 Si todo va bien y hemos seguido los pasos hasta ahora la estructura de nuestro proyecto debería ser la siguiente:
 
@@ -421,6 +429,8 @@ Si todo va bien y hemos seguido los pasos hasta ahora la estructura de nuestro p
 ```
 
 Ahora vamos a ejecutar el servidor de desarrollo de Django. Y si todo ha ido bien, podemos acceder a nuestro servidor de desarrollo desde un navegador web en la dirección http://127.0.0.1:8000/prueba/ en mi caso esa es la dirección, pero puede variar en función de la configuración de nuestro equipo. Si todo ha ido bien, veremos el mensaje Hola Mundo.
+
+<div style="page-break-after: always;"></div>
 
 ### Sintaxis basica de Python
 
@@ -461,6 +471,8 @@ Hay nombre de variables que son "Ilegales" en Python, como por ejemplo:
 > [!NOTE]
 > Las variables son sensibles a mayúsculas y minúsculas, por lo que las variables **myvar** y **myVar** son diferentes.
 > Además, las variables se pueden declarar globalmente y localmente. Para declarar una variable global dentro de una función, se utiliza la palabra clave global.
+
+<div style="page-break-after: always;"></div>
 
 ```python
 
@@ -507,6 +519,12 @@ decimal = 3.14
 # Complejo (complex) -> Se utiliza para representar números complejos (números con una parte real e imaginaria).
 complejo = 1+2j
 
+```
+
+<div style="page-break-after: always;"></div>
+
+```python
+
 # Booleano (bool) -> Se utiliza para representar valores booleanos (True o False).
 booleano = True
 
@@ -541,6 +559,8 @@ bytearray_ = bytearray([119, 51, 114, 100])
 memoria_de_vista = memoryview(bytes(5))
 
 ```
+
+<div style="page-break-after: always;"></div>
 
 ### Operadores en Python
 
@@ -621,6 +641,8 @@ A continuación, vamos a ver algunos ejemplos de operadores de asignación en Py
 | >=       | Mayor o igual que | x >= y  | Devuelve True si x es mayor o igual que y |
 | <=       | Menor o igual que | x <= y  | Devuelve True si x es menor o igual que y |
 
+<div style="page-break-after: always;"></div>
+
 A continuación, vamos a ver algunos ejemplos de operadores de comparación en Python.
 
 ```python
@@ -664,6 +686,8 @@ A continuación, vamos a ver algunos ejemplos de operadores lógicos en Python.
 | is       | Es     | x is y  | Devuelve True si x e y son el mismo objeto    |
 | is not   | No es  | x is y  | Devuelve True si x e y no son el mismo objeto |
 
+<div style="page-break-after: always;"></div>
+
 A continuación, vamos a ver algunos ejemplos de operadores de identidad en Python.
 
 ```python
@@ -706,6 +730,8 @@ A continuación, vamos a ver algunos ejemplos de operadores de pertenencia en Py
 | ~        | NOT              | ~x      | Invierte todos los bits                                                              |
 | <<       | Desplazamiento a | x << y  | Desplaza los bits de x, y posiciones a la izquierda, los bits vacios se llenan con 0 |
 | >>       | Desplazamiento a | x >> y  | Desplaza los bits de x, y posiciones a la derecha, los bits vacios se llenan con 0   |
+
+<div style="page-break-after: always;"></div>
 
 A continuación, vamos a ver algunos ejemplos de operadores de bits en Python.
 
@@ -754,6 +780,8 @@ Y asi con todos los demas tipos de datos, y ahora vamos a ver algunos ejemplos d
 
 ```
 
+<div style="page-break-after: always;"></div>
+
 ## Estructuras de control en Python
 
 [Tabla de contenidos](#tabla-de-contenidos)
@@ -796,6 +824,8 @@ Ahora vamos a ver algunos ejemplos de estructuras de control en Python.
 
 ```
 
+<div style="page-break-after: always;"></div>
+
 ## Bucles en Python
 
 [Tabla de contenidos](#tabla-de-contenidos)
@@ -826,7 +856,6 @@ Ahora dentro de los bucles tenemos las sentencias break y continue que se utiliz
 ```python
 
 # break -> Se utiliza para terminar el bucle antes de que se cumpla la condición.
-
   i = 1
 
   while i < 6:
@@ -836,7 +865,6 @@ Ahora dentro de los bucles tenemos las sentencias break y continue que se utiliz
       i += 1
 
 # continue -> Se utiliza para saltar una iteración del bucle.
-
   i = 0
 
   while i < 6:
@@ -844,7 +872,6 @@ Ahora dentro de los bucles tenemos las sentencias break y continue que se utiliz
       if i == 3:
           continue
       print(i)
-
 ```
 
 ## Exceptions en Python
@@ -854,16 +881,13 @@ Ahora dentro de los bucles tenemos las sentencias break y continue que se utiliz
 Las excepciones se utilizan para manejar errores que pueden ocurrir durante la ejecución de un programa. Las excepciones más comunes son:
 
 ```python
-
 # try...except -> Se utiliza para manejar excepciones.
-
   try:
       print(x)
   except:
       print("Ha ocurrido un error")
 
 # try...except...else -> Se utiliza para manejar excepciones y ejecutar un bloque de código si no se produce ninguna excepción.
-
   try:
       print("Hola")
   except:
@@ -872,7 +896,6 @@ Las excepciones se utilizan para manejar errores que pueden ocurrir durante la e
       print("Ningun error ha ocurrido")
 
 # try...except...finally -> Se utiliza para manejar excepciones y ejecutar un bloque de código, independientemente de si se produce una excepción o no.
-
   try:
       print(x)
   except:
@@ -881,14 +904,12 @@ Las excepciones se utilizan para manejar errores que pueden ocurrir durante la e
       print("El bloque try...except ha terminado")
 
 # raise -> Se utiliza para generar una excepción.
-
   x = -1
 
   if x < 0:
       raise Exception("El numero no puede ser negativo")
 
 # pass -> Se utiliza cuando no se necesita código.
-
   try:
       print(x)
   except:
@@ -1003,6 +1024,8 @@ Si quieres eliminar un elemento de un array, se utiliza el método remove().
 
 ```
 
+<div style="page-break-after: always;"></div>
+
 Si quieres eliminar el último elemento de un array, se utiliza el método pop().
 
 ```python
@@ -1050,6 +1073,8 @@ Si quieres copiar un array, se utiliza el método copy().
   print(lista2) # ['manzana', 'platano', 'cereza']
 
 ```
+
+<div style="page-break-after: always;"></div>
 
 Si quieres unir dos arrays, se utiliza el método extend().
 
@@ -1100,6 +1125,8 @@ print(x) # 5 por que el 8 esta en la posicion 5
 
 ```
 
+<div style="page-break-after: always;"></div>
+
 # POO en Python (Programación Orientada a Objetos)
 
 [Tabla de contenidos](#tabla-de-contenidos)
@@ -1142,6 +1169,8 @@ Los atributos son variables que pertenecen a una clase y se utilizan para almace
 
 ```
 
+<div style="page-break-after: always;"></div>
+
 Para acceder a los atributos de un objeto primero creamos un objeto de la clase coche como hemos echo anteriormente y utilizamos la sintaxis objeto.atributo. A continuación, vamos a ver algunos ejemplos de atributos en Python.
 
 ```python
@@ -1179,6 +1208,8 @@ Los métodos son funciones que pertenecen a una clase y se utilizan para realiza
          print("El coche está acelerando")
 
 ```
+
+<div style="page-break-after: always;"></div>
 
 Para llamar a un método de un objeto primero creamos un objeto de la clase coche como hemos echo anteriormente y utilizamos la sintaxis objeto.metodo(). A continuación, vamos a ver algunos ejemplos de métodos en Python.
 
@@ -1225,6 +1256,8 @@ Para llamar a un atributo de un objeto, utilizamos la sintaxis objeto.atributo. 
 
 ```
 
+<div style="page-break-after: always;"></div>
+
 ## Getters y setters en Python
 
 Y ahora vamos a ver los getters y setters que son métodos que se utilizan para obtener y establecer los valores de los atributos de un objeto. Para crear un getter, utilizamos el método **get**() y para crear un setter, utilizamos el método **set**(). A continuación, vamos a ver un ejemplo de getters y setters en Python.
@@ -1260,7 +1293,6 @@ Y ahora vamos a ver los getters y setters que son métodos que se utilizan para 
 Ahora voy a poner un ejemplo de como utilizar los getters y setters en Python.
 
 ```python
-
  coche = Coche("Ford", "Mustang", "Rojo")
 
  print(coche.getMarca()) # Ford
@@ -1274,13 +1306,11 @@ Ahora voy a poner un ejemplo de como utilizar los getters y setters en Python.
  print(coche.getMarca()) # Ferrari
  print(coche.getModelo()) # F40
  print(coche.getColor()) # Amarillo
-
 ```
 
 Vamos a crear un ejemplo con todo lo visto para que todo este mas claro.
 
 ```python
-
  class Coche:
      def __init__(self, marca, modelo, color):
          self.marca = marca
@@ -1289,7 +1319,6 @@ Vamos a crear un ejemplo con todo lo visto para que todo este mas claro.
 
      def getMarca(self):
          return self.marca
-
      def setMarca(self, marca):
          self.marca = marca
 
@@ -1304,9 +1333,6 @@ Vamos a crear un ejemplo con todo lo visto para que todo este mas claro.
 
      def setColor(self, color):
          self.color = color
-
-     def acelerar(self):
-         print("El coche está acelerando")
 
      def __str__(self): # Este metodo se utiliza para representar un objeto como una cadena de texto se puede comparar con el toString() de Java por ejemplo.
          return f"Marca: {self.marca}, Modelo: {self.modelo}, Color: {self.color}"
@@ -1329,9 +1355,7 @@ Vamos a crear un ejemplo con todo lo visto para que todo este mas claro.
  print(coche.getColor()) # Amarillo
 
  print(coche) # Marca: Ferrari, Modelo: F40, Color: Amarillo
-
  print(len(coche)) # 3
-
 ```
 
 ## Herencia en Python
@@ -1378,6 +1402,8 @@ Si queremos añadir atributos adicionales a la clase hija al heredar de la clase
 
 ```
 
+<div style="page-break-after: always;"></div>
+
 Ahora vamos a crear un objeto de la clase CocheDeportivo. Para ello, escribimos:
 
 ```python
@@ -1420,6 +1446,8 @@ Sin embargo, aunque la herencia múltiple puede ser útil en algunos casos, tamb
 
 Por lo tanto, la herencia múltiple debe usarse con cuidado. Esto es opinión personal, pero creo que la herencia múltiple no es una buena práctica de programación y que debería evitarse siempre que sea posible.
 
+<div style="page-break-after: always;"></div>
+
 ## Encapsulación en Python
 
 [Tabla de contenidos](#tabla-de-contenidos)
@@ -1458,6 +1486,8 @@ La encapsulación es una forma de restringir el acceso a los atributos y método
 [Tabla de contenidos](#tabla-de-contenidos)
 
 La abstracción es una forma de ocultar los detalles de implementación y mostrar solo la funcionalidad al usuario. En Python, podemos utilizar la clase abstractmethod del módulo abc para crear una clase abstracta. A continuación, vamos a ver un ejemplo de abstracción en Python.
+
+<div style="page-break-after: always;"></div>
 
 ```python
 
@@ -1502,6 +1532,8 @@ Las clases abstractas suelen ser clases que no se pueden instanciar y que se uti
 
 El polimorfismo es una forma de utilizar una clase de manera diferente. Para entender esto facilmente podriamos usar la funcion len(). La función len() se puede utilizar con muchos tipos de datos diferentes, como cadenas, listas, tuplas, etc. Pero se interpreta de manera diferente por ejemplo para una lista, devolverá el total de elementos presentes y para una cadena, y el total de caracteres presentes.
 
+<div style="page-break-after: always;"></div>
+
 ```python
 
  print(len("Hola")) # 4
@@ -1544,6 +1576,8 @@ for i in (ob1, ob2):
 [Tabla de contenidos](#tabla-de-contenidos)
 
 Los métodos especiales son métodos que se utilizan para realizar operaciones especiales. Los métodos especiales más comunes son:
+
+<div style="page-break-after: always;"></div>
 
 ```python
 
@@ -1590,6 +1624,8 @@ Los métodos especiales son métodos que se utilizan para realizar operaciones e
           return 3
 
 ```
+
+<div style="page-break-after: always;"></div>
 
 Ahora vamos a crear un objeto de la clase Coche. Para ello, escribimos:
 

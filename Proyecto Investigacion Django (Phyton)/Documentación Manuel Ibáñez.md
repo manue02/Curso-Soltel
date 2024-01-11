@@ -15,18 +15,18 @@ modified: "2023-11-21T13:20:29.033Z"
 - [Documentación Django (Phyton)](#documentación-django-phyton)
 - [Tabla de contenidos](#tabla-de-contenidos)
 - [Introducción](#introducción)
-  - [Instalación en Linux](#instalación-en-linux)
-    - [Explicación de los comandos](#explicación-de-los-comandos)
+  - [Instalación en Linux (Entorno virtual + Django + Python)](#instalación-en-linux-entorno-virtual--django--python)
+    - [Explicación de los comandos (Entorno virtual)](#explicación-de-los-comandos-entorno-virtual)
   - [Creación de un proyecto](#creación-de-un-proyecto)
     - [Explicación de los ficheros al crear un proyecto Django](#explicación-de-los-ficheros-al-crear-un-proyecto-django)
       - [Configuración del fichero settings.py](#configuración-del-fichero-settingspy)
       - [Configuración del fichero urls.py](#configuración-del-fichero-urlspy)
   - [Ejecución del servidor de desarrollo](#ejecución-del-servidor-de-desarrollo)
-    - [Primeros pasos con Django (Entrar con el usuario admin)](#primeros-pasos-con-django-entrar-con-el-usuario-admin)
+      - [Primeros pasos con Django (Entrar con el usuario admin)](#primeros-pasos-con-django-entrar-con-el-usuario-admin)
   - [Instalación del IDE PyCharm](#instalación-del-ide-pycharm)
     - [Configuración de PyCharm](#configuración-de-pycharm)
   - [Primeros pasos con Python (Hola Mundo)](#primeros-pasos-con-python-hola-mundo)
-    - [Sintaxis basica de Python](#sintaxis-basica-de-python)
+    - [Sintaxis básica de Python](#sintaxis-básica-de-python)
       - [Variables en Python](#variables-en-python)
       - [Tipos de datos en Python](#tipos-de-datos-en-python)
     - [Operadores en Python](#operadores-en-python)
@@ -57,6 +57,8 @@ modified: "2023-11-21T13:20:29.033Z"
   - [Métodos especiales en Python](#métodos-especiales-en-python)
   - [Métodos estáticos en Python](#métodos-estáticos-en-python)
   - [Métodos de clase en Python](#métodos-de-clase-en-python)
+- [CRUD en Python](#crud-en-python)
+  - [Crear una base de datos en Python (MySQL)](#crear-una-base-de-datos-en-python-mysql)
 
 <div style="page-break-after: always;"></div>
 
@@ -72,11 +74,11 @@ El modelo-vista-controlador es un patrón de arquitectura de software, que separ
 - **Vista**: Presenta el modelo en un formato adecuado para interactuar (usualmente la interfaz de usuario) y también puede encargarse de filtrar la entrada de datos y enviarla al modelo.
 - **Controlador**: Responde a eventos (usualmente acciones del usuario) e invoca peticiones al modelo cuando se hace alguna solicitud de información (por ejemplo, editar un documento o un registro en una base de datos).
 
-## Instalación en Linux
+## Instalación en Linux (Entorno virtual + Django + Python)
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
-Python viene instalado por defecto en la mayoría de distribuciones GNU/Linux. Para comprobar si lo tenemos instalado, abrimos una terminal y escribimos:
+Python viene instalado por defecto en la mayoría de las distribuciones GNU/Linux. Para comprobar si lo tenemos instalado, abrimos una terminal y escribimos:
 
 ```console
 
@@ -84,7 +86,7 @@ Python viene instalado por defecto en la mayoría de distribuciones GNU/Linux. P
 
 ```
 
-En el caso de que no lo tengamos instalado, podemos instalarlo desde los repositorios oficiales de nuestra distribución. En el caso de Ubuntu, escribimos:
+En caso de que no lo tengamos instalado, podemos instalarlo desde los repositorios oficiales de nuestra distribución. En el caso de Ubuntu, escribimos:
 
 ```console
 
@@ -94,7 +96,7 @@ En el caso de que no lo tengamos instalado, podemos instalarlo desde los reposit
 
 <div style="page-break-after: always;"></div>
 
-Una vez verificado que tenemos instalado Python podemos empezar a instalar Django primero debemos instalar python3.10-venv para poder crear entornos virtuales. Para ello, escribimos:
+Una vez verificado que tenemos instalado Python podemos empezar a instalar Django. Primero debemos instalar python3.10-venv para poder crear entornos virtuales. Para ello, escribimos:
 
 ```console
 
@@ -122,10 +124,10 @@ Una vez instalado, creamos un entorno virtual llamado mysite y lo activamos:
 
 ```
 
-### Explicación de los comandos
+### Explicación de los comandos (Entorno virtual)
 
 - **python3 -m venv mysite**: Creamos un entorno virtual llamado mysite.
-- **source mysite/bin/activate**: Activamos el entorno virtual esto hay que hacerlo cada vez que queramos trabajar con Django, hay que tener en cuenta que la ruta varia dependiendo de como llames a tu entorno virtual en mi caso lo e llamado mysite pues es mysite/bin/activate si fuera por ejemplo otroNombre seria otroNombre/bin/activate.
+- **source mysite/bin/activate**: Activamos el entorno virtual esto hay que hacerlo cada vez que queramos trabajar con Django, hay que tener en cuenta que la ruta varia dependiendo de como llames a tu entorno virtual en mi caso lo he llamado mysite pues es mysite/bin/activate si fuera por ejemplo otroNombre sería otroNombre/bin/activate.
 - **pip install django**: Instalamos Django.
 - **python -m django --version**: Comprobamos la versión de Django instalada.
 
@@ -137,7 +139,7 @@ Si en la terminal nos aparece (mysite) delante del nombre de nuestro usuario, si
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
-En primer lugar vamos a ver como crear un proyecto Django. Para ello, nos situamos en el directorio donde queremos crear el proyecto y escribimos:
+Lo primero que vamos a ver es cómo crear un proyecto Django. Para ello, nos situamos en el directorio donde queremos crear el proyecto y escribimos:
 
 ```console
 
@@ -186,7 +188,7 @@ Por defecto el fichero settings.py viene configurado de la siguiente manera:
 
 #### Configuración del fichero urls.py
 
-En el fichero urls.py podemos configurar las URLs de nuestro proyecto. En este fichero podemos añadir las URLs de las aplicaciones que vayamos creando.
+En el fichero urls.py podemos configurar las URLs del proyecto. En este fichero se añaden las URLs de las aplicaciones que se van creando.
 
 ## Ejecución del servidor de desarrollo
 
@@ -221,9 +223,9 @@ Para arrancar el servidor de desarrollo, nos situamos en el directorio donde se 
 >
 > El mensaje te está indicando que debes aplicar estas migraciones para que tu proyecto funcione correctamente.
 
-Ahora si todo a ido bien, podemos acceder a nuestro servidor de desarrollo desde un navegador web en la dirección http://127.0.0.1:8000/ en mi caso esa es la dirección, pero puede variar en función de la configuración de nuestro equipo. Si todo ha ido bien, veremos una página de bienvenida de Django.
+Ahora si todo ha ido bien, podemos acceder a nuestro servidor de desarrollo desde un navegador web en la dirección http://127.0.0.1:8000/ en mi caso esa es la dirección, pero puede variar en función de la configuración de nuestro equipo. Si todo ha ido bien, veremos una página de bienvenida de Django.
 
-Ahora bien si queremos que el servidor de desarrollo sea accesible desde cualquier dirección IP y ademas en un puerto determinado, escribimos:
+Ahora bien si queremos que el servidor de desarrollo sea accesible desde cualquier dirección IP y además en un puerto determinado, escribimos:
 
 ```console
 
@@ -250,7 +252,7 @@ Esto nos pedirá un nombre de usuario, una dirección de correo electrónico y u
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
-Ahora que tenemos todo lo necesario para desarrollar nuestra aplicacion web con Django vamos a instalar PyCharm que es un IDE multiplataforma creado por JetBrains. Es uno de los mejores IDEs para proyectos que utilizan el lenguaje de programación Python, primero debemos descargarlo desde la página oficial de [JetBrains](https://www.jetbrains.com/es-es/pycharm/download/#section=linux). Una vez descargado, nos situamos en el directorio donde se encuentra el fichero descargado y escribimos:
+Ahora que tenemos todo lo necesario para desarrollar nuestra aplicación web con Django vamos a instalar PyCharm que es un IDE multiplataforma creado por JetBrains. Es uno de los mejores IDEs para proyectos que utilizan el lenguaje de programación Python, primero debemos descargarlo desde la página oficial de [JetBrains](https://www.jetbrains.com/es-es/pycharm/download/#section=linux). Una vez descargado, nos situamos en el directorio donde se encuentra el fichero descargado y escribimos:
 
 <div style="page-break-after: always;"></div>
 
@@ -317,7 +319,7 @@ Ahora podemos ejecutar PyCharm desde cualquier directorio escribiendo pycharm en
 
 Una vez abierto PyCharm, nos aparecerá una ventana de bienvenida. En ella, podemos crear un proyecto nuevo o abrir uno existente. En nuestro caso, vamos a abrir el proyecto anteriormente creado **mysyte**. Para ello, abrimos la carpeta contenedora del proyecto.
 
-Una vez abierto el proyecto, vamos a configurar el intérprete de Python. Para ello, nos situamos en **File > Settings > Project: mysite > Python Interpreter**. En el desplegable, seleccionamos el intérprete de Python que hemos instalado anteriormente.
+Una vez abierto el proyecto, vamos a configurar el intérprete de Python. Para hacer esto, vamos a **File > Settings > Project: mysite > Python Interpreter**. En el desplegable, seleccionamos el intérprete de Python que hemos instalado anteriormente.
 
 > [!IMPORTANT]
 > Es importante que el intérprete de Python que seleccionemos sea el que hemos instalado en el entorno virtual.
@@ -335,7 +337,7 @@ Lo guardamos y ya podemos ejecutar el servidor de desarrollo de Django desde PyC
 
 Llegados a este punto, tenemos todo lo necesario para empezar a desarrollar nuestra aplicación web con Django. Pero antes de empezar, vamos a ver algunos conceptos básicos de Python.
 
-En primer lugar vamos a crear una aplicación Django. Para ello, nos situamos en el directorio donde se encuentra el fichero manage.py y escribimos:
+Lo primero que vamos a hacer es crear una aplicación Django. Para ello, nos situamos en el directorio donde se encuentra el fichero manage.py y escribimos:
 
 ```console
 
@@ -432,7 +434,7 @@ Ahora vamos a ejecutar el servidor de desarrollo de Django. Y si todo ha ido bie
 
 <div style="page-break-after: always;"></div>
 
-### Sintaxis basica de Python
+### Sintaxis básica de Python
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
@@ -761,7 +763,7 @@ Las funciones de conversión de tipos de datos comunes son:
 - **float()**: Convierte un objeto a un número decimal.
 - **str()**: Convierte un objeto a una cadena.
 
-Y asi con todos los demas tipos de datos, y ahora vamos a ver algunos ejemplos de casting en Python
+Y así con todos los demás tipos de datos, y ahora vamos a ver algunos ejemplos de casting en Python
 
 ```python
 
@@ -842,7 +844,7 @@ Luego tenemos los bucles que son estructuras de control que se utilizan para rep
       print(i)
       i += 1
 
-# for -> Se utiliza para ejecutar un bloque de código un número determinado de veces.
+# for -> Se utiliza para ejecutar con un bloque de código un número determinado de veces.
 
   frutas = ["manzana", "platano", "cereza"]
 
@@ -1131,7 +1133,7 @@ print(x) # 5 por que el 8 esta en la posicion 5
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
-La programación orientada a objetos (POO) es un paradigma de programación que utiliza objetos y sus interacciones para diseñar aplicaciones y programas informáticos. Está basado en varias técnicas, incluyendo herencia, modularidad, polimorfismo , encapsulamiento y abstracción. Su uso se popularizó a principios de la década de 1990. Actualmente es la forma más popular de programar.
+La programación orientada a objetos (POO) es un paradigma de programación que utiliza objetos y sus interacciones para diseñar aplicaciones y programas informáticos. Está basado en varias técnicas, incluyendo herencia, modularidad, polimorfismo , encapsulamiento y abstracción. Su uso se popularizó a principios de la década de 1990. Actualmente, es la forma más popular de programar.
 
 ## Clases y objetos en Python
 
@@ -1171,7 +1173,7 @@ Los atributos son variables que pertenecen a una clase y se utilizan para almace
 
 <div style="page-break-after: always;"></div>
 
-Para acceder a los atributos de un objeto primero creamos un objeto de la clase coche como hemos echo anteriormente y utilizamos la sintaxis objeto.atributo. A continuación, vamos a ver algunos ejemplos de atributos en Python.
+Para acceder a los atributos de un objeto primero creamos un objeto de la clase coche como hemos hecho anteriormente y utilizamos la sintaxis objeto.atributo. A continuación, vamos a ver algunos ejemplos de atributos en Python.
 
 ```python
 
@@ -1211,7 +1213,7 @@ Los métodos son funciones que pertenecen a una clase y se utilizan para realiza
 
 <div style="page-break-after: always;"></div>
 
-Para llamar a un método de un objeto primero creamos un objeto de la clase coche como hemos echo anteriormente y utilizamos la sintaxis objeto.metodo(). A continuación, vamos a ver algunos ejemplos de métodos en Python.
+Para llamar a un método de un objeto primero creamos un objeto de la clase coche como hemos hecho anteriormente y utilizamos la sintaxis objeto.metodo(). A continuación, vamos a ver algunos ejemplos de métodos en Python.
 
 ```python
 
@@ -1362,7 +1364,7 @@ Vamos a crear un ejemplo con todo lo visto para que todo este mas claro.
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
-La herencia es una forma de crear una clase a partir de otra clase. La clase que hereda se llama clase hija y la clase de la que hereda se llama clase padre. Para crear una clase hija, pasamos la clase padre como parámetro en la definición de la clase hija. A continuación, vamos a ver un ejemplo de herencia en Python.
+La herencia es una forma de crear una clase a partir de otra clase. La clase que hereda se llama clase hija y la clase que hereda se llama clase padre. Para crear una clase hija, pasamos la clase padre como parámetro en la definición de la clase hija. A continuación, vamos a ver un ejemplo de herencia en Python.
 
 ```python
 
@@ -1452,7 +1454,7 @@ Por lo tanto, la herencia múltiple debe usarse con cuidado. Esto es opinión pe
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
-La encapsulación es una forma de restringir el acceso a los atributos y métodos de una clase. En Python, podemos restringir el acceso a los atributos y métodos de una clase utilizando el guión bajo como prefijo. A continuación, vamos a ver un ejemplo de encapsulación en Python.
+La encapsulación es una forma de restringir el acceso a los atributos y métodos de una clase. En Python, podemos restringir el acceso a los atributos y métodos de una clase utilizando el guion bajo como prefijo. A continuación, vamos a ver un ejemplo de encapsulación en Python.
 
 > [!NOTE]
 > Para poder acceder a los atributos y métodos de una clase encapsulada, tendriamos que crear getter y setters para cada atributo como lo e explicado antes para asi poder >acceder a los atributos y métodos de una clase encapsulada.
@@ -1518,7 +1520,7 @@ La abstracción es una forma de ocultar los detalles de implementación y mostra
 
 ```
 
-Las clases abstractas suelen ser clases que no se pueden instanciar y que se utilizan como clases padre. Si intentamos instanciar una clase abstracta, se producirá un error. A continuación, vamos a ver un ejemplo de abstracción en Python.
+Las clases abstractas suelen ser clases que no se pueden instanciar y que se utilizan como clases padres. Si intentamos instanciar una clase abstracta, se producirá un error. A continuación, vamos a ver un ejemplo de abstracción en Python.
 
 ```python
 
@@ -1530,7 +1532,7 @@ Las clases abstractas suelen ser clases que no se pueden instanciar y que se uti
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
-El polimorfismo es una forma de utilizar una clase de manera diferente. Para entender esto facilmente podriamos usar la funcion len(). La función len() se puede utilizar con muchos tipos de datos diferentes, como cadenas, listas, tuplas, etc. Pero se interpreta de manera diferente por ejemplo para una lista, devolverá el total de elementos presentes y para una cadena, y el total de caracteres presentes.
+El polimorfismo es una forma de utilizar una clase de manera diferente. Para entender esto fácilmente podríamos usar la funcion len(). La función len() se puede utilizar con muchos tipos de datos diferentes, como cadenas, listas, tuplas, etc. Pero se interpreta de manera diferente por ejemplo para una lista, devolverá el total de elementos presentes y para una cadena, y el total de caracteres presentes.
 
 <div style="page-break-after: always;"></div>
 
@@ -1697,4 +1699,46 @@ Los métodos de clase son métodos que se utilizan sin crear un objeto. Para cre
 
 ```
 
-Un metodo de clase pueden ser llamados tanto en la clase como en las instancias de la clase. A diferencia de los métodos de instancia, que tienen acceso a la instancia específica y a sus atributos, los métodos de clase tienen acceso a la clase y a sus atributos. No pueden modificar el estado de una instancia específica de la clase, pero pueden modificar el estado de la clase.
+Un método de clase puede ser llamado tanto en la clase como en las instancias de la clase. A diferencia de los métodos de instancia, que tienen acceso a la instancia específica y a sus atributos, los métodos de clase tienen acceso a la clase y a sus atributos. No pueden modificar el estado de una instancia específica de la clase, pero pueden modificar el estado de la clase.
+
+# CRUD en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+CRUD es el acrónimo de Create, Read, Update y Delete. CRUD son las cuatro operaciones básicas que se pueden hacer en una base de datos. En este caso vamos a ver como hacer un CRUD en Python utilizando una base de datos MySQL.
+
+## Crear una base de datos en Python (MySQL)
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Lo primero que tenemos que hacer es activar el entorno virtual que creamos al principio de este documento te lo dejo por aquí por si no te acuerdas de como se hace y asegurate de desactivar el entorno virtual si esque lo tienes activado escribiendo deactivate en la terminal.
+
+```bash
+
+ source venv/bin/activate
+
+```
+
+Lucgo tenemos que instalar el paquete mysql-connector-python. Para ello, escribimos:
+
+```bash
+
+ pip install mysql-connector-python
+
+```
+
+Hay algunos paquetes que pueden ser interesantes de instalar para poder trabajar con bases de datos. Para ello, escribimos:
+
+```bash
+
+ pip install Pillow
+ pip install openpyxl
+ pip install pandas
+
+```
+
+- **Pillow**: Se utiliza para trabajar con imágenes.
+- **openpyxl**: Se utiliza para trabajar con archivos de Excel.
+- **pandas**: Se utiliza para trabajar con archivos CSV. (Comma Separated Values)
+
+Lo siguiente que tenemos que tener en cuenta es crear el proyecto con el comando django-admin startproject lo siguiente que tenemos que crear es una aplicación con el comando python manage.py startapp. Puedes echar un vistazo a [Creación de un proyecto](#creación-de-un-proyecto) para recordar como hacerlo si lo necesitas.

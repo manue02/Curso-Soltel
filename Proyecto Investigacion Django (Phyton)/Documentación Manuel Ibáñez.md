@@ -22,7 +22,7 @@ modified: "2023-11-21T13:20:29.033Z"
       - [Configuración del fichero settings.py](#configuración-del-fichero-settingspy)
       - [Configuración del fichero urls.py](#configuración-del-fichero-urlspy)
   - [Ejecución del servidor de desarrollo](#ejecución-del-servidor-de-desarrollo)
-      - [Primeros pasos con Django (Entrar con el usuario admin)](#primeros-pasos-con-django-entrar-con-el-usuario-admin)
+    - [Primeros pasos con Django (Entrar con el usuario admin)](#primeros-pasos-con-django-entrar-con-el-usuario-admin)
   - [Instalación del IDE PyCharm](#instalación-del-ide-pycharm)
     - [Configuración de PyCharm](#configuración-de-pycharm)
   - [Primeros pasos con Python (Hola Mundo)](#primeros-pasos-con-python-hola-mundo)
@@ -58,7 +58,9 @@ modified: "2023-11-21T13:20:29.033Z"
   - [Métodos estáticos en Python](#métodos-estáticos-en-python)
   - [Métodos de clase en Python](#métodos-de-clase-en-python)
 - [CRUD en Python](#crud-en-python)
-  - [Crear una base de datos en Python (MySQL)](#crear-una-base-de-datos-en-python-mysql)
+  - [Preparando el entorno (MySQL)](#preparando-el-entorno-mysql)
+  - [Crear la base de datos en MySQL](#crear-la-base-de-datos-en-mysql)
+    - [Conexión a la base de datos en Python](#conexión-a-la-base-de-datos-en-python)
 
 <div style="page-break-after: always;"></div>
 
@@ -1707,7 +1709,7 @@ Un método de clase puede ser llamado tanto en la clase como en las instancias d
 
 CRUD es el acrónimo de Create, Read, Update y Delete. CRUD son las cuatro operaciones básicas que se pueden hacer en una base de datos. En este caso vamos a ver como hacer un CRUD en Python utilizando una base de datos MySQL.
 
-## Crear una base de datos en Python (MySQL)
+## Preparando el entorno (MySQL)
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
@@ -1742,3 +1744,79 @@ Hay algunos paquetes que pueden ser interesantes de instalar para poder trabajar
 - **pandas**: Se utiliza para trabajar con archivos CSV. (Comma Separated Values)
 
 Lo siguiente que tenemos que tener en cuenta es crear el proyecto con el comando django-admin startproject lo siguiente que tenemos que crear es una aplicación con el comando python manage.py startapp. Puedes echar un vistazo a [Creación de un proyecto](#creación-de-un-proyecto) para recordar como hacerlo si lo necesitas.
+
+## Crear la base de datos en MySQL
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Lo primero que tenemos que hacer es crear la base de datos en MySQL. Voy a dejar por aquí el script para crear la base de datos y la tabla que vamos a utilizar lo voy a dejar en el repositorio por si te interesa descargarlo.
+
+```sql
+SET @old_autocommit=@@autocommit;
+
+CREATE DATABASE `DAW2` DEFAULT CHARACTER SET utf8mb4;
+
+USE `DAW2`;
+
+DROP TABLE IF EXISTS `Estudiante`;
+
+```
+
+<div style="page-break-after: always;"></div>
+
+```sql
+CREATE TABLE `Estudiante` (
+  `nif` varchar(9) UNIQUE NOT NULL,
+  `nombre_apellido` varchar(50) NOT NULL,
+  `edad` tinyint NOT NULL,
+  `carrera` varchar(50) NOT NULL,
+  `universidad` varchar(50) NOT NULL,
+  PRIMARY KEY PK_nif (`NIF`)
+  INDEX `IDX_Estudiante_Nombre` (`nombre_apellido`),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+COMMENT 'Tabla que almacena los estudiantes de la universidad';
+
+INSERT INTO `Estudiante` VALUES (1,'Juan Perez',20,'Informatica','Universidad de Sevilla');
+INSERT INTO `Estudiante` VALUES (2,'Maria Lopez',21,'Medicina','Universidad de Sevilla');
+
+DROP TABLE IF EXISTS `Curso`;
+
+CREATE TABLE `Curso` (
+  `cine` MEDIUMINT NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `creditos` INT(11) NOT NULL,
+  `profesor` varchar(50) NOT NULL,
+  `universidad` varchar(50) NOT NULL,
+  PRIMARY KEY PK_cine (`cine`)
+  INDEX `IDX_Curso_Nombre` (`nombre`),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+COMMENT 'Tabla que almacena los cursos de la universidad';
+
+INSERT INTO `Curso` VALUES (1,'Programacion',6,'Juan Perez','Universidad de Sevilla');
+INSERT INTO `Curso` VALUES (2,'Matematicas',6,'Maria Lopez','Universidad de Sevilla');
+
+DROP TABLE IF EXISTS `EstudianteCurso`;
+
+CREATE TABLE `EstudianteCurso` (
+  `nif` varchar(9) UNIQUE NOT NULL,
+  `cine`MEDIUMINT NOT NULL,
+  PRIMARY KEY PK_nif (`NIF`),
+  PRIMARY KEY PK_cine (`cine`),
+  FOREIGN KEY FK_nif (`nif`) REFERENCES `Estudiante` (`nif`) ON UPDATE CASCADE,
+  FOREIGN KEY FK_cine (`cine`) REFERENCES `Curso` (`cine`) ON UPDATE CASCADE,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+COMMENT 'Tabla intermedia entre Estudiante y Curso';
+
+```
+
+### Conexión a la base de datos en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Lo primero que tenemos que hacer es importar el paquete mysql.connector. Para ello, escribimos:
+
+```python
+
+ import mysql.connector
+
+```

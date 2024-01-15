@@ -61,8 +61,8 @@ modified: "2023-11-21T13:20:29.033Z"
   - [Preparando el entorno (Instalación de paquetes)](#preparando-el-entorno-instalación-de-paquetes)
   - [Creando el directorio del proyecto (Crud)](#creando-el-directorio-del-proyecto-crud)
   - [Creando el modelo en Python](#creando-el-modelo-en-python)
+    - [Configuración de la base de datos en Python](#configuración-de-la-base-de-datos-en-python)
   - [Crear la base de datos en MySQL](#crear-la-base-de-datos-en-mysql)
-    - [Conexión a la base de datos en Python](#conexión-a-la-base-de-datos-en-python)
 
 <div style="page-break-after: always;"></div>
 
@@ -1847,6 +1847,8 @@ from ProyectoCrud import Estudiante, Curso
 > [!NOTE]
 > Tenemos que tener en cuenta que no hace falta nada mas ya que Django se encarga de los getters y setters y de los constructores y de todo lo que necesitemos.
 
+### Configuración de la base de datos en Python
+
 Ahora lo que tenemos que hacer es editar el archivo settings.py del proyecto y añadir la configuración de la base de datos. Para ello, escribimos:
 
 ```python
@@ -1940,15 +1942,3 @@ CREATE TABLE `EstudianteCurso` (
 ```
 
 <div style="page-break-after: always;"></div>
-
-### Conexión a la base de datos en Python
-
-[Tabla de contenidos](#tabla-de-contenidos)
-
-Lo primero que tenemos que hacer es importar el paquete mysql.connector. Para ello, escribimos:
-
-```python
-
- import mysql.connector
-
-```

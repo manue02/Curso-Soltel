@@ -38,10 +38,9 @@ CREATE TABLE `Estudiante` (
   `edad` tinyint NOT NULL,
   `carrera` varchar(50) NOT NULL,
   `universidad` varchar(50) NOT NULL,
-  PRIMARY KEY PK_nif (`NIF`)
-  INDEX `IDX_Estudiante_Nombre` (`nombre_apellido`),
+  PRIMARY KEY PK_nif (`NIF`),
+  INDEX IDX_Estudiante_Nombre (nombre_apellido)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-COMMENT 'Tabla que almacena los estudiantes de la universidad';
 
 --
 -- Dumping data for table `Estudiante`
@@ -63,10 +62,9 @@ CREATE TABLE `Curso` (
   `creditos` INT(11) NOT NULL,
   `profesor` varchar(50) NOT NULL,
   `universidad` varchar(50) NOT NULL,
-  PRIMARY KEY PK_cine (`cine`)
-  INDEX `IDX_Curso_Nombre` (`nombre`),
+  PRIMARY KEY PK_cine (`cine`),
+  INDEX IDX_Curso_Nombre (nombre)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-COMMENT 'Tabla que almacena los cursos de la universidad';
 
 --
 -- Dumping data for table `Curso`
@@ -74,7 +72,6 @@ COMMENT 'Tabla que almacena los cursos de la universidad';
 
 INSERT INTO `Curso` VALUES (1,'Programacion',6,'Juan Perez','Universidad de Sevilla');
 INSERT INTO `Curso` VALUES (2,'Matematicas',6,'Maria Lopez','Universidad de Sevilla');
-
 
 --
 -- Table structure for table `EstudianteCurso`
@@ -86,11 +83,10 @@ CREATE TABLE `EstudianteCurso` (
   `nif` varchar(9) UNIQUE NOT NULL,
   `cine`MEDIUMINT NOT NULL,
   PRIMARY KEY PK_nif (`NIF`),
-  PRIMARY KEY PK_cine (`cine`),
   FOREIGN KEY FK_nif (`nif`) REFERENCES `Estudiante` (`nif`) ON UPDATE CASCADE,
-  FOREIGN KEY FK_cine (`cine`) REFERENCES `Curso` (`cine`) ON UPDATE CASCADE,
+  FOREIGN KEY FK_cine (`cine`) REFERENCES `Curso` (`cine`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-COMMENT 'Tabla intermedia entre Estudiante y Curso';
+
 --
 -- Dumping data for table `EstudianteCurso`
 --

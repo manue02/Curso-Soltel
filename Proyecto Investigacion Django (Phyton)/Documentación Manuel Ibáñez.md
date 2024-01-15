@@ -22,7 +22,7 @@ modified: "2023-11-21T13:20:29.033Z"
       - [Configuración del fichero settings.py](#configuración-del-fichero-settingspy)
       - [Configuración del fichero urls.py](#configuración-del-fichero-urlspy)
   - [Ejecución del servidor de desarrollo](#ejecución-del-servidor-de-desarrollo)
-    - [Primeros pasos con Django (Entrar con el usuario admin)](#primeros-pasos-con-django-entrar-con-el-usuario-admin)
+      - [Primeros pasos con Django (Entrar con el usuario admin)](#primeros-pasos-con-django-entrar-con-el-usuario-admin)
   - [Instalación del IDE PyCharm](#instalación-del-ide-pycharm)
     - [Configuración de PyCharm](#configuración-de-pycharm)
   - [Primeros pasos con Python (Hola Mundo)](#primeros-pasos-con-python-hola-mundo)
@@ -58,7 +58,9 @@ modified: "2023-11-21T13:20:29.033Z"
   - [Métodos estáticos en Python](#métodos-estáticos-en-python)
   - [Métodos de clase en Python](#métodos-de-clase-en-python)
 - [CRUD en Python](#crud-en-python)
-  - [Preparando el entorno (MySQL)](#preparando-el-entorno-mysql)
+  - [Preparando el entorno (Instalación de paquetes)](#preparando-el-entorno-instalación-de-paquetes)
+  - [Creando el directorio del proyecto (Crud)](#creando-el-directorio-del-proyecto-crud)
+  - [Creando el modelo en Python](#creando-el-modelo-en-python)
   - [Crear la base de datos en MySQL](#crear-la-base-de-datos-en-mysql)
     - [Conexión a la base de datos en Python](#conexión-a-la-base-de-datos-en-python)
 
@@ -1709,16 +1711,14 @@ Un método de clase puede ser llamado tanto en la clase como en las instancias d
 
 CRUD es el acrónimo de Create, Read, Update y Delete. CRUD son las cuatro operaciones básicas que se pueden hacer en una base de datos. En este caso vamos a ver como hacer un CRUD en Python utilizando una base de datos MySQL.
 
-## Preparando el entorno (MySQL)
+## Preparando el entorno (Instalación de paquetes)
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
 Lo primero que tenemos que hacer es activar el entorno virtual que creamos al principio de este documento te lo dejo por aquí por si no te acuerdas de como se hace y asegurate de desactivar el entorno virtual si esque lo tienes activado escribiendo deactivate en la terminal.
 
 ```bash
-
  source venv/bin/activate
-
 ```
 
 Lucgo tenemos que instalar el paquete mysql-connector-python. Para ello, escribimos:
@@ -1743,7 +1743,141 @@ Hay algunos paquetes que pueden ser interesantes de instalar para poder trabajar
 - **openpyxl**: Se utiliza para trabajar con archivos de Excel.
 - **pandas**: Se utiliza para trabajar con archivos CSV. (Comma Separated Values)
 
-Lo siguiente que tenemos que tener en cuenta es crear el proyecto con el comando django-admin startproject lo siguiente que tenemos que crear es una aplicación con el comando python manage.py startapp. Puedes echar un vistazo a [Creación de un proyecto](#creación-de-un-proyecto) para recordar como hacerlo si lo necesitas.
+## Creando el directorio del proyecto (Crud)
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Lo siguiente que tenemos que tener en cuenta es crear el proyecto con el comando django-admin startproject y luego de hacer eso lo siguiente que tenemos que crear es una aplicación con el comando python manage.py startapp. Puedes echar un vistazo a [Creación de un proyecto](#creación-de-un-proyecto) para recordar como hacerlo si lo necesitas.
+
+En mi caso e creado el Proyecto ProyectoCrud y luego e creado dos vistas una para el curso y otra para el estudiante. Deberiamos tener algo como esto en el directorio de nuestro proyecto.
+
+```console
+    ProyectoCrud
+    ├── ProyectoCrud
+    │   ├── __init__.py
+    │   ├── asgi.py
+    │   ├── settings.py
+    │   ├── urls.py
+    │   └── wsgi.py
+    ├── Curso
+    │   ├── __init__.py
+    │   ├── admin.py
+    │   ├── apps.py
+    │   ├── migrations
+    │   │   └── __init__.py
+    │   ├── models.py
+    │   ├── tests.py
+    │   └── views.py
+    ├── Estudiante
+    │   └── ... (lo mismo que en Curso)
+    ├── EstudianteCurso
+    │   └── ... (lo mismo que en Curso)
+    └── manage.py
+```
+
+## Creando el modelo en Python
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Lo primero que tenemos que añadir es en el archivo settings.py del directorio raiz de nuestro proyecto es añadir la aplicación que hemos creado en INSTALLED_APPS.
+
+```python
+
+ INSTALLED_APPS = [
+     'django.contrib.admin',
+     'django.contrib.auth',
+     'django.contrib.contenttypes',
+     'django.contrib.sessions',
+     'django.contrib.messages',
+     'django.contrib.staticfiles',
+     'Estudiante',
+     'Curso',
+     'EstudianteCurso',
+ ]
+
+```
+
+El siguiente paso seria crear el modelo en el archivo models.py de cada aplicación que hemos creado. En mi caso e creado tres modelos uno para el estudiante y otro para el curso y otro para la relacion entre las dos entidades que es EstudianteCurso. Deberiamos tener algo como esto en el archivo models.py en mi caso esta dentro del directorio de la aplicación Estudiante, Curso o EstudianteCurso. En mi caso tengo que añadir la clase Estudiante, Curso y EstudianteCurso en el archivo models.py de cada aplicación.
+
+```python
+ from django.db import models
+
+ class Estudiante(models.Model):
+     nif = models.CharField(max_length=9, primary_key=True)
+     nombre_apellido = models.CharField(max_length=50)
+     edad = models.IntegerField()
+     carrera = models.CharField(max_length=50)
+     universidad = models.CharField(max_length=50)
+
+     def __str__(self):
+         return self.nombre_apellido
+```
+
+<div style="page-break-after: always;"></div>
+
+```python
+from django.db import models
+
+ class Curso(models.Model):
+     cine = models.IntegerField(primary_key=True)
+     nombre = models.CharField(max_length=50)
+     creditos = models.IntegerField()
+     profesor = models.CharField(max_length=50)
+     universidad = models.CharField(max_length=50)
+
+     def __str__(self):
+         return self.nombre
+```
+
+> [!WARNING]
+> En el caso de la clase EstudianteCurso tenemos que tener en cuenta que tenemos que importar las clases Estudiante y Curso para poder utilizarlas en la clase EstudianteCurso.
+> Para ello, escribimos:
+
+```python
+from ProyectoCrud import Estudiante, Curso
+
+ class EstudianteCurso(models.Model):
+        nif = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
+        cine = models.ForeignKey(Curso, on_delete=models.CASCADE)
+
+     def __str__(self):
+            return self.nif.nombre_apellido + " - " + self.cine.nombre
+```
+
+> [!NOTE]
+> Tenemos que tener en cuenta que no hace falta nada mas ya que Django se encarga de los getters y setters y de los constructores y de todo lo que necesitemos.
+
+Ahora lo que tenemos que hacer es editar el archivo settings.py del proyecto y añadir la configuración de la base de datos. Para ello, escribimos:
+
+```python
+ DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.mysql', # Motor de la base de datos
+         'NAME': 'DAW2', # Nombre de la base de datos
+         'USER': 'root', # Usuario de la base de datos
+         'PASSWORD': 'root', # Contraseña de la base de datos
+         'HOST': 'localhost', # Host de la base de datos
+         'PORT': '3306', # Puerto de la base de datos
+     }
+ }
+```
+
+Y por último lo que tenemos que hacer es crear las migraciones y aplicarlas. Para ello, escribimos:
+
+```bash
+
+ python manage.py makemigrations
+ python manage.py migrate
+
+```
+
+Despliega la aplicación en el servidor local para comprobar que todo funciona correctamente. Para ello, escribimos:
+
+```bash
+
+ python manage.py runserver
+
+```
 
 ## Crear la base de datos en MySQL
 
@@ -1771,10 +1905,9 @@ CREATE TABLE `Estudiante` (
   `edad` tinyint NOT NULL,
   `carrera` varchar(50) NOT NULL,
   `universidad` varchar(50) NOT NULL,
-  PRIMARY KEY PK_nif (`NIF`)
-  INDEX `IDX_Estudiante_Nombre` (`nombre_apellido`),
+  PRIMARY KEY PK_nif (`NIF`),
+  INDEX IDX_Estudiante_Nombre (nombre_apellido)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-COMMENT 'Tabla que almacena los estudiantes de la universidad';
 
 INSERT INTO `Estudiante` VALUES (1,'Juan Perez',20,'Informatica','Universidad de Sevilla');
 INSERT INTO `Estudiante` VALUES (2,'Maria Lopez',21,'Medicina','Universidad de Sevilla');
@@ -1787,10 +1920,9 @@ CREATE TABLE `Curso` (
   `creditos` INT(11) NOT NULL,
   `profesor` varchar(50) NOT NULL,
   `universidad` varchar(50) NOT NULL,
-  PRIMARY KEY PK_cine (`cine`)
-  INDEX `IDX_Curso_Nombre` (`nombre`),
+  PRIMARY KEY PK_cine (`cine`),
+  INDEX IDX_Curso_Nombre (nombre)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-COMMENT 'Tabla que almacena los cursos de la universidad';
 
 INSERT INTO `Curso` VALUES (1,'Programacion',6,'Juan Perez','Universidad de Sevilla');
 INSERT INTO `Curso` VALUES (2,'Matematicas',6,'Maria Lopez','Universidad de Sevilla');
@@ -1801,13 +1933,13 @@ CREATE TABLE `EstudianteCurso` (
   `nif` varchar(9) UNIQUE NOT NULL,
   `cine`MEDIUMINT NOT NULL,
   PRIMARY KEY PK_nif (`NIF`),
-  PRIMARY KEY PK_cine (`cine`),
   FOREIGN KEY FK_nif (`nif`) REFERENCES `Estudiante` (`nif`) ON UPDATE CASCADE,
-  FOREIGN KEY FK_cine (`cine`) REFERENCES `Curso` (`cine`) ON UPDATE CASCADE,
+  FOREIGN KEY FK_cine (`cine`) REFERENCES `Curso` (`cine`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-COMMENT 'Tabla intermedia entre Estudiante y Curso';
 
 ```
+
+<div style="page-break-after: always;"></div>
 
 ### Conexión a la base de datos en Python
 

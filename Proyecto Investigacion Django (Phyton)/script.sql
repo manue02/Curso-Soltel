@@ -30,8 +30,10 @@ USE `DAW2`;
 -- Table structure for table `Estudiante`
 --
 
+-- Si existe la tabla la borramos
 DROP TABLE IF EXISTS `Estudiante`;
 
+-- Creamos la tabla
 CREATE TABLE `Estudiante` (
   `nif` varchar(9) UNIQUE NOT NULL,
   `nombre_apellido` varchar(50) NOT NULL,
@@ -46,47 +48,8 @@ CREATE TABLE `Estudiante` (
 -- Dumping data for table `Estudiante`
 --
 
+-- Insertamos datos
+
 INSERT INTO `Estudiante` VALUES (1,'Juan Perez',20,'Informatica','Universidad de Sevilla');
 INSERT INTO `Estudiante` VALUES (2,'Maria Lopez',21,'Medicina','Universidad de Sevilla');
 
-
---
--- Table structure for table `Curso`
---
-
-DROP TABLE IF EXISTS `Curso`;
-
-CREATE TABLE `Curso` (
-  `cine` MEDIUMINT NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `creditos` INT(11) NOT NULL,
-  `profesor` varchar(50) NOT NULL,
-  `universidad` varchar(50) NOT NULL,
-  PRIMARY KEY PK_cine (`cine`),
-  INDEX IDX_Curso_Nombre (nombre)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `Curso`
---
-
-INSERT INTO `Curso` VALUES (1,'Programacion',6,'Juan Perez','Universidad de Sevilla');
-INSERT INTO `Curso` VALUES (2,'Matematicas',6,'Maria Lopez','Universidad de Sevilla');
-
---
--- Table structure for table `EstudianteCurso`
---
-
-DROP TABLE IF EXISTS `EstudianteCurso`;
-
-CREATE TABLE `EstudianteCurso` (
-  `nif` varchar(9) UNIQUE NOT NULL,
-  `cine`MEDIUMINT NOT NULL,
-  PRIMARY KEY PK_nif (`NIF`),
-  FOREIGN KEY FK_nif (`nif`) REFERENCES `Estudiante` (`nif`) ON UPDATE CASCADE,
-  FOREIGN KEY FK_cine (`cine`) REFERENCES `Curso` (`cine`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `EstudianteCurso`
---

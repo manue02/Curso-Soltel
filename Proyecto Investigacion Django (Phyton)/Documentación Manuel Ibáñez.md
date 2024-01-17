@@ -14,21 +14,27 @@ modified: "2023-11-21T13:20:29.033Z"
 
 - [Documentación Django (Phyton)](#documentación-django-phyton)
 - [Tabla de contenidos](#tabla-de-contenidos)
+- [Instalación del IDE PyCharm](#instalación-del-ide-pycharm)
+  - [Configuración de PyCharm](#configuración-de-pycharm)
 - [Introducción](#introducción)
   - [Instalación en Linux (Entorno virtual + Django + Python)](#instalación-en-linux-entorno-virtual--django--python)
     - [Explicación de los comandos (Entorno virtual)](#explicación-de-los-comandos-entorno-virtual)
   - [Creación de un proyecto](#creación-de-un-proyecto)
     - [Explicación de los ficheros al crear un proyecto Django](#explicación-de-los-ficheros-al-crear-un-proyecto-django)
       - [Configuración del fichero settings.py](#configuración-del-fichero-settingspy)
-      - [Configuración del fichero urls.py](#configuración-del-fichero-urlspy)
+  - [Primeros pasos en Django (Hola Mundo)](#primeros-pasos-en-django-hola-mundo)
+    - [Introduccion de Django](#introduccion-de-django)
+      - [Modelos en Django](#modelos-en-django)
+      - [Vistas en Django](#vistas-en-django)
+      - [Plantillas en Django](#plantillas-en-django)
+      - [URLs en Django](#urls-en-django)
+    - [Sintaxis básica de Django](#sintaxis-básica-de-django)
   - [Ejecución del servidor de desarrollo](#ejecución-del-servidor-de-desarrollo)
-      - [Primeros pasos con Django (Entrar con el usuario admin)](#primeros-pasos-con-django-entrar-con-el-usuario-admin)
-  - [Instalación del IDE PyCharm](#instalación-del-ide-pycharm)
-    - [Configuración de PyCharm](#configuración-de-pycharm)
-  - [Primeros pasos con Python (Hola Mundo)](#primeros-pasos-con-python-hola-mundo)
-    - [Sintaxis básica de Python](#sintaxis-básica-de-python)
-      - [Variables en Python](#variables-en-python)
-      - [Tipos de datos en Python](#tipos-de-datos-en-python)
+      - [Entrar en la administracion de Django](#entrar-en-la-administracion-de-django)
+      - [Incluir modelos en el panel de administración](#incluir-modelos-en-el-panel-de-administración)
+  - [Sintaxis básica de Python](#sintaxis-básica-de-python)
+    - [Variables en Python](#variables-en-python)
+    - [Tipos de datos en Python](#tipos-de-datos-en-python)
     - [Operadores en Python](#operadores-en-python)
       - [Operadores aritméticos en Python](#operadores-aritméticos-en-python)
       - [Operadores de asignación en Python](#operadores-de-asignación-en-python)
@@ -57,14 +63,99 @@ modified: "2023-11-21T13:20:29.033Z"
   - [Métodos especiales en Python](#métodos-especiales-en-python)
   - [Métodos estáticos en Python](#métodos-estáticos-en-python)
   - [Métodos de clase en Python](#métodos-de-clase-en-python)
-- [CRUD en Python](#crud-en-python)
+- [CRUD en Python con Django](#crud-en-python-con-django)
   - [Preparando el entorno (Instalación de paquetes)](#preparando-el-entorno-instalación-de-paquetes)
   - [Creando el directorio del proyecto (Crud)](#creando-el-directorio-del-proyecto-crud)
-  - [Creando el modelo en Python](#creando-el-modelo-en-python)
+  - [Creando el modelo](#creando-el-modelo)
     - [Configuración de la base de datos en Python](#configuración-de-la-base-de-datos-en-python)
   - [Crear la base de datos en MySQL](#crear-la-base-de-datos-en-mysql)
+  - [Pasos para crear un CRUD en Python con Django (Explicación del código)](#pasos-para-crear-un-crud-en-python-con-django-explicación-del-código)
+    - [Paso 1 Definir las rutas](#paso-1-definir-las-rutas)
 
 <div style="page-break-after: always;"></div>
+
+# Instalación del IDE PyCharm
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Ahora que tenemos todo lo necesario para desarrollar nuestra aplicación web con Django vamos a instalar PyCharm que es un IDE multiplataforma creado por JetBrains. Es uno de los mejores IDEs para proyectos que utilizan el lenguaje de programación Python, primero debemos descargarlo desde la página oficial de [JetBrains](https://www.jetbrains.com/es-es/pycharm/download/#section=linux). Una vez descargado, nos situamos en el directorio donde se encuentra el fichero descargado y escribimos:
+
+<div style="page-break-after: always;"></div>
+
+```console
+
+ $ tar -xzf pycharm-2023.2.5.tar.gz
+
+```
+
+Esto creará un directorio llamado pycharm-2023.2.5 con la siguiente estructura:
+
+```console
+
+ pycharm-2023.2.5/
+     bin/
+     lib/
+     jbr/
+     license/
+     plugins/
+     help/
+     debug-eggs/
+
+```
+
+Ahora para ejecutar PyCharm, nos situamos en el directorio pycharm-2023.2.5/bin y escribimos:
+
+```console
+
+ $ ./pycharm.sh
+
+```
+
+Esto nos abrirá una ventana de bienvenida de PyCharm, donde podemos crear un proyecto nuevo o abrir uno existente.
+
+Es recomendable crear un alias para ejecutar PyCharm desde cualquier directorio. Para ello, abrimos una terminal y escribimos:
+
+```console
+
+ $ sudo nano ~/.bashrc
+
+```
+
+Esto nos abrirá el fichero .bashrc en el editor de texto nano. Ahora debemos añadir la siguiente línea al final del fichero:
+
+```console
+
+ alias pycharm="{tu sitio de instalacion}/pycharm-2023.2.5/bin/pycharm.sh"
+
+```
+
+Ahora guardamos los cambios y cerramos el editor de texto. Para que los cambios surtan efecto, escribimos:
+
+```console
+
+ $ source ~/.bashrc
+
+```
+
+Ahora podemos ejecutar PyCharm desde cualquier directorio escribiendo pycharm en la terminal.
+
+## Configuración de PyCharm
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Una vez abierto PyCharm, nos aparecerá una ventana de bienvenida. En ella, podemos crear un proyecto nuevo o abrir uno existente. En nuestro caso, vamos a abrir el proyecto anteriormente creado **mysyte**. Para ello, abrimos la carpeta contenedora del proyecto.
+
+Una vez abierto el proyecto, vamos a configurar el intérprete de Python. Para hacer esto, vamos a **File > Settings > Project: mysite > Python Interpreter**. En el desplegable, seleccionamos el intérprete de Python que hemos instalado anteriormente.
+
+> [!IMPORTANT]
+> Es importante que el intérprete de Python que seleccionemos sea el que hemos instalado en el entorno virtual.
+> De lo contrario, no nos reconocerá las bibliotecas de Django y asegurarse de encontrar el ejecutable python que hay dentro de la carpeta bin dentro de la carpeta creada al crear el entorno virtual.
+
+Si no aparece en el desplegable activamos el entorno virtual anteriormente creado y nos vamos a la carpeta mysite donde lo hayas creado y hay es donde aparece instalado Django **dentro de la carpeta bin**, debemos añadirlo. Para ello, sin movernos de la ventana Python Interpreter le damos a **Add Interpreter** que debe aparecer al lado. En la ventana que se nos abre, seleccionamos **Add Local Interpreter** y pulsamos en **Existing**. En la siguiente ventana, seleccionamos el intérprete de Python que ya existe y tenemos instalado de antes. En mi caso la ruta en donde e creado mi entorno virtual y instalado Django es en **../Documentos/Pycharm/mysite/bin/python** que es lo que necesitamos para configurar el intérprete y que nos reconozca las bibliotecas de Django.
+
+Ahora vamos a crear un perfil para ello con que ejecutemos el programa nos saldra una ventana para añadir un perfil en el que tendremos que poner el host y el puerto en el que queremos que se ejecute el servidor de desarrollo de Django.
+
+Lo guardamos y ya podemos ejecutar el servidor de desarrollo de Django desde PyCharm.
 
 # Introducción
 
@@ -190,152 +281,7 @@ Por defecto el fichero settings.py viene configurado de la siguiente manera:
 - **DEBUG**: True: Si está activo los errores que se produzcan en la aplicación se verán con todo lujo de detalles en el navegador. Si tenemos la aplicación en producción debería ser False.
 - **ALLOWED_HOSTS**: Es una lista de cadenas que especifica los nombres de host válidos para el sitio.
 
-#### Configuración del fichero urls.py
-
-En el fichero urls.py podemos configurar las URLs del proyecto. En este fichero se añaden las URLs de las aplicaciones que se van creando.
-
-## Ejecución del servidor de desarrollo
-
-[Tabla de contenidos](#tabla-de-contenidos)
-
-Para arrancar el servidor de desarrollo, nos situamos en el directorio donde se encuentra el fichero manage.py y escribimos:
-
-```console
-
- (mysite)$ python manage.py runserver
-
-```
-
-> [!CAUTION]
-> Si al ejecutar el comando de **python manage.py runserver** nos aparece en la consola un mensaje de error como este:
->
-> You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
-> Run 'python manage.py migrate' to apply them.
->
-> Esto significa que tenemos que aplicar las migraciones de la base de datos. Para ello, escribimos:
->
-> ```console
->
-> (mysite)$ python manage.py migrate
->
->
-> ```
->
-> Las migraciones son como una versión controlada de tu base de datos, y Django las usa para crear, modificar y eliminar tablas y sus campos.
->
-> Cuando creas modelos o cambias tus modelos existentes, Django genera estas migraciones. Sin embargo, estos cambios no se reflejan en tu base de datos hasta que apliques las migraciones.
->
-> El mensaje te está indicando que debes aplicar estas migraciones para que tu proyecto funcione correctamente.
-
-Ahora si todo ha ido bien, podemos acceder a nuestro servidor de desarrollo desde un navegador web en la dirección http://127.0.0.1:8000/ en mi caso esa es la dirección, pero puede variar en función de la configuración de nuestro equipo. Si todo ha ido bien, veremos una página de bienvenida de Django.
-
-Ahora bien si queremos que el servidor de desarrollo sea accesible desde cualquier dirección IP y además en un puerto determinado, escribimos:
-
-```console
-
- (mysite)$ python manage.py runserver 0.0.0.0:8000
-
-```
-
-#### Primeros pasos con Django (Entrar con el usuario admin)
-
-Para entrar en el panel de administración de Django, debemos crear un superusuario. Para ello, escribimos:
-
-```console
-
- (mysite)$ python manage.py createsuperuser
-
-```
-
-> [!NOTE]
-> Tienes que estar situado en la carpeta donde se encuentra el fichero manage.py para poder ejecutar el comando.
-
-Esto nos pedirá un nombre de usuario, una dirección de correo electrónico y una contraseña. Una vez creado el superusuario, podemos acceder al panel de administración de Django en la dirección http://127.0.0.1:8000/admin/ en mi caso esa es la dirección, pero puede variar en función de la configuración de nuestro equipo. Si todo ha ido bien, veremos una página de login de Django.
-
-## Instalación del IDE PyCharm
-
-[Tabla de contenidos](#tabla-de-contenidos)
-
-Ahora que tenemos todo lo necesario para desarrollar nuestra aplicación web con Django vamos a instalar PyCharm que es un IDE multiplataforma creado por JetBrains. Es uno de los mejores IDEs para proyectos que utilizan el lenguaje de programación Python, primero debemos descargarlo desde la página oficial de [JetBrains](https://www.jetbrains.com/es-es/pycharm/download/#section=linux). Una vez descargado, nos situamos en el directorio donde se encuentra el fichero descargado y escribimos:
-
-<div style="page-break-after: always;"></div>
-
-```console
-
- $ tar -xzf pycharm-2023.2.5.tar.gz
-
-```
-
-Esto creará un directorio llamado pycharm-2023.2.5 con la siguiente estructura:
-
-```console
-
- pycharm-2023.2.5/
-     bin/
-     lib/
-     jbr/
-     license/
-     plugins/
-     help/
-     debug-eggs/
-
-```
-
-Ahora para ejecutar PyCharm, nos situamos en el directorio pycharm-2023.2.5/bin y escribimos:
-
-```console
-
- $ ./pycharm.sh
-
-```
-
-Esto nos abrirá una ventana de bienvenida de PyCharm, donde podemos crear un proyecto nuevo o abrir uno existente.
-
-Es recomendable crear un alias para ejecutar PyCharm desde cualquier directorio. Para ello, abrimos una terminal y escribimos:
-
-```console
-
- $ sudo nano ~/.bashrc
-
-```
-
-Esto nos abrirá el fichero .bashrc en el editor de texto nano. Ahora debemos añadir la siguiente línea al final del fichero:
-
-```console
-
- alias pycharm="{tu sitio de instalacion}/pycharm-2023.2.5/bin/pycharm.sh"
-
-```
-
-Ahora guardamos los cambios y cerramos el editor de texto. Para que los cambios surtan efecto, escribimos:
-
-```console
-
- $ source ~/.bashrc
-
-```
-
-Ahora podemos ejecutar PyCharm desde cualquier directorio escribiendo pycharm en la terminal.
-
-### Configuración de PyCharm
-
-[Tabla de contenidos](#tabla-de-contenidos)
-
-Una vez abierto PyCharm, nos aparecerá una ventana de bienvenida. En ella, podemos crear un proyecto nuevo o abrir uno existente. En nuestro caso, vamos a abrir el proyecto anteriormente creado **mysyte**. Para ello, abrimos la carpeta contenedora del proyecto.
-
-Una vez abierto el proyecto, vamos a configurar el intérprete de Python. Para hacer esto, vamos a **File > Settings > Project: mysite > Python Interpreter**. En el desplegable, seleccionamos el intérprete de Python que hemos instalado anteriormente.
-
-> [!IMPORTANT]
-> Es importante que el intérprete de Python que seleccionemos sea el que hemos instalado en el entorno virtual.
-> De lo contrario, no nos reconocerá las bibliotecas de Django y asegurarse de encontrar el ejecutable python que hay dentro de la carpeta bin dentro de la carpeta creada al crear el entorno virtual.
-
-Si no aparece en el desplegable activamos el entorno virtual anteriormente creado y nos vamos a la carpeta mysite donde lo hayas creado y hay es donde aparece instalado Django **dentro de la carpeta bin**, debemos añadirlo. Para ello, sin movernos de la ventana Python Interpreter le damos a **Add Interpreter** que debe aparecer al lado. En la ventana que se nos abre, seleccionamos **Add Local Interpreter** y pulsamos en **Existing**. En la siguiente ventana, seleccionamos el intérprete de Python que ya existe y tenemos instalado de antes. En mi caso la ruta en donde e creado mi entorno virtual y instalado Django es en **../Documentos/Pycharm/mysite/bin/python** que es lo que necesitamos para configurar el intérprete y que nos reconozca las bibliotecas de Django.
-
-Ahora vamos a crear un perfil para ello con que ejecutemos el programa nos saldra una ventana para añadir un perfil en el que tendremos que poner el host y el puerto en el que queremos que se ejecute el servidor de desarrollo de Django.
-
-Lo guardamos y ya podemos ejecutar el servidor de desarrollo de Django desde PyCharm.
-
-## Primeros pasos con Python (Hola Mundo)
+## Primeros pasos en Django (Hola Mundo)
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
@@ -438,7 +384,179 @@ Ahora vamos a ejecutar el servidor de desarrollo de Django. Y si todo ha ido bie
 
 <div style="page-break-after: always;"></div>
 
-### Sintaxis básica de Python
+### Introduccion de Django
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Lo primero que tenemos que tener en cuenta es que Django utiliza el lenguaje de programación Python. Por lo tanto, la sintaxis de Django es muy similar a la sintaxis de Python.
+
+Puedes ver un ejemplo de sintaxis en el siguiente enlace [CRUD en Python con Django](#crud-en-python-con-django) para ver como seria un ejemplo de modelo, vista y plantilla, URLs en Django.
+
+#### Modelos en Django
+
+Los modelos en Django son clases de Python que se utilizan para representar las tablas de la base de datos. Los modelos se definen en el fichero models.py de cada aplicación.
+
+#### Vistas en Django
+
+Las vistas en Django son funciones de Python que se utilizan para procesar las peticiones y devolver una respuesta. Las vistas se definen en el fichero views.py de cada aplicación.
+
+A continuación, vamos a ver algunos conceptos básicos de Django.
+
+#### Plantillas en Django
+
+Las plantillas en Django son ficheros HTML que se utilizan para mostrar la información en el navegador. Las plantillas se definen en el directorio templates de cada aplicación.
+
+Django usa HTML estandar para el diseño, pero también tiene su propio lenguaje de plantillas llamado Django Template Language (DTL). Este lenguaje de plantillas nos permite añadir lógica a las plantillas.
+
+Aqui un ejemplo de una plantilla en Django:
+
+```html
+<h1>My Homepage</h1>
+
+<ul>
+	{% for x in mymembers %}
+	<li>{{ x.firstname }} {{ x.lastname }}</li>
+	{% endfor %}
+</ul>
+```
+
+#### URLs en Django
+
+Las URLs en Django se definen en el fichero urls.py de cada aplicación. En este fichero se definen las URLs de las vistas.
+
+### Sintaxis básica de Django
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Vamos a empezar por las variables en Django. Las variables en Django se definen entre llaves dobles {{ }}. Por ejemplo:
+
+```html
+<h1>Mi Pagina</h1>
+
+<p>{{ variable }}</p>
+```
+
+Ahora vamos a ver los bucles en Django. Los bucles en Django se definen entre llaves porcentuales {% %}. Por ejemplo:
+
+```html
+<h1>Mi Pagina</h1>
+
+<ul>
+	{% for x in miembros %}
+	<li>{{ x.nombre }} {{ x.apellidos }}</li>
+	{% endfor %}
+</ul>
+```
+
+Ahora vamos a ver las condicionales en Django. Las condicionales en Django se definen entre llaves porcentuales {% %}. Por ejemplo:
+
+```html
+<h1>Mi pagina</h1>
+
+{% if variable == "Hello" %}
+
+<p>{{ variable }}</p>
+
+{% else %}
+
+<p>Prueba</p>
+
+{% endif %}
+```
+
+Tambien hay comentarios en Django. Los comentarios en Django se definen entre llaves porcentuales {% %}. Por ejemplo:
+
+```html
+<h1>Mi pagina</h1>
+
+{% comment "This is a comment" %}
+
+<p>{{ variable }}</p>
+
+{% endcomment %}
+```
+
+Y por ultimo vamos a ver como incluir plantillas en Django. Al igual que en otros lenguajes de programación, en Django podemos incluir plantillas dentro de otras plantillas. Para ello, utilizamos la etiqueta {% include %}. Por ejemplo:
+
+```html
+<h1>Mi pagina</h1>
+
+{% include "header.html" %}
+```
+
+## Ejecución del servidor de desarrollo
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Para arrancar el servidor de desarrollo, nos situamos en el directorio donde se encuentra el fichero manage.py y escribimos:
+
+```console
+
+ (mysite)$ python manage.py runserver
+
+```
+
+> [!CAUTION]
+> Si al ejecutar el comando de **python manage.py runserver** nos aparece en la consola un mensaje de error como este:
+>
+> You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+> Run 'python manage.py migrate' to apply them.
+>
+> Esto significa que tenemos que aplicar las migraciones de la base de datos. Para ello, escribimos:
+>
+> ```console
+>
+> (mysite)$ python manage.py makemigrations
+> (mysite)$ python manage.py migrate
+>
+> ```
+>
+> Las migraciones son como una versión controlada de tu base de datos, y Django las usa para crear, modificar y eliminar tablas y sus campos.
+>
+> Cuando creas modelos o cambias tus modelos existentes, Django genera estas migraciones. Sin embargo, estos cambios no se reflejan en tu base de datos hasta que apliques las migraciones.
+>
+> El mensaje te está indicando que debes aplicar estas migraciones para que tu proyecto funcione correctamente.
+
+Ahora si todo ha ido bien, podemos acceder a nuestro servidor de desarrollo desde un navegador web en la dirección http://127.0.0.1:8000/ en mi caso esa es la dirección, pero puede variar en función de la configuración de nuestro equipo. Si todo ha ido bien, veremos una página de bienvenida de Django.
+
+Ahora bien si queremos que el servidor de desarrollo sea accesible desde cualquier dirección IP y además en un puerto determinado, escribimos:
+
+```console
+
+ (mysite)$ python manage.py runserver 0.0.0.0:8000
+
+```
+
+#### Entrar en la administracion de Django
+
+Para entrar en el panel de administración de Django, debemos crear un superusuario. Para ello, escribimos:
+
+```console
+
+ (mysite)$ python manage.py createsuperuser
+
+```
+
+> [!NOTE]
+> Tienes que estar situado en la carpeta donde se encuentra el fichero manage.py para poder ejecutar el comando.
+
+Esto nos pedirá un nombre de usuario, una dirección de correo electrónico y una contraseña. Una vez creado el superusuario, podemos acceder al panel de administración de Django en la dirección http://127.0.0.1:8000/admin/ en mi caso esa es la dirección, pero puede variar en función de la configuración de nuestro equipo. Si todo ha ido bien, veremos una página de login de Django.
+
+#### Incluir modelos en el panel de administración
+
+Para incluir modelos en el panel de administración, debemos abrir el fichero admin.py de la aplicación y escribir:
+
+```python
+
+ from django.contrib import admin
+
+ from .models import Question
+
+ admin.site.register(Alumnos) # Incluimos el modelo Alumnos en el panel de administración (la tabla Alumnos)
+
+```
+
+## Sintaxis básica de Python
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
@@ -452,7 +570,7 @@ La sintaxis de Python es muy sencilla y fácil de aprender. En Python, el códig
 
 A continuación, vamos a ver algunos conceptos básicos de Python.
 
-#### Variables en Python
+### Variables en Python
 
 En Python, las variables se crean cuando se les asigna un valor. No es necesario declararlas antes de usarlas o declarar su tipo. El tipo de la variable se determina cuando se le asigna un valor.
 
@@ -505,7 +623,7 @@ Hay nombre de variables que son "Ilegales" en Python, como por ejemplo:
 
 ```
 
-#### Tipos de datos en Python
+### Tipos de datos en Python
 
 En Python, los datos se pueden almacenar en diferentes tipos de variables. Los tipos de datos más comunes son:
 
@@ -1705,7 +1823,7 @@ Los métodos de clase son métodos que se utilizan sin crear un objeto. Para cre
 
 Un método de clase puede ser llamado tanto en la clase como en las instancias de la clase. A diferencia de los métodos de instancia, que tienen acceso a la instancia específica y a sus atributos, los métodos de clase tienen acceso a la clase y a sus atributos. No pueden modificar el estado de una instancia específica de la clase, pero pueden modificar el estado de la clase.
 
-# CRUD en Python
+# CRUD en Python con Django
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
@@ -1715,17 +1833,19 @@ CRUD es el acrónimo de Create, Read, Update y Delete. CRUD son las cuatro opera
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
-Lo primero que tenemos que hacer es activar el entorno virtual que creamos al principio de este documento te lo dejo por aquí por si no te acuerdas de como se hace y asegurate de desactivar el entorno virtual si esque lo tienes activado escribiendo deactivate en la terminal.
+Lo primero que tenemos que hacer es activar el entorno virtual que creamos al principio de este documento te lo dejo por aquí por si no te acuerdas de como se hace [Explicación de los comandos (Entorno virtual)](#explicación-de-los-comandos-entorno-virtual) y asegurate de desactivar el entorno virtual si esque lo tienes activado escribiendo deactivate en la terminal.
 
 ```bash
  source venv/bin/activate
 ```
 
-Lucgo tenemos que instalar el paquete mysql-connector-python. Para ello, escribimos:
+Lucgo tenemos que instalar el paquete mysql-connector-python y tambien mysqlclient. Para ello, escribimos:
 
 ```bash
 
  pip install mysql-connector-python
+
+ pip install mysqlclient
 
 ```
 
@@ -1749,33 +1869,29 @@ Hay algunos paquetes que pueden ser interesantes de instalar para poder trabajar
 
 Lo siguiente que tenemos que tener en cuenta es crear el proyecto con el comando django-admin startproject y luego de hacer eso lo siguiente que tenemos que crear es una aplicación con el comando python manage.py startapp. Puedes echar un vistazo a [Creación de un proyecto](#creación-de-un-proyecto) para recordar como hacerlo si lo necesitas.
 
-En mi caso e creado el Proyecto ProyectoCrud y luego e creado dos vistas una para el curso y otra para el estudiante. Deberiamos tener algo como esto en el directorio de nuestro proyecto.
+En mi caso e creado el Proyecto ProyectoCrud y luego e creado una vista llamada Daw2 en la aplicación ProyectoCrud. Si todo ha ido bien deberiamos tener algo como esto:
 
-```console
-    ProyectoCrud
-    ├── ProyectoCrud
-    │   ├── __init__.py
-    │   ├── asgi.py
-    │   ├── settings.py
-    │   ├── urls.py
-    │   └── wsgi.py
-    ├── Curso
-    │   ├── __init__.py
-    │   ├── admin.py
-    │   ├── apps.py
-    │   ├── migrations
-    │   │   └── __init__.py
-    │   ├── models.py
-    │   ├── tests.py
-    │   └── views.py
-    ├── Estudiante
-    │   └── ... (lo mismo que en Curso)
-    ├── EstudianteCurso
-    │   └── ... (lo mismo que en Curso)
-    └── manage.py
+```bash
+ ProyectoCrud
+ ├── ProyectoCrud
+ │   ├── __init__.py
+ │   ├── asgi.py
+ │   ├── settings.py
+ │   ├── urls.py
+ │   └── wsgi.py
+ ├─── Daw2
+ │    ├── __init__.py
+ │    ├── admin.py
+ │    ├── apps.py
+ │    ├── migrations
+ │    │   └── __init__.py
+ │    ├── models.py
+ │    ├── tests.py
+ │    └── views.py
+ └── manage.py
 ```
 
-## Creando el modelo en Python
+## Creando el modelo
 
 [Tabla de contenidos](#tabla-de-contenidos)
 
@@ -1790,14 +1906,14 @@ Lo primero que tenemos que añadir es en el archivo settings.py del directorio r
      'django.contrib.sessions',
      'django.contrib.messages',
      'django.contrib.staticfiles',
-     'Estudiante',
-     'Curso',
-     'EstudianteCurso',
+     'Daw2',
  ]
 
 ```
 
-El siguiente paso seria crear el modelo en el archivo models.py de cada aplicación que hemos creado. En mi caso e creado tres modelos uno para el estudiante y otro para el curso y otro para la relacion entre las dos entidades que es EstudianteCurso. Deberiamos tener algo como esto en el archivo models.py en mi caso esta dentro del directorio de la aplicación Estudiante, Curso o EstudianteCurso. En mi caso tengo que añadir la clase Estudiante, Curso y EstudianteCurso en el archivo models.py de cada aplicación.
+El siguiente paso seria crear el modelo en el archivo models.py de cada tabla que tenemos en nuestra base de datos. En mi caso e creado una clase una para el estudiante. Este archivo en mi caso se encuentra en la aplicación Daw2.
+
+Y nos quedaria algo como esto:
 
 ```python
  from django.db import models
@@ -1814,35 +1930,6 @@ El siguiente paso seria crear el modelo en el archivo models.py de cada aplicaci
 ```
 
 <div style="page-break-after: always;"></div>
-
-```python
-from django.db import models
-
- class Curso(models.Model):
-     cine = models.IntegerField(primary_key=True)
-     nombre = models.CharField(max_length=50)
-     creditos = models.IntegerField()
-     profesor = models.CharField(max_length=50)
-     universidad = models.CharField(max_length=50)
-
-     def __str__(self):
-         return self.nombre
-```
-
-> [!WARNING]
-> En el caso de la clase EstudianteCurso tenemos que tener en cuenta que tenemos que importar las clases Estudiante y Curso para poder utilizarlas en la clase EstudianteCurso.
-> Para ello, escribimos:
-
-```python
-from ProyectoCrud import Estudiante, Curso
-
- class EstudianteCurso(models.Model):
-        nif = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
-        cine = models.ForeignKey(Curso, on_delete=models.CASCADE)
-
-     def __str__(self):
-            return self.nif.nombre_apellido + " - " + self.cine.nombre
-```
 
 > [!NOTE]
 > Tenemos que tener en cuenta que no hace falta nada mas ya que Django se encarga de los getters y setters y de los constructores y de todo lo que necesitemos.
@@ -1863,6 +1950,18 @@ Ahora lo que tenemos que hacer es editar el archivo settings.py del proyecto y a
      }
  }
 ```
+
+Ademas de eso tambien tenemos que añadir en el archivo settings.py del proyecto estas dos bibliotecas. Para ello, escribimos:
+
+```python
+ import pymysql
+
+pymysql.install_as_MySQLdb()
+```
+
+> [!TIP]
+> Son necesarias para poder utilizar la base de datos MySQL.
+> Son dos bibliotecas diferentes que se utilizan para trabajar con MySQL en Python.
 
 Y por último lo que tenemos que hacer es crear las migraciones y aplicarlas. Para ello, escribimos:
 
@@ -1887,58 +1986,38 @@ Despliega la aplicación en el servidor local para comprobar que todo funciona c
 
 Lo primero que tenemos que hacer es crear la base de datos en MySQL. Voy a dejar por aquí el script para crear la base de datos y la tabla que vamos a utilizar lo voy a dejar en el repositorio por si te interesa descargarlo.
 
-```sql
-SET @old_autocommit=@@autocommit;
+En el cual esta todo lo necesario para crear la base de datos y las tablas que vamos a utilizar ademas hay comentarios para que se entienda mejor.
 
-CREATE DATABASE `DAW2` DEFAULT CHARACTER SET utf8mb4;
+## Pasos para crear un CRUD en Python con Django (Explicación del código)
 
-USE `DAW2`;
+[Tabla de contenidos](#tabla-de-contenidos)
 
-DROP TABLE IF EXISTS `Estudiante`;
+Voy a ir enseñando el código poco a poco para que se entienda mejor. Y enumerare los pasos que hay que seguir para crear un CRUD en Python. A continuación, vamos a ver un ejemplo de CRUD en Python.
 
-```
+### Paso 1 Definir las rutas
 
-<div style="page-break-after: always;"></div>
+[Tabla de contenidos](#tabla-de-contenidos)
 
-```sql
-CREATE TABLE `Estudiante` (
-  `nif` varchar(9) UNIQUE NOT NULL,
-  `nombre_apellido` varchar(50) NOT NULL,
-  `edad` tinyint NOT NULL,
-  `carrera` varchar(50) NOT NULL,
-  `universidad` varchar(50) NOT NULL,
-  PRIMARY KEY PK_nif (`NIF`),
-  INDEX IDX_Estudiante_Nombre (nombre_apellido)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+En el archivo urls.py de la aplicación tenemos que definir las rutas que vamos a utilizar por ahora es solo una ruta pero en un futuro puedes ver mi codigo fuente para ver el resultado final. Por ejemplo, si queremos crear una ruta para la página de inicio, tenemos que escribir:
 
-INSERT INTO `Estudiante` VALUES (1,'Juan Perez',20,'Informatica','Universidad de Sevilla');
-INSERT INTO `Estudiante` VALUES (2,'Maria Lopez',21,'Medicina','Universidad de Sevilla');
+```python
+ from django.urls import path
+ from Daw2 import views
 
-DROP TABLE IF EXISTS `Curso`;
-
-CREATE TABLE `Curso` (
-  `cine` MEDIUMINT NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `creditos` INT(11) NOT NULL,
-  `profesor` varchar(50) NOT NULL,
-  `universidad` varchar(50) NOT NULL,
-  PRIMARY KEY PK_cine (`cine`),
-  INDEX IDX_Curso_Nombre (nombre)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO `Curso` VALUES (1,'Programacion',6,'Juan Perez','Universidad de Sevilla');
-INSERT INTO `Curso` VALUES (2,'Matematicas',6,'Maria Lopez','Universidad de Sevilla');
-
-DROP TABLE IF EXISTS `EstudianteCurso`;
-
-CREATE TABLE `EstudianteCurso` (
-  `nif` varchar(9) UNIQUE NOT NULL,
-  `cine`MEDIUMINT NOT NULL,
-  PRIMARY KEY PK_nif (`NIF`),
-  FOREIGN KEY FK_nif (`nif`) REFERENCES `Estudiante` (`nif`) ON UPDATE CASCADE,
-  FOREIGN KEY FK_cine (`cine`) REFERENCES `Curso` (`cine`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+ urlpatterns = [
+     path('', views.home, name="home"),
+ ]
 
 ```
 
-<div style="page-break-after: always;"></div>
+Luego tenemos que crear la función home en el archivo views.py de la aplicación. Para ello, escribimos:
+
+```python
+ from django.shortcuts import render
+
+ def home(request):
+     return render(request, "home.html")
+
+```
+
+Una vez echo eso nos vamos a la carpeta Daw2 y creamos la carpeta templates y dentro de esa carpeta esta nuestra plantilla home.html que es la que vamos a utilizar para la pagina de inicio. Si quieres ver el codigo fuente de la plantilla puedes verlo en mi repositorio.

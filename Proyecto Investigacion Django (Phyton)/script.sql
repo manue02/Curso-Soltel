@@ -48,8 +48,4 @@ CREATE TABLE `Estudiante` (
 -- Dumping data for table `Estudiante`
 --
 
--- Insertamos datos
-
-INSERT INTO `Estudiante` VALUES (1,'Juan Perez',20,'Informatica','Universidad de Sevilla');
-INSERT INTO `Estudiante` VALUES (2,'Maria Lopez',21,'Medicina','Universidad de Sevilla');
 

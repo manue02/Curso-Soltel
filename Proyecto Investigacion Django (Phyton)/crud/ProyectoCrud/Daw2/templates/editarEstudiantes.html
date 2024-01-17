@@ -1,0 +1,44 @@
+{% extends "./home.html" %}
+
+{% block title %} Gestión de Estudiantes {% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <h2>Modificar Estudiante</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/formularioEditarEstudiante/" method="POST">{% csrf_token %}
+                        <div class="form-group pb-2">
+                            <input type="text" id="txtNif" name="txtNif" value="{{ nif.nif }}"
+                                   class="form-control" placeholder="NIF"
+                                   minlength="9" maxlength="9" readonly required>
+                        </div>
+                        <div class="form-group pb-2">
+                            <input type="text" id="txtNombre_apellido" name="txtNombre_apellido" value="{{ nif.nombre_apellido }}"
+                                   class="form-control" placeholder="nombre y apellidos"
+                                   maxlength="50" required>
+                        </div>
+                        <div class="form-group pb-2">
+                            <input type="text" id="txtEdad" name="txtEdad" value="{{ nif.edad }}"
+                                   class="form-control" min="1" max="100" required>
+                        </div>
+                        <div class="form-group pb-2">
+                            <input type="text" id="txtCarrera" name="txtCarrera" value="{{ nif.carrera }}"
+                                   class="form-control" placeholder="Carrera"
+                                   maxlength="50" required>
+                        </div>
+                        <div class="form-group pb-4">
+                            <input type="text" id="txtUniversidad" name="txtUniversidad" value="{{ nif.universidad }}"
+                                   class="form-control" placeholder="Universidad"
+                                   maxlength="50" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

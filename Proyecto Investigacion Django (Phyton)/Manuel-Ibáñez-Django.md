@@ -30,8 +30,8 @@ modified: "2023-11-21T13:20:29.033Z"
       - [URLs en Django](#urls-en-django)
     - [Sintaxis básica de Django](#sintaxis-básica-de-django)
   - [Ejecución del servidor de desarrollo](#ejecución-del-servidor-de-desarrollo)
-      - [Entrar en la administracion de Django](#entrar-en-la-administracion-de-django)
-      - [Incluir modelos en el panel de administración](#incluir-modelos-en-el-panel-de-administración)
+    - [Entrar en la administracion de Django](#entrar-en-la-administracion-de-django)
+    - [Incluir modelos en el panel de administración](#incluir-modelos-en-el-panel-de-administración)
   - [Sintaxis básica de Python](#sintaxis-básica-de-python)
     - [Variables en Python](#variables-en-python)
     - [Tipos de datos en Python](#tipos-de-datos-en-python)
@@ -71,6 +71,8 @@ modified: "2023-11-21T13:20:29.033Z"
   - [Crear la base de datos en MySQL](#crear-la-base-de-datos-en-mysql)
   - [Pasos para crear un CRUD en Python con Django (Explicación del código)](#pasos-para-crear-un-crud-en-python-con-django-explicación-del-código)
     - [Paso 1 Definir las rutas](#paso-1-definir-las-rutas)
+    - [Paso 2 Crear la plantilla](#paso-2-crear-la-plantilla)
+    - [Paso 3 Crear la vista](#paso-3-crear-la-vista)
 
 <div style="page-break-after: always;"></div>
 
@@ -2026,6 +2028,10 @@ Luego tenemos que crear la función home en el archivo views.py de la aplicació
 
 ```
 
+### Paso 2 Crear la plantilla
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
 > [!TIP]
 > Es bueno crear una carpeta llamada templates por que es donde se van a guardar todas las plantillas que vamos a utilizar en nuestro proyecto.
 > Ademas de que si lo llamas de otra forma la carpeta no se va a reconocer y no se va a poder utilizar. A menos que lo configures en el archivo settings.py del proyecto. Pero no es recomendable. Ya que es mas facil crear una carpeta llamada templates y dentro de esa carpeta crear las plantillas que vamos a utilizar.
@@ -2070,3 +2076,35 @@ En el archivo home.html de la carpeta templates de la aplicación. Esto nos most
 	</body>
 </html>
 ```
+
+Luego de hacer la prueba y comprobar que todo funciona correctamente vamos a borrar el codigo que hemos añadido para la prueba y vamos a seguir con el CRUD.
+
+En home en mi caso e añadido un menu de navegacion para que sea mas facil navegar por la pagina. Si quieres ver el codigo fuente de la plantilla puedes verlo en mi repositorio.
+
+Ademas de importar todo lo necesario para poder trabajar en mi caso seria bootstrap y fontawesome. Y esa plantilla no la tocare mas ya que es la plantilla base que voy a utilizar para todas las paginas de mi proyecto.
+
+Y para decir que esa es la plantilla padre agragaremos esto en el main de la plantilla base.
+
+```html
+{% block main %} {% endblock %}
+```
+
+Y en las demas plantillas que vamos a utilizar tenemos que heredar de la plantilla base. Para ello, escribimos:
+
+```html
+{% extends "home.html" %} {% block main %}
+
+<!-- Aqui va lo que queramos añadir en nuestra vista echale un vistazo a home.html y gestionEstudiantes para tenerlo mas claro en mi repositorio -->
+
+{% endblock %}
+```
+
+### Paso 3 Crear la vista
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Esto simplemente es crear las funciones que queramos agregar en nuestro proyecto. Toda esta funcionalidad la podemos encotrar en el archivo views.py de la aplicación.
+
+Y tambien hay que tener en cuenta que tenemos que declarar las rutas en el archivo urls.py de la aplicación.
+
+Lo ultimo que habria que hacer seria los formularios con html y bootstrap puedes ver el codigo bien explicado de lo que hace cada cosa en mi repositorio.

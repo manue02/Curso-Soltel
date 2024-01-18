@@ -20,7 +20,7 @@ CREATE TABLE Cliente (
     `nif` varchar(9) UNIQUE NOT NULL,
     `nombre` VARCHAR(50) NOT NULL,
     `direccion` VARCHAR(255) NOT NULL,
-    `telefono` VARCHAR(255) NOT NULL,
+    `telefono` VARCHAR(255) NOT NULL UNIQUE,
     `Activo` BOOLEAN,
     `fecha_alta` DATE NOT NULL,
     PRIMARY KEY PK_nif (`nif`),
@@ -53,3 +53,14 @@ CREATE TABLE Factura (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
+INSERT INTO Coche (matricula, modelo, ano_fabricacion, tipo_combustible, precio, color)
+VALUES ('ABC1234', 'Modelo1', 2020, 'Gasolina', 20000.00, 'Rojo');
+
+INSERT INTO Cliente (nif, nombre, direccion, telefono, Activo, fecha_alta)
+VALUES ('12345678A', 'Juan', 'Calle Ejemplo, 1', '123456789', true, '2022-01-01');
+
+INSERT INTO Empleado (nif, nombre, fecha_contratacion, salario, concesionario, Activo)
+VALUES ('98765432B', 'Ana', '2022-01-01', 1500.00, 1, true);
+
+INSERT INTO Factura (nif_vendedor, fecha, nif_cliente, matricula_coche_comprado, total)
+VALUES ('98765432B', '2022-01-01', '12345678A', 'ABC1234', 20000.00);

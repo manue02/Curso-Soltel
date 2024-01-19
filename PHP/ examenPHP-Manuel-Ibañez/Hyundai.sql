@@ -20,7 +20,7 @@ CREATE TABLE Cliente (
     `nif` varchar(9) UNIQUE NOT NULL,
     `nombre` VARCHAR(50) NOT NULL,
     `direccion` VARCHAR(255) NOT NULL,
-    `telefono` VARCHAR(255) NOT NULL UNIQUE,
+    `telefono` VARCHAR(9) NOT NULL UNIQUE,
     `Activo` BOOLEAN,
     `fecha_alta` DATE NOT NULL,
     PRIMARY KEY PK_nif (`nif`),
@@ -32,7 +32,7 @@ CREATE TABLE Empleado (
     `nombre` VARCHAR(255) NOT NULL,
     `fecha_contratacion` DATE NOT NULL,
     `salario` DECIMAL(10, 2) NOT NULL,
-    `concesionario` INT NOT NULL,
+    `telefono` VARCHAR(9) NOT NULL UNIQUE,
     `Activo` BOOLEAN NOT NULL, 
     PRIMARY KEY PK_nif (`nif`),
     INDEX IDX_Empleado_Nombre (nombre)

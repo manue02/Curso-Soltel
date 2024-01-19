@@ -86,11 +86,11 @@ header > form > footer {
 	text-align: center;
 	margin: 25px 0 10px;
 }
-header > form > footer p a {
+header > form > footer p {
 	text-decoration: none;
 	color: #fff;
 	font-weight: 600;
 }
-header > form > footer p a:hover {
+header > form > footer p:hover {
 	text-decoration: underline;
 }

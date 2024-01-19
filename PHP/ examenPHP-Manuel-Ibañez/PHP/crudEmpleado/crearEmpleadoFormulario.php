@@ -28,7 +28,7 @@ if (!isset($_SESSION['usuario'])) {
 <body>
 
     <header>
-        <nav class="navbar navbar-dark navbar-expand navbar-custom mb-4">
+        <nav class="navbar navbar-dark navbar-expand navbar-custom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="../../index.php">Home</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -38,13 +38,13 @@ if (!isset($_SESSION['usuario'])) {
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link active navbar-letra" aria-current="page" href="listarCliente.php"> <span
-                                    class="navbar-color">#</span>Acciones
+                            <a class="nav-link active navbar-letra" aria-current="page"
+                                href="../crudCliente/listarCliente.php"> <span class="navbar-color">#</span>Acciones
                                 Cliente</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active navbar-letra" aria-current="page"
-                                href="../crudEmpleado/listarEmpleado.php"><span class="navbar-color">#</span>Acciones
+                            <a class="nav-link active navbar-letra" aria-current="page" href="listarEmpleado.php"><span
+                                    class="navbar-color">#</span>Acciones
                                 Empleado</a>
                         </li>
                         <li class="nav-item">
@@ -64,12 +64,12 @@ if (!isset($_SESSION['usuario'])) {
     <div class="container d-flex justify-content-center">
         <div class="row">
             <div class="col-12 mb-3 mt-4">
-                <h1 class="text-center">Alta de Clientes</h1>
+                <h1 class="text-center">Alta de Empleados</h1>
             </div>
             <div class="col-12">
                 <div class="card h-100">
                     <div class="card-body">
-                        <form action="CrearCliente.php" method="POST">
+                        <form action="crearEmpleado.php" method="POST">
                             <div class="form-group pb-2">
                                 <input type="text" id="nif" name="nif" class="form-control" placeholder="NIF"
                                     minlength="9" maxlength="9" required>
@@ -79,16 +79,16 @@ if (!isset($_SESSION['usuario'])) {
                                     maxlength="50" required>
                             </div>
                             <div class="form-group pb-2">
-                                <input type="text" id="direccion" name="direccion" class="form-control" maxlength="50"
-                                    placeholder="Direccion" required>
+                                <input type="date" id="fecha_contratacion" name="fecha_contratacion"
+                                    class="form-control" maxlength="50" placeholder="Fecha de Contratacion" required>
                             </div>
                             <div class="form-group pb-2">
-                                <input type="text" id="telefono" name="telefono" class="form-control" min="1" max="100"
-                                    placeholder="Telefono" required>
+                                <input type="text" id="salario" name="salario" class="form-control"
+                                    placeholder="Salario" maxlength="50" required>
                             </div>
                             <div class="form-group pb-4">
-                                <input type="date" id="fecha_alta" name="fecha_alta" class="form-control" maxlength="50"
-                                    placeholder="Fecha de alta" required>
+                                <input type="text" id="telefono" name="telefono" class="form-control" min="1" max="100"
+                                    placeholder="Telefono" required>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success btn-block text-white ">Guardar</button>

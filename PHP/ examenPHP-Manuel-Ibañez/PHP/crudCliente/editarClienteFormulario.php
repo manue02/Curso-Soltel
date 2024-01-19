@@ -35,22 +35,40 @@ foreach ($conexion->query($sql) as $fila) {
     <title>Alta de Clientes</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="../../CSS/estilosNavbar.css" rel="stylesheet" />
+
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-            <a class="navbar-brand" href="../../index.php">Home</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link " href="listarCliente.php">Acciones Cliente</a>
-                    <a class="nav-item nav-link " href="#">Acciones Empleado</a>
-                    <a class="nav-item nav-link " href="#">Prueba</a>
-                    <a class="nav-item nav-link " href="#">Prueba</a>
+        <nav class="navbar navbar-dark navbar-expand navbar-custom mb-4">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../../index.php">Home</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active navbar-letra" aria-current="page" href="listarCliente.php"> <span
+                                    class="navbar-color">#</span>Acciones
+                                Cliente</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active navbar-letra" aria-current="page"
+                                href="../crudEmpleado/listarEmpleado.php"><span class="navbar-color">#</span>Acciones
+                                Empleado</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active navbar-letra" aria-current="page" href="#"><span
+                                    class="navbar-color">#</span>Añadir Facturas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active navbar-letra" aria-current="page" href="#"><span
+                                    class="navbar-color">#</span>Listado de coches</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>

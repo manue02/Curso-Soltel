@@ -38,13 +38,13 @@ if (!isset($_SESSION['usuario'])) {
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link active navbar-letra" aria-current="page" href="listarCliente.php"> <span
-                                    class="navbar-color">#</span>Acciones
+                            <a class="nav-link active navbar-letra" aria-current="page"
+                                href="../crudCliente/listarCliente.php"> <span class="navbar-color">#</span>Acciones
                                 Cliente</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active navbar-letra" aria-current="page"
-                                href="../crudEmpleado/listarEmpleado.php"><span class="navbar-color">#</span>Acciones
+                            <a class="nav-link active navbar-letra" aria-current="page" href="listarEmpleado.php"><span
+                                    class="navbar-color">#</span>Acciones
                                 Empleado</a>
                         </li>
                         <li class="nav-item">
@@ -64,7 +64,7 @@ if (!isset($_SESSION['usuario'])) {
     <section aria-label="info" class="d-flex justify-content-center">
         <p class="alert alert-info w-50 text-center">
             <?php
-            $sql = "SELECT * FROM Cliente";
+            $sql = "SELECT * FROM Empleado";
             $registros = $conexion->query($sql);
             $num_registros = $registros->num_rows;
             $contadorActivos = 0;
@@ -76,7 +76,7 @@ if (!isset($_SESSION['usuario'])) {
                     }
                 }
 
-                $resultado = "Encontrados <b>$contadorActivos Registros </b> de Clientes <b>Activos</b>";
+                $resultado = "Encontrados <b>$contadorActivos Registros </b> de Empleados <b>Activos</b>";
 
             } else {
                 $resultado = "Tabla Vacia";
@@ -88,11 +88,11 @@ if (!isset($_SESSION['usuario'])) {
     <section class="p-3">
         <div class="row table-responsive">
             <div class="col-12 mb-3 mt-4">
-                <h2 class="text-center">Lista de Clientes</h2>
+                <h2 class="text-center">Lista de Empleados</h2>
             </div>
             <div class="col-12 d-flex justify-content-end ">
-                <a href='CrearClienteFormulario.php' class='btn btn-outline-primary btn-lg'>
-                    Añadir Cliente
+                <a href='crearEmpleadoFormulario.php' class='btn btn-outline-primary btn-lg'>
+                    Añadir Empleado
                 </a>
             </div>
             <div class="col-12">
@@ -101,9 +101,9 @@ if (!isset($_SESSION['usuario'])) {
                         <tr>
                             <th>NIF</th>
                             <th>Nombre</th>
-                            <th>Direccion</th>
+                            <th>Fecha de Alta</th>
+                            <th>Salario</th>
                             <th>Telefono</th>
-                            <th>fecha_alta</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -117,13 +117,13 @@ if (!isset($_SESSION['usuario'])) {
                                 echo "<tr>";
                                 echo "<td>" . $registro['nif'] . "</td>";
                                 echo "<td>" . $registro['nombre'] . "</td>";
-                                echo "<td>" . $registro['direccion'] . "</td>";
+                                echo "<td>" . $registro['fecha_contratacion'] . "</td>";
+                                echo "<td>" . $registro['salario'] . "€</td>";
                                 echo "<td>" . $registro['telefono'] . "</td>";
-                                echo "<td>" . $registro['fecha_alta'] . "</td>";
                                 echo "<td>";
                                 echo "<div class='row'>";
-                                echo "<div class='col'><a href='editarClienteFormulario.php?nif=" . $registro['nif'] . "'><ion-icon name='create-outline' class='fs-2'></ion-icon></a></div>";
-                                echo "<div class='col'><a href='eliminarCliente.php?nif=" . $registro['nif'] . "''><ion-icon name='trash-outline' class='fs-2'></ion-icon></a></div>";
+                                echo "<div class='col'><a href='editarEmpleadoFormulario.php?nif=" . $registro['nif'] . "'><ion-icon name='create-outline' class='fs-2'></ion-icon></a></div>";
+                                echo "<div class='col'><a href='eliminarEmpleado.php?nif=" . $registro['nif'] . "''><ion-icon name='trash-outline' class='fs-2'></ion-icon></a></div>";
                                 echo "</div>";
                                 echo "</td>";
                                 echo "</tr>";

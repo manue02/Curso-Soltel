@@ -56,12 +56,14 @@ $personasInactivasEmpleadosLista = $personasInactivasEmpleados->fetch_all(MYSQLI
                                 Empleado</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active navbar-letra" aria-current="page" href="#"><span
-                                    class="navbar-color">#</span>Añadir Facturas</a>
+                            <a class="nav-link active navbar-letra" aria-current="page"
+                                href="PHP/crudFacturas/listarFactura.php"><span class="navbar-color">#</span>Acciones
+                                Facturas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active navbar-letra" aria-current="page" href="#"><span
-                                    class="navbar-color">#</span>Listado de coches</a>
+                            <a class="nav-link active navbar-letra" aria-current="page"
+                                href="PHP/crudCoche/listarCoche.php"><span class="navbar-color">#</span>Acciones de
+                                Coches</a>
                         </li>
                     </ul>
                 </div>

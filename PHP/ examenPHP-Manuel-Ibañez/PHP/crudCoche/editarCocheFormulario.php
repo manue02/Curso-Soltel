@@ -10,18 +10,19 @@ if (!isset($_SESSION['usuario'])) {
     exit();
 }
 
-$nif = $_REQUEST['nif'];
+$matricula = $_REQUEST['matricula'];
 
 $conexion = new mysqli("localhost", "root", "root", "Hyundai");
 
-$sql = "SELECT * FROM Empleado WHERE nif = '$nif'";
+$sql = "SELECT * FROM Coche WHERE matricula = '$matricula'";
 
 foreach ($conexion->query($sql) as $fila) {
-    $nif = $fila['nif'];
-    $nombre = $fila['nombre'];
-    $fecha_contratacion = $fila['fecha_contratacion'];
-    $salario = $fila['salario'];
-    $telefono = $fila['telefono'];
+    $matricula = $fila['matricula'];
+    $modelo = $fila['modelo'];
+    $ano_fabricacion = $fila['ano_fabricacion'];
+    $tipo_combustible = $fila['tipo_combustible'];
+    $precio = $fila['precio'];
+    $color = $fila['color'];
 }
 
 ?>
@@ -32,7 +33,7 @@ foreach ($conexion->query($sql) as $fila) {
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Empleado</title>
+    <title>Editar Coches</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="../../CSS/estilosNavbar.css" rel="stylesheet" />
@@ -40,8 +41,8 @@ foreach ($conexion->query($sql) as $fila) {
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-dark navbar-expand navbar-custom">
+<header>
+        <nav class="navbar navbar-dark navbar-expand navbar-custom mb-4">
             <div class="container-fluid">
                 <a class="navbar-brand" href="../../index.php">Home</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -56,8 +57,8 @@ foreach ($conexion->query($sql) as $fila) {
                                 Cliente</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active navbar-letra" aria-current="page" href="listarEmpleado.php"><span
-                                    class="navbar-color">#</span>Acciones
+                            <a class="nav-link active navbar-letra" aria-current="page"
+                                href="../crudEmpleado/listarEmpleado.php"><span class="navbar-color">#</span>Acciones
                                 Empleado</a>
                         </li>
                         <li class="nav-item">
@@ -66,9 +67,8 @@ foreach ($conexion->query($sql) as $fila) {
                                 Facturas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active navbar-letra" aria-current="page"
-                                href="../crudCoche/listarCoche.php"><span class="navbar-color">#</span>Acciones de
-                                Coches</a>
+                            <a class="nav-link active navbar-letra" aria-current="page" href="listarCoche.php"><span
+                                    class="navbar-color">#</span>Acciones de Coches</a>
                         </li>
                     </ul>
                 </div>
@@ -79,38 +79,43 @@ foreach ($conexion->query($sql) as $fila) {
     <div class="container d-flex justify-content-center">
         <div class="row">
             <div class="col-12 mb-3 mt-4">
-                <h1 class="text-center">Editar de Empleados</h1>
+                <h1 class="text-center">Editar Coche</h1>
             </div>
             <div class="col-12">
                 <div class="card h-100">
                     <div class="card-body">
-                        <form action="editarEmpleado.php?nif=<?php echo $nif ?>" method="POST" class="form-group pb-2">
+                        <form action="editarCoche.php?matricula=<?php echo $matricula ?>" method="POST"
+                            class="form-group pb-2">
                             <div class="form-group pb-2">
-                                <input type="text" id="nif" name="nif" class="form-control" placeholder="NIF"
-                                    minlength="9" maxlength="9" required value="<?php echo $nif ?>" disabled="disabled">
+                                <input type="text" id="matricula" name="matricula" class="form-control" placeholder="matricula"
+                                    minlength="9" maxlength="9" required value="<?php echo $matricula ?>"
+                                    disabled="disabled">
                             </div>
                             <div class="form-group pb-2">
-                                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre"
-                                    maxlength="50" value="<?php echo $nombre ?>" required>
+                                <input type="text" id="modelo" name="modelo" class="form-control" placeholder="Modelo"
+                                    maxlength="50" value="<?php echo $modelo ?>" required>
                             </div>
                             <div class="form-group pb-2">
-                                <input type="date" id="fecha_contratacion" name="fecha_contratacion"
-                                    class="form-control" maxlength="50" placeholder="Fecha de Contratacion"
-                                    value="<?php echo $fecha_contratacion ?>" required>
+                                <input type="number" id="ano_fabricacion" name="ano_fabricacion" class="form-control"
+                                    maxlength="50" placeholder="Año de fabricacion"
+                                    value="<?php echo $ano_fabricacion ?>" required>
                             </div>
                             <div class="form-group pb-2">
-                                <input type="text" id="salario" name="salario" class="form-control"
-                                    placeholder="Salario" maxlength="50" value="<?php echo $salario ?>" required>
+                                <select class="form-select" aria-label="Default select example" name="tipo_combustible">
+                                    <option selected>Tipo de combustible</option>
+                                    <option value="diesel">Diesel</option>
+                                    <option value="gasolina">Gasolina</option>
+                                    <option value="electrico">Electrico</option>
+                                    <option value="hibrido">Hibrido</option>
+                                </select>
                             </div>
                             <div class="form-group pb-2">
-                                <input type="text" id="telefono" name="telefono" class="form-control" min="1" max="100"
-                                    placeholder="Telefono" value="<?php echo $telefono ?>" required>
+                                <input type="text" id="precio" name="precio" class="form-control" min="1" max="100"
+                                    placeholder="Precio" value="<?php echo $precio ?>" required>
                             </div>
                             <div class="form-group pb-4">
-                                <select class="form-select" aria-label="Default select example" name="activo">
-                                    <option value="1">Activo</option>
-                                    <option value="0">Inactivo</option>
-                                </select>
+                                <input type="text" id="color" name="color" class="form-control" min="1" max="100"
+                                    placeholder="Color" value="<?php echo $color ?>" required>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success btn-block text-white ">Guardar</button>

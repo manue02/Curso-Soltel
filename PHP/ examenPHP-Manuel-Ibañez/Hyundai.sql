@@ -1,12 +1,12 @@
-CREATE DATABASE `Hyundai` DEFAULT CHARACTER SET utf8mb4;
-
-USE `Hyundai`;
-
-
 -- Si existe la tabla la borramos
-DROP TABLE IF EXISTS `Hyundai`;
+DROP TABLE IF EXISTS Hyundai;
+CREATE DATABASE IF NOT EXISTS Hyundai
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_spanish_ci;
 
-CREATE TABLE Coche (
+USE Hyundai;
+
+CREATE TABLE IF NOT EXISTS Coche (
     `matricula` VARCHAR(15) UNIQUE NOT NULL,
     `modelo` VARCHAR(255) NOT NULL,
     `ano_fabricacion` SMALLINT NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE Coche (
     PRIMARY KEY PK_matricula (`matricula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE Cliente (
+CREATE TABLE IF NOT EXISTS Cliente (
     `nif` varchar(9) UNIQUE NOT NULL,
     `nombre` VARCHAR(50) NOT NULL,
     `direccion` VARCHAR(255) NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE Cliente (
     INDEX IDX_Cliente_Nombre (nombre)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE Empleado (
+CREATE TABLE IF NOT EXISTS Empleado (
     `nif` varchar(9) UNIQUE NOT NULL,
     `nombre` VARCHAR(255) NOT NULL,
     `fecha_contratacion` DATE NOT NULL,
@@ -38,13 +38,14 @@ CREATE TABLE Empleado (
     INDEX IDX_Empleado_Nombre (nombre)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE Factura (
+CREATE TABLE IF NOT EXISTS Factura (
     `numero_factura` INT AUTO_INCREMENT NOT NULL, 
     `nif_vendedor` VARCHAR(9) NOT NULL,
     `fecha` DATE NOT NULL,
     `nif_cliente` VARCHAR(9) NOT NULL,
     `matricula_coche_comprado`VARCHAR(15) NOT NULL,
     `total` DECIMAL(10, 2),
+    `Activo` BOOLEAN NOT NULL, 
     PRIMARY KEY PK_numero_factura (`numero_factura`),
     FOREIGN KEY (nif_cliente) REFERENCES Cliente(nif) ON UPDATE CASCADE,
     FOREIGN KEY (matricula_coche_comprado) REFERENCES Coche(matricula) ON UPDATE CASCADE,

@@ -19,7 +19,7 @@ if (!isset($_SESSION['usuario'])) {
 
 <head>
     <link href="#" rel="stylesheet" />
-    <title>Listar Cliente</title>
+    <title>Listar Coches</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="../../CSS/estilosNavbar.css" rel="stylesheet" />
@@ -38,8 +38,8 @@ if (!isset($_SESSION['usuario'])) {
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link active navbar-letra" aria-current="page" href="listarCliente.php"> <span
-                                    class="navbar-color">#</span>Acciones
+                            <a class="nav-link active navbar-letra" aria-current="page"
+                                href="../crudCliente/listarCliente.php"> <span class="navbar-color">#</span>Acciones
                                 Cliente</a>
                         </li>
                         <li class="nav-item">
@@ -53,9 +53,8 @@ if (!isset($_SESSION['usuario'])) {
                                 Facturas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active navbar-letra" aria-current="page"
-                                href="../crudCoche/listarCoche.php"><span class="navbar-color">#</span>Acciones de
-                                Coches</a>
+                            <a class="nav-link active navbar-letra" aria-current="page" href="listarCoche.php"><span
+                                    class="navbar-color">#</span>Acciones de Coches</a>
                         </li>
                     </ul>
                 </div>
@@ -66,19 +65,13 @@ if (!isset($_SESSION['usuario'])) {
     <section aria-label="info" class="d-flex justify-content-center">
         <p class="alert alert-info w-50 text-center">
             <?php
-            $sql = "SELECT * FROM Cliente";
-            $registros = $conexion->query($sql);
-            $num_registros = $registros->num_rows;
-            $contadorActivos = 0;
+            $sql = "SELECT * FROM Coche";
+            $registrosCoche = $conexion->query($sql);
+            $num_registros = $registrosCoche->num_rows;
 
             if ($num_registros > 0) {
-                foreach ($registros as $registro) {
-                    if ($registro['Activo'] == 1) {
-                        $contadorActivos++;
-                    }
-                }
 
-                $resultado = "Encontrados <b>$contadorActivos Registros </b> de Clientes <b>Activos</b>";
+                $resultado = "Encontrados <b>$num_registros Registros </b> de Coches";
 
             } else {
                 $resultado = "Tabla Vacia";
@@ -90,22 +83,23 @@ if (!isset($_SESSION['usuario'])) {
     <section class="p-3">
         <div class="row table-responsive">
             <div class="col-12 mb-3 mt-4">
-                <h2 class="text-center">Lista de Clientes</h2>
+                <h2 class="text-center">Lista de Coches</h2>
             </div>
             <div class="col-12 d-flex justify-content-end ">
-                <a href='CrearClienteFormulario.php' class='btn btn-outline-primary btn-lg'>
-                    Añadir Cliente
+                <a href='crearCocheFormulario.php' class='btn btn-outline-primary btn-lg'>
+                    Añadir Nuevo Coche
                 </a>
             </div>
             <div class="col-12">
                 <table class="table table-striped table-hover mt-3 text-center table-bordered">
                     <thead>
                         <tr>
-                            <th>NIF</th>
-                            <th>Nombre</th>
-                            <th>Direccion</th>
-                            <th>Telefono</th>
-                            <th>fecha_alta</th>
+                            <th>Matricula</th>
+                            <th>Modelo</th>
+                            <th>Año de fabricacion</th>
+                            <th>Combustible</th>
+                            <th>Precio</th>
+                            <th>Color</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -113,23 +107,23 @@ if (!isset($_SESSION['usuario'])) {
 
                         <?php
 
-                        foreach ($registros as $registro) {
-                            if ($registro['Activo'] == 1) {
+                        foreach ($registrosCoche as $datoCoche) {
 
-                                echo "<tr>";
-                                echo "<td>" . $registro['nif'] . "</td>";
-                                echo "<td>" . $registro['nombre'] . "</td>";
-                                echo "<td>" . $registro['direccion'] . "</td>";
-                                echo "<td>" . $registro['telefono'] . "</td>";
-                                echo "<td>" . $registro['fecha_alta'] . "</td>";
-                                echo "<td>";
-                                echo "<div class='row'>";
-                                echo "<div class='col'><a href='editarClienteFormulario.php?nif=" . $registro['nif'] . "'><ion-icon name='create-outline' class='fs-2'></ion-icon></a></div>";
-                                echo "<div class='col'><a href='eliminarCliente.php?nif=" . $registro['nif'] . "''><ion-icon name='trash-outline' class='fs-2'></ion-icon></a></div>";
-                                echo "</div>";
-                                echo "</td>";
-                                echo "</tr>";
-                            }
+                            echo "<tr>";
+                            echo "<td>" . $datoCoche['matricula'] . "</td>";
+                            echo "<td>" . $datoCoche['modelo'] . "</td>";
+                            echo "<td>" . $datoCoche['ano_fabricacion'] . "</td>";
+                            echo "<td>" . $datoCoche['tipo_combustible'] . "</td>";
+                            echo "<td>" . $datoCoche['precio'] . "€</td>";
+                            echo "<td>" . $datoCoche['color'] . "</td>";
+                            echo "<td>";
+                            echo "<div class='row'>";
+                            echo "<div class='col'><a href='editarCocheFormulario.php?matricula=" . $datoCoche['matricula'] . "'><ion-icon name='create-outline' class='fs-2'></ion-icon></a></div>";
+                            echo "<div class='col'><a href='eliminarCoche.php?matricula=" . $datoCoche['matricula'] . "''><ion-icon name='trash-outline' class='fs-2'></ion-icon></a></div>";
+                            echo "</div>";
+                            echo "</td>";
+                            echo "</tr>";
+
                         }
 
                         ?>

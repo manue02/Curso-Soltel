@@ -48,12 +48,14 @@ if (!isset($_SESSION['usuario'])) {
                                 Empleado</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active navbar-letra" aria-current="page" href="#"><span
-                                    class="navbar-color">#</span>Añadir Facturas</a>
+                            <a class="nav-link active navbar-letra" aria-current="page"
+                                href="../crudFacturas/listarFactura.php"><span class="navbar-color">#</span>Acciones
+                                Facturas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active navbar-letra" aria-current="page" href="#"><span
-                                    class="navbar-color">#</span>Listado de coches</a>
+                            <a class="nav-link active navbar-letra" aria-current="page"
+                                href="../crudCoche/listarCoche.php"><span class="navbar-color">#</span>Acciones de
+                                Coches</a>
                         </li>
                     </ul>
                 </div>

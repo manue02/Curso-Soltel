@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 require("../funciones.php");
 ErroresVendor();
+$conexion = conectarBBDD("localhost", "root", "root", "Hyundai");
+
 session_start();
 
 if (!isset($_SESSION['usuario'])) {
@@ -10,19 +12,14 @@ if (!isset($_SESSION['usuario'])) {
     exit();
 }
 
-$nif = $_REQUEST['nif'];
+$sqlCliente = "SELECT nif as nif_cliente, nombre as nombre_cliente FROM Cliente where activo = 1";
+$sqlEmpleado = "SELECT nif as nif_empleado, nombre as nombre_empleado FROM Empleado where activo = 1";
+$sqlCoche = "SELECT matricula as matricula_coche, modelo as modelo_coche FROM Coche";
 
-$conexion = new mysqli("localhost", "root", "root", "Hyundai");
+$resultadoEmpleado = mysqli_query($conexion, $sqlEmpleado);
+$resultadoCliente = mysqli_query($conexion, $sqlCliente);
+$resultadoCoche = mysqli_query($conexion, $sqlCoche);
 
-$sql = "SELECT * FROM Empleado WHERE nif = '$nif'";
-
-foreach ($conexion->query($sql) as $fila) {
-    $nif = $fila['nif'];
-    $nombre = $fila['nombre'];
-    $fecha_contratacion = $fila['fecha_contratacion'];
-    $salario = $fila['salario'];
-    $telefono = $fila['telefono'];
-}
 
 ?>
 
@@ -32,7 +29,7 @@ foreach ($conexion->query($sql) as $fila) {
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Empleado</title>
+    <title>Alta de Facturas</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="../../CSS/estilosNavbar.css" rel="stylesheet" />
@@ -40,6 +37,7 @@ foreach ($conexion->query($sql) as $fila) {
 </head>
 
 <body>
+
     <header>
         <nav class="navbar navbar-dark navbar-expand navbar-custom">
             <div class="container-fluid">
@@ -56,13 +54,13 @@ foreach ($conexion->query($sql) as $fila) {
                                 Cliente</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active navbar-letra" aria-current="page" href="listarEmpleado.php"><span
-                                    class="navbar-color">#</span>Acciones
+                            <a class="nav-link active navbar-letra" aria-current="page"
+                                href="../crudEmpleado/listarEmpleado.php"><span class="navbar-color">#</span>Acciones
                                 Empleado</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active navbar-letra" aria-current="page"
-                                href="../crudFacturas/listarFactura.php"><span class="navbar-color">#</span>Acciones
+                            <a class="nav-link active navbar-letra" aria-current="page" href="listarFactura.php"><span
+                                    class="navbar-color">#</span>Acciones
                                 Facturas</a>
                         </li>
                         <li class="nav-item">
@@ -79,43 +77,54 @@ foreach ($conexion->query($sql) as $fila) {
     <div class="container d-flex justify-content-center">
         <div class="row">
             <div class="col-12 mb-3 mt-4">
-                <h1 class="text-center">Editar de Empleados</h1>
+                <h1 class="text-center">Añadir una Factura</h1>
             </div>
             <div class="col-12">
                 <div class="card h-100">
                     <div class="card-body">
-                        <form action="editarEmpleado.php?nif=<?php echo $nif ?>" method="POST" class="form-group pb-2">
+                        <form action="crearFactura.php" method="POST">
                             <div class="form-group pb-2">
-                                <input type="text" id="nif" name="nif" class="form-control" placeholder="NIF"
-                                    minlength="9" maxlength="9" required value="<?php echo $nif ?>" disabled="disabled">
+                                <select class="form-select" aria-label="Default select example" name="nif_empleado">
+                                    <?php
+                                    echo "<option selected>Selecciona un Empleado</option>";
+                                    foreach ($resultadoEmpleado as $filaEmpleado) {
+                                        echo "<option value='" . $filaEmpleado['nif_empleado'] . "'>" . "NIF Empleado: " . $filaEmpleado['nif_empleado'] . ", Nombre: " . $filaEmpleado['nombre_empleado'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
                             </div>
                             <div class="form-group pb-2">
-                                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre"
-                                    maxlength="50" value="<?php echo $nombre ?>" required>
+                                <input type="date" id="fecha_factura" name="fecha_factura" class="form-control"
+                                    maxlength="50" placeholder="Fecha de Contratacion" required>
                             </div>
                             <div class="form-group pb-2">
-                                <input type="date" id="fecha_contratacion" name="fecha_contratacion"
-                                    class="form-control" maxlength="50" placeholder="Fecha de Contratacion"
-                                    value="<?php echo $fecha_contratacion ?>" required>
+                                <select class="form-select" aria-label="Default select example" name="nif_cliente">
+                                    <?php
+                                    echo "<option selected>Selecciona un Cliente</option>";
+                                    foreach ($resultadoCliente as $filaCliente) {
+
+                                        echo "<option value='" . $filaCliente['nif_cliente'] . "'>" . "NIF Cliente: " . $filaCliente['nif_cliente'] . ", Nombre: " . $filaCliente['nombre_cliente'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
                             </div>
                             <div class="form-group pb-2">
-                                <input type="text" id="salario" name="salario" class="form-control"
-                                    placeholder="Salario" maxlength="50" value="<?php echo $salario ?>" required>
-                            </div>
-                            <div class="form-group pb-2">
-                                <input type="text" id="telefono" name="telefono" class="form-control" min="1" max="100"
-                                    placeholder="Telefono" value="<?php echo $telefono ?>" required>
+                                <select class="form-select" aria-label="Default select example" name="matricula">
+                                    <?php
+                                    echo "<option selected>Selecciona un Coche</option>";
+                                    foreach ($resultadoCoche as $filaCoche) {
+                                        echo "<option value='" . $filaCoche['matricula_coche'] . "'>" . "Matricula: " . $filaCoche['matricula_coche'] . ", Modelo: " . $filaCoche['modelo_coche'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
                             </div>
                             <div class="form-group pb-4">
-                                <select class="form-select" aria-label="Default select example" name="activo">
-                                    <option value="1">Activo</option>
-                                    <option value="0">Inactivo</option>
-                                </select>
+                                <input type="text" id="total" name="total" class="form-control"
+                                    placeholder="Total Factura" maxlength="50" required>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success btn-block text-white ">Guardar</button>
                             </div>
-
                         </form>
                     </div>
                 </div>

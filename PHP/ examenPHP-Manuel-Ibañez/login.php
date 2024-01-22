@@ -50,7 +50,7 @@ if (isset($_REQUEST['enviar'])) {
                         <input class="Custombutton mb-4 text-center" type="submit" name="enviar" value="Entrar" />
                     </main>
                     <footer class="register">
-                        <p>Para tener cuenta contacta con un Administrador</p>
+                        <p>El usuario y contraseña es soltel/soltel o admin/admin</p>
                     </footer>
                 </form>
             </header>

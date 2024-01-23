@@ -9,7 +9,7 @@ if (isset($_REQUEST['enviar'])) {
     $usuario = $_REQUEST['usuario'];
     $clave = $_REQUEST['clave'];
 
-    if ($usuario == "admin" && $clave == "admin" || $usuario == "soltel" && $clave == "soltel") {
+    if ($usuario == "admin" && $clave == "soltel" || $usuario == "soltel" && $clave == "soltel") {
         $_SESSION['usuario'] = $usuario;
         header("Location: index.php");
         exit();
@@ -48,7 +48,7 @@ if (isset($_REQUEST['enviar'])) {
                         <input class="Custombutton mb-4 text-center" type="submit" name="enviar" value="Entrar" />
                     </main>
                     <footer class="register">
-                        <p>El usuario y contraseña es soltel/soltel o admin/admin</p>
+                        <p>El usuario y contraseña es admin/soltel o soltel/soltel</p>
                     </footer>
                 </form>
             </header>

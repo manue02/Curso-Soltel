@@ -44,3 +44,6 @@ Para el desarrollo de la aplicación web se han utilizado las siguientes tecnolo
 - CSS: Lenguaje de diseño utilizado para el desarrollo de la aplicación web.
 - Bootstrap: Framework utilizado para el desarrollo de la aplicación web.
 - ion-icon: Para los iconos de la aplicación web.
+
+> [!NOTE]
+> No se ha utilizado etiquetas sematicas en el html, ya que en el enunciado no se especificaba que se tenia que utilizar. Y e decidido no utilizarlas para no tener que cambiar todo el html.

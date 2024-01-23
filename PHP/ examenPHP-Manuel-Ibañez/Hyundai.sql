@@ -70,6 +70,3 @@ VALUES ('98765432B', 'Ana', '2022-01-01', 1500.00, 111111111, 1);
 
 INSERT INTO Empleado (nif, nombre, fecha_contratacion, salario, telefono, Activo)
 VALUES ('98765432H', 'Maria', '2022-01-01', 1500.00, 222222222, 1);
-
-INSERT INTO Factura (nif_vendedor, fecha, nif_cliente, matricula_coche_comprado, total)
-VALUES ('98765432B', '2022-01-01', '12345678A', 'ABC1234', 20000.00);

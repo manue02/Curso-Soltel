@@ -8,9 +8,10 @@ $conexion = conectarBBDD("localhost", "root", "root", "Hyundai");
 session_start();
 
 if (!isset($_SESSION['usuario'])) {
-    header("Location: login.php");
+    header("Location: ../../login.php");
     exit();
 }
+
 
 $sqlCliente = "SELECT nif as nif_cliente, nombre as nombre_cliente FROM Cliente where activo = 1";
 $sqlEmpleado = "SELECT nif as nif_empleado, nombre as nombre_empleado FROM Empleado where activo = 1";

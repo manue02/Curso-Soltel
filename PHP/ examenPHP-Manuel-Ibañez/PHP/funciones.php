@@ -8,10 +8,6 @@ function conectarBBDD($servidor, $usuario, $clave, $bbdd)
     if ($conexion->connect_error) {
         die("Error de Conexión: " . $conexion->connect_error);
     }
-    /*
-    else {
-        echo "Conexión correcta";
-    }*/
 
     return $conexion;
 }

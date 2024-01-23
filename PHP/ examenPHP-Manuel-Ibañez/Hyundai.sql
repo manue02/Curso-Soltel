@@ -1,5 +1,5 @@
 -- Si existe la tabla la borramos
-DROP TABLE IF EXISTS Hyundai;
+DROP DATABASE IF EXISTS Hyundai;
 CREATE DATABASE IF NOT EXISTS Hyundai
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_spanish_ci;
@@ -15,6 +15,8 @@ CREATE TABLE IF NOT EXISTS Coche (
     `color` VARCHAR(255) NOT NULL,
     PRIMARY KEY PK_matricula (`matricula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 
 CREATE TABLE IF NOT EXISTS Cliente (
     `nif` varchar(9) UNIQUE NOT NULL,
@@ -58,10 +60,16 @@ INSERT INTO Coche (matricula, modelo, ano_fabricacion, tipo_combustible, precio,
 VALUES ('ABC1234', 'Modelo1', 2020, 'Gasolina', 20000.00, 'Rojo');
 
 INSERT INTO Cliente (nif, nombre, direccion, telefono, Activo, fecha_alta)
-VALUES ('12345678A', 'Juan', 'Calle Ejemplo, 1', '123456789', true, '2022-01-01');
+VALUES ('12345678A', 'Juan', 'Calle Ejemplo, 1', 123456789, 1, '2022-01-01');
 
-INSERT INTO Empleado (nif, nombre, fecha_contratacion, salario, concesionario, Activo)
-VALUES ('98765432B', 'Ana', '2022-01-01', 1500.00, 1, true);
+INSERT INTO Cliente (nif, nombre, direccion, telefono, Activo, fecha_alta)
+VALUES ('12345678H', 'Juan Pedro', 'Calle Ejemplo, 2', 122222222, 1, '2022-01-01');
+
+INSERT INTO Empleado (nif, nombre, fecha_contratacion, salario, telefono, Activo)
+VALUES ('98765432B', 'Ana', '2022-01-01', 1500.00, 111111111, 1);
+
+INSERT INTO Empleado (nif, nombre, fecha_contratacion, salario, telefono, Activo)
+VALUES ('98765432H', 'Maria', '2022-01-01', 1500.00, 222222222, 1);
 
 INSERT INTO Factura (nif_vendedor, fecha, nif_cliente, matricula_coche_comprado, total)
 VALUES ('98765432B', '2022-01-01', '12345678A', 'ABC1234', 20000.00);

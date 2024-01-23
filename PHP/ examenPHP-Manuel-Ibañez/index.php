@@ -5,22 +5,12 @@ declare(strict_types=1);
 require("PHP/funciones.php");
 ErroresVendor();
 session_start();
-$conexion = conectarBBDD("localhost", "root", "root", "Hyundai");
 
 
 if (!isset($_SESSION['usuario'])) {
     header("Location: login.php");
     exit();
 }
-
-$sql = "SELECT nif FROM Cliente WHERE Activo = 0";
-$personasInactivas = $conexion->query($sql);
-$personasInactivasLista = $personasInactivas->fetch_all(MYSQLI_ASSOC);
-
-$sql2 = "SELECT nif FROM Empleado WHERE Activo = 0";
-$personasInactivasEmpleados = $conexion->query($sql2);
-$personasInactivasEmpleadosLista = $personasInactivasEmpleados->fetch_all(MYSQLI_ASSOC);
-
 
 ?>
 
@@ -76,28 +66,29 @@ $personasInactivasEmpleadosLista = $personasInactivasEmpleados->fetch_all(MYSQLI
         <p class="alert alert-info w-50 mx-auto">
             <?php
 
-            if ($conexion->connect_errno) {
-                echo "Fallo al conectar a MySQL: (" . $conexion->connect_errno . ") " . $conexion->connect_error;
-            } else {
-                echo "Conectado a la base de datos";
-            }
-
             if (isset($_REQUEST["cargarBBDD"])) {
 
-                $ContenidoSql = file_get_contents("Hyundai.sql");
-                $cargar = $conexion->multi_query($ContenidoSql);
+                $conexion = mysqli_connect('localhost', 'root', 'root');
 
-                if ($cargar === TRUE) {
-                    echo "Base de datos creada correctamente";
+                if ($conexion->connect_errno) {
+                    echo "Fallo al conectar a MySQL: (" . $conexion->connect_errno . ") " . $conexion->connect_error;
                 } else {
-                    echo "Error al crear la base de datos: " . $conexion->error;
+                    echo "Base de datos creada correctamente";
+
+                    $ContenidoSql = file_get_contents("Hyundai.sql");
+                    $cargar = $conexion->multi_query($ContenidoSql);
+
+
                 }
+
+
             }
+            echo "Estas conectado a la base de datos";
 
             ?>
         </p>
     </section>
-    <form action="#" method="post" class="form d-flex justify-content-center mb-4">
+    <form action="PHP/crudCliente/listarCliente.php" method="post" class="form d-flex justify-content-center mb-4">
         <fieldset class="w-50 mx-auto">
             <input type="submit" value="Carga la BBDD" class="form-control" name="cargarBBDD">
         </fieldset>
@@ -115,8 +106,23 @@ $personasInactivasEmpleadosLista = $personasInactivasEmpleados->fetch_all(MYSQLI
                             <div class="form-group pb-2">
                                 <select class="form-select" aria-label="Default select example" name="nif">
                                     <?php
+
+                                    $conexionConsulta = conectarBBDD("localhost", "root", "root", "Hyundai");
+
+                                    $sql = "SELECT nif,nombre FROM Cliente WHERE Activo = 0";
+                                    $personasInactivas = $conexionConsulta->query($sql);
+                                    $personasInactivasLista = $personasInactivas->fetch_all(MYSQLI_ASSOC);
+
+                                    $sql2 = "SELECT nif,nombre FROM Empleado WHERE Activo = 0";
+                                    $personasInactivasEmpleados = $conexionConsulta->query($sql2);
+                                    $personasInactivasEmpleadosLista = $personasInactivasEmpleados->fetch_all(MYSQLI_ASSOC);
+
+                                    $sql3 = "SELECT * FROM Cliente";
+                                    $personasClientes = $conexionConsulta->query($sql3);
+                                    $personasClientesLista = $personasClientes->fetch_all(MYSQLI_ASSOC);
+
                                     foreach ($personasInactivasLista as $persona) {
-                                        echo "<option value='" . $persona['nif'] . "'>" . $persona['nif'] . "</option>";
+                                        echo "<option value='" . $persona['nif'] . "'> DNI: " . $persona['nif'] . ", nombre: " . $persona['nombre'] . "</option>";
                                     }
                                     ?>
                                 </select>
@@ -191,7 +197,7 @@ $personasInactivasEmpleadosLista = $personasInactivasEmpleados->fetch_all(MYSQLI
                                 <select class="form-select" aria-label="Default select example" name="nif">
                                     <?php
                                     foreach ($personasInactivasEmpleadosLista as $personaEmpleados) {
-                                        echo "<option value='" . $personaEmpleados['nif'] . "'>" . $personaEmpleados['nif'] . "</option>";
+                                        echo "<option value='" . $personaEmpleados['nif'] . "'>DNI: " . $personaEmpleados['nif'] . ", nombre: " . $personaEmpleados['nombre'] . "</option>";
                                     }
                                     ?>
                                 </select>
@@ -248,6 +254,40 @@ $personasInactivasEmpleadosLista = $personasInactivasEmpleados->fetch_all(MYSQLI
                     }
                 }
                 ?>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container d-flex justify-content-center pb-4">
+        <div class="row">
+            <div class="col-12 mb-3 mt-4">
+                <h2 class="text-start">Coches Comprados Cliente</h2>
+            </div>
+            <div class="col-12">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <form action="PHP/listadoCochesEmpleados.php" method="POST">
+                            <div class="form-group pb-2">
+                                <select class="form-select" aria-label="Default select example" name="nif">
+                                    <?php
+                                    foreach ($personasClientesLista as $personaCliente) {
+                                        echo "<option value='" . $personaCliente['nif'] . "'>DNI: " . $personaCliente['nif'] . ", nombre:" . $personaCliente['nombre'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-block text-white "
+                                    name="empleadosParaListaCoche">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container justify-content-center">
+            <div class="row-12">
             </div>
         </div>
     </div>

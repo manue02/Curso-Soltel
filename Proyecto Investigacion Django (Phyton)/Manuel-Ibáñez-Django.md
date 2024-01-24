@@ -73,6 +73,7 @@ modified: "2023-11-21T13:20:29.033Z"
     - [Paso 1 Definir las rutas](#paso-1-definir-las-rutas)
     - [Paso 2 Crear la plantilla](#paso-2-crear-la-plantilla)
     - [Paso 3 Crear la vista](#paso-3-crear-la-vista)
+    - [Paso 4 Importar mi proyecto en tu entorno virtual](#paso-4-importar-mi-proyecto-en-tu-entorno-virtual)
 
 <div style="page-break-after: always;"></div>
 
@@ -81,8 +82,6 @@ modified: "2023-11-21T13:20:29.033Z"
 [Tabla de contenidos](#tabla-de-contenidos)
 
 Ahora que tenemos todo lo necesario para desarrollar nuestra aplicación web con Django vamos a instalar PyCharm que es un IDE multiplataforma creado por JetBrains. Es uno de los mejores IDEs para proyectos que utilizan el lenguaje de programación Python, primero debemos descargarlo desde la página oficial de [JetBrains](https://www.jetbrains.com/es-es/pycharm/download/#section=linux). Una vez descargado, nos situamos en el directorio donde se encuentra el fichero descargado y escribimos:
-
-<div style="page-break-after: always;"></div>
 
 ```console
 
@@ -313,10 +312,11 @@ Esto creará un directorio llamado prueba con la siguiente estructura:
 
 ```
 
+<div style="page-break-after: always;"></div>
+
 Ahora vamos a crear una vista. Para ello, abrimos el fichero views.py y escribimos:
 
 ```python
-
  from django.http import HttpResponse
 
  def index(request):
@@ -338,8 +338,6 @@ Ahora vamos a crear un archivo llamado urls.py en la carpeta prueba y luego abri
 
 ```
 
-<div style="page-break-after: always;"></div>
-
 Ahora vamos abrir en la carpeta HelloWorld el fichero urls.py y escribimos:
 
 ```python
@@ -353,6 +351,8 @@ Ahora vamos abrir en la carpeta HelloWorld el fichero urls.py y escribimos:
  ]
 
 ```
+
+<div style="page-break-after: always;"></div>
 
 > [!NOTE]
 > Si no sabes de donde a salido la carpeta HelloWorld es la carpeta que se crea al crear el proyecto Django.
@@ -426,6 +426,8 @@ Aqui un ejemplo de una plantilla en Django:
 
 Las URLs en Django se definen en el fichero urls.py de cada aplicación. En este fichero se definen las URLs de las vistas.
 
+<div style="page-break-after: always;"></div>
+
 ### Sintaxis básica de Django
 
 [Tabla de contenidos](#tabla-de-contenidos)
@@ -465,6 +467,8 @@ Ahora vamos a ver las condicionales en Django. Las condicionales en Django se de
 
 {% endif %}
 ```
+
+<div style="page-break-after: always;"></div>
 
 Tambien hay comentarios en Django. Los comentarios en Django se definen entre llaves porcentuales {% %}. Por ejemplo:
 
@@ -512,7 +516,8 @@ Para arrancar el servidor de desarrollo, nos situamos en el directorio donde se 
 > (mysite)$ python manage.py migrate
 >
 > ```
->
+
+> [!CAUTION]
 > Las migraciones son como una versión controlada de tu base de datos, y Django las usa para crear, modificar y eliminar tablas y sus campos.
 >
 > Cuando creas modelos o cambias tus modelos existentes, Django genera estas migraciones. Sin embargo, estos cambios no se reflejan en tu base de datos hasta que apliques las migraciones.
@@ -549,13 +554,9 @@ Esto nos pedirá un nombre de usuario, una dirección de correo electrónico y u
 Para incluir modelos en el panel de administración, debemos abrir el fichero admin.py de la aplicación y escribir:
 
 ```python
-
  from django.contrib import admin
-
  from .models import Question
-
  admin.site.register(Alumnos) # Incluimos el modelo Alumnos en el panel de administración (la tabla Alumnos)
-
 ```
 
 ## Sintaxis básica de Python
@@ -1873,6 +1874,8 @@ Lo siguiente que tenemos que tener en cuenta es crear el proyecto con el comando
 
 En mi caso e creado el Proyecto ProyectoCrud y luego e creado una vista llamada Daw2 en la aplicación ProyectoCrud. Si todo ha ido bien deberiamos tener algo como esto:
 
+<div style="page-break-after: always;"></div>
+
 ```bash
  ProyectoCrud
  ├── ProyectoCrud
@@ -1915,6 +1918,8 @@ Lo primero que tenemos que añadir es en el archivo settings.py del directorio r
 
 El siguiente paso seria crear el modelo en el archivo models.py de cada tabla que tenemos en nuestra base de datos. En mi caso e creado una clase una para el estudiante. Este archivo en mi caso se encuentra en la aplicación Daw2.
 
+<div style="page-break-after: always;"></div>
+
 Y nos quedaria algo como esto:
 
 ```python
@@ -1930,8 +1935,6 @@ Y nos quedaria algo como esto:
      def __str__(self):
          return self.nombre_apellido
 ```
-
-<div style="page-break-after: always;"></div>
 
 > [!NOTE]
 > Tenemos que tener en cuenta que no hace falta nada mas ya que Django se encarga de los getters y setters y de los constructores y de todo lo que necesitemos.
@@ -1965,6 +1968,8 @@ pymysql.install_as_MySQLdb()
 > Son necesarias para poder utilizar la base de datos MySQL.
 > Son dos bibliotecas diferentes que se utilizan para trabajar con MySQL en Python.
 
+<div style="page-break-after: always;"></div>
+
 Y por último lo que tenemos que hacer es crear las migraciones y aplicarlas. Para ello, escribimos:
 
 ```bash
@@ -1995,6 +2000,8 @@ En el cual esta todo lo necesario para crear la base de datos y las tablas que v
 > Ademas Django aparte de todas las cosas que te crea automaticamente tambien apartir de tus tablas que contienen datos crea otras tablas apartir del nombre que tu le des a >la tabla por ejemplo si tu tabla se llama Estudiante Django creara una tabla llamada Daw2_estudiante y esta tabla tampoco la tienes que importar ya que se crea automaticamente >cuando haces las migraciones en Django.
 > Pero si quieres que añadir datos a la tabla que debes añadir esos datos a la tabla que se crea automaticamente y no a la tabla que tu has creado.
 > Es decir si tu tabla se llama Estudiante y quieres añadir datos a esa tabla tienes que añadirlos a la tabla Daw2_estudiante que es la que se crea automaticamente cuando haces >las migraciones en Django.
+
+<div style="page-break-after: always;"></div>
 
 ## Pasos para crear un CRUD en Python con Django (Explicación del código)
 
@@ -2083,6 +2090,8 @@ En home en mi caso e añadido un menu de navegacion para que sea mas facil naveg
 
 Ademas de importar todo lo necesario para poder trabajar en mi caso seria bootstrap y fontawesome. Y esa plantilla no la tocare mas ya que es la plantilla base que voy a utilizar para todas las paginas de mi proyecto.
 
+<div style="page-break-after: always;"></div>
+
 Y para decir que esa es la plantilla padre agragaremos esto en el main de la plantilla base.
 
 ```html
@@ -2108,3 +2117,24 @@ Esto simplemente es crear las funciones que queramos agregar en nuestro proyecto
 Y tambien hay que tener en cuenta que tenemos que declarar las rutas en el archivo urls.py de la aplicación.
 
 Lo ultimo que habria que hacer seria los formularios con html y bootstrap puedes ver el codigo bien explicado de lo que hace cada cosa en mi repositorio.
+
+### Paso 4 Importar mi proyecto en tu entorno virtual
+
+[Tabla de contenidos](#tabla-de-contenidos)
+
+Si quieres importar mi proyecto en tu entorno virtual lo primero que tienes que hacer es activar el entorno virtual que creamos al principio de este documento te lo dejo por aquí por si no te acuerdas de como se hace [Explicación de los comandos (Entorno virtual)](#explicación-de-los-comandos-entorno-virtual) y asegurate de desactivar el entorno virtual si esque lo tienes activado escribiendo deactivate en la terminal.
+
+Luego de hacer eso tenemos que hacer las migraciones para que se cree la base de datos y las tablas que vamos a utilizar. Para ello, escribimos:
+
+```bash
+ python manage.py makemigrations
+ python manage.py migrate
+```
+
+<div style="page-break-after: always;"></div>
+
+Y por último despliega la aplicación en el servidor local para comprobar que todo funciona correctamente. Para ello, escribimos:
+
+```bash
+ python manage.py runserver
+```

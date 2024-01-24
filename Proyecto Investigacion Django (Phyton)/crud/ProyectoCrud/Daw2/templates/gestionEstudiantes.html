@@ -1,84 +1,70 @@
-{% extends "./home.html" %}
-
-{% block title %} Gestión de Estudiantes {% endblock %}
-
-{% block body %}
-    <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-dismissible alert-success">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong class="text-dark">{{ message }}</strong>
-                    </div>
-                {% endfor %}
-            {% endif %}
-            <h2>Añadir Estudiante</h2>
-            <div class="card">
-                <div class="card-body">
-                    <form action="/añadirEstudiante/" method="POST">{% csrf_token %}
-                        <div class="form-group pb-2">
-                            <input type="text" id="txtNif" name="txtNif" class="form-control" placeholder="NIF"
-                                   minlength="9" maxlength="9" required>
-                        </div>
-                        <div class="form-group pb-2">
-                            <input type="text" id="txtNombre_apellido" name="txtNombre_apellido" class="form-control"
-                                   placeholder="nombre y apellidos"
-                                   maxlength="50" required>
-                        </div>
-                        <div class="form-group pb-2">
-                            <input type="text" id="txtEdad" name="txtEdad" class="form-control" min="1" max="100"
-                                   placeholder="Edad" required>
-                        </div>
-                        <div class="form-group pb-2">
-                            <input type="text" id="txtCarrera" name="txtCarrera" class="form-control" maxlength="50"
-                                   placeholder="Carrera" required>
-                        </div>
-                        <div class="form-group pb-4">
-                            <input type="text" id="txtUniversidad" name="txtUniversidad" class="form-control"
-                                   maxlength="50"
-                                   placeholder="Universidad" required>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-success btn-block text-white ">Guardar</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
-            <h1>Listado de Estudiantes</h1>
-            <div class="table-responsive py-2">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>nif</th>
-                        <th>nombre_apellido</th>
-                        <th>edad</th>
-                        <th>carrera</th>
-                        <th>universidad</th>
-                        <th colspan="2">Opciones</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for e in estudiantes %}
-                        <tr>
-                            <td>{{ forloop.counter }}</td>
-                            <td>{{ e.nif }}</td>
-                            <td>{{ e.nombre_apellido }}</td>
-                            <td>{{ e.edad }}</td>
-                            <td>{{ e.carrera }}</td>
-                            <td>{{ e.universidad }}</td>
-                            <td><a href="editarEstudiante/{{ e.nif }}" class="btn btn-info">Editar</a></td>
-                            <td><a href="eliminarEstudiante/{{ e.nif }}"
-                                   class="btn btn-danger btnEliminacion">Eliminar</a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+{% extends "./home.html" %} {% block title %} Gestión de Estudiantes {% endblock %} {% block body %}
+<div class="row">
+	<div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+		{% if messages %} {% for message in messages %}
+		<div class="alert alert-dismissible alert-success">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			<strong class="text-dark">{{ message }}</strong>
+		</div>
+		{% endfor %} {% endif %}
+		<h2>Añadir Estudiante</h2>
+		<div class="card">
+			<div class="card-body">
+				<form action="/añadirEstudiante/" method="POST">
+					{% csrf_token %}
+					<div class="form-group pb-2">
+						<input type="text" id="txtNif" name="txtNif" class="form-control" placeholder="NIF" minlength="9" maxlength="9" required />
+					</div>
+					<div class="form-group pb-2">
+						<input type="text" id="txtNombre_apellido" name="txtNombre_apellido" class="form-control" placeholder="nombre y apellidos" maxlength="50" required />
+					</div>
+					<div class="form-group pb-2">
+						<input type="text" id="txtEdad" name="txtEdad" class="form-control" min="1" max="100" placeholder="Edad" required />
+					</div>
+					<div class="form-group pb-2">
+						<input type="text" id="txtCarrera" name="txtCarrera" class="form-control" maxlength="50" placeholder="Carrera" required />
+					</div>
+					<div class="form-group pb-4">
+						<input type="text" id="txtUniversidad" name="txtUniversidad" class="form-control" maxlength="50" placeholder="Universidad" required />
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+		<h1>Listado de Estudiantes</h1>
+		<div class="table-responsive py-2">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>nif</th>
+						<th>nombre_apellido</th>
+						<th>edad</th>
+						<th>carrera</th>
+						<th>universidad</th>
+						<th colspan="2">Opciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for e in Estudiantes %}
+					<tr>
+						<td>{{ forloop.counter }}</td>
+						<td>{{ e.nif }}</td>
+						<td>{{ e.nombre_apellido }}</td>
+						<td>{{ e.edad }}</td>
+						<td>{{ e.carrera }}</td>
+						<td>{{ e.universidad }}</td>
+						<td><a href="editarEstudiante/{{ e.nif }}" class="btn btn-info">Editar</a></td>
+						<td><a href="eliminarEstudiante/{{ e.nif }}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
 {% endblock %}

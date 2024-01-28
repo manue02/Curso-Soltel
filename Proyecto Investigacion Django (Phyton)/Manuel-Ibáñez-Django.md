@@ -146,7 +146,7 @@ Ahora podemos ejecutar PyCharm desde cualquier directorio escribiendo pycharm en
 
 Una vez abierto PyCharm, nos aparecerá una ventana de bienvenida. En ella, podemos crear un proyecto nuevo o abrir uno existente. En nuestro caso, vamos a abrir el proyecto anteriormente creado **mysyte**. Para ello, abrimos la carpeta contenedora del proyecto.
 
-Una vez abierto el proyecto, vamos a configurar el intérprete de Python. Para hacer esto, vamos a **File > Settings > Project: mysite > Python Interpreter**. En el desplegable, seleccionamos el intérprete de Python que hemos instalado anteriormente.
+Una vez abierto el proyecto, vamos a configurar el intérprete de Python. Para hacer esto, vamos a **File > Settings > Project: mysite > Python Interpreter**. En el desplegable, seleccionamos el intérprete de Python que hemos instalado anteriormente echale un vistazo a la [Instalación en Linux (Entorno virtual + Django + Python)](#instalación-en-linux-entorno-virtual--django--python) para ver como instalarlo.
 
 > [!IMPORTANT]
 > Es importante que el intérprete de Python que seleccionemos sea el que hemos instalado en el entorno virtual.

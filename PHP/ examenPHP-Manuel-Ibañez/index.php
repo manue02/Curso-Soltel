@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require("PHP/funciones.php");
+$conexion = conectarBBDD("localhost", "root", "root", "Hyundai");
 ErroresVendor();
 session_start();
 

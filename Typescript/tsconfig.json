@@ -1,0 +1,3 @@
+{ "compilerOptions": { "module": "commonjs", "target": "ES5", "outDir": "ts-built", "rootDir": "." } }
+
+// comando para compilar tsc -w

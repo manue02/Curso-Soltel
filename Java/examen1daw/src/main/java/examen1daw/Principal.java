@@ -75,8 +75,8 @@ public class Principal
 		zoo.añadeMamífero(maya);	
 		
 		//DESCOMENTAR PARA VER LOS DATOS CREADOS
-		//mostrarTabla(zoo.gettMamíferos());
-		//mostrarTabla(zoo.gettVeterinarios());
+		mostrarTabla(zoo.gettMamíferos());
+		mostrarTabla(zoo.gettVeterinarios());
 		
 		//APARTADO A) 
 		System.out.println("Apartado a) mamíferos nacidos entre las fechas 4/4/2019 y 7/5/2020\n");

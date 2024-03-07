@@ -56,8 +56,8 @@ public class Mamífero extends SerVivo
 		res+= "Nombre: "+this.nombre+" ";
 		if(this.padre != null)
 		{
-			res+= "naci? de "+this.padre.nombre+" y de "+this.madre.nombre+" ";
-			res+= "el d?a "+this.díaNacimiento+" ";
+			res+= "naci de "+this.padre.nombre+" y de "+this.madre.nombre+" ";
+			res+= "el día "+this.díaNacimiento+" ";
 			res+= "veterinario asistente: "+this.asistente.getNombre();
 		}		
 		return res;

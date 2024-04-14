@@ -1,6 +1,4 @@
-# Curso-Soltel
 
-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
 
 > [!NOTE]
 > Este es el texto de la nota.
